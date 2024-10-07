@@ -59,9 +59,26 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="assets\Background.png" />
+    <Content Include="assets\Block-Empty.png" />
+    <Content Include="assets\Block-I.png" />
+    <Content Include="assets\Block-J.png" />
+    <Content Include="assets\Block-L.png" />
+    <Content Include="assets\Block-O.png" />
+    <Content Include="assets\Block-S.png" />
+    <Content Include="assets\Block-T.png" />
+    <Content Include="assets\Block-Z.png" />
     <Content Include="assets\fondo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\TileBlue.png" />
+    <Content Include="assets\TileCyan.png" />
+    <Content Include="assets\TileEmpty.png" />
+    <Content Include="assets\TileGreen.png" />
+    <Content Include="assets\TileOrange.png" />
+    <Content Include="assets\TilePurple.png" />
+    <Content Include="assets\TileRed.png" />
+    <Content Include="assets\TileYellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

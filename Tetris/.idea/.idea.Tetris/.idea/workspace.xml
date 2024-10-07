@@ -7,11 +7,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tetris/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris/Tetris.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris/Tetris.csproj" afterDir="false" />
+    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**">
+      <change afterPath="$PROJECT_DIR$/assets/Background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-Empty.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-I.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-J.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-L.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-O.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-S.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-T.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Block-Z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileBlue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileCyan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileEmpty.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileGreen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileOrange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TilePurple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileRed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/TileYellow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetris.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,28 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Tetris.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20241006_0001&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Tetris.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.google.cloudcode.ide_session_index": "20241006_0002",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tetris" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -65,7 +80,7 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_KIND" value="Unloaded" />
       <option name="PROJECT_TFM" value="" />
       <method v="2">
         <option name="Build" />
@@ -82,6 +97,7 @@
       <updated>1728227270418</updated>
       <workItem from="1728227272393" duration="637000" />
       <workItem from="1728227957682" duration="2160000" />
+      <workItem from="1728259445973" duration="680000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -91,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728228616051</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**">
+      <option name="closed" value="true" />
+      <created>1728259622630</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728259622630</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +126,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0." />
-    <option name="LAST_COMMIT_MESSAGE" value="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0." />
+    <MESSAGE value="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**" />
+    <option name="LAST_COMMIT_MESSAGE" value="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**" />
   </component>
 </project>
