@@ -1,4 +1,5 @@
 using System;
+using MyGame.Enums;
 
 namespace MyGame
 {
@@ -13,20 +14,43 @@ namespace MyGame
             Posicion = (0, 0);
         }
 
-        public Pieza()
+        public Pieza() { }
+        
+        public static Pieza CrearPieza(TipoPieza tipo)
         {
-                
+            switch (tipo)
+            {
+                case TipoPieza.I:
+                    return CrearPiezaI();
+                case TipoPieza.O:
+                    return CrearPiezaO();
+                case TipoPieza.T:
+                    return CrearPiezaT();
+                case TipoPieza.L:
+                    return CrearPiezaL();
+                case TipoPieza.J:
+                    return CrearPiezaJ();
+                case TipoPieza.S:
+                    return CrearPiezaS();
+                case TipoPieza.Z:
+                    return CrearPiezaZ();
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(tipo), "Pieza desconocida.");
+            }
         }
         
-        public bool PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)
+        #region Rotar Pieza
+
+        public void Rotar(int columnasTotalesTablero, int filasTotalesTablero)
         {
+            if (!PuedeRotar(columnasTotalesTablero, filasTotalesTablero))
+                return;
+
             var filas = Forma.GetLength(0);
             var columnas = Forma.GetLength(1);
 
-            // Crear una matriz para la nueva forma rotada
-            var nuevaForma = new int[columnas, filas];
-
             // Realizar la rotación de la pieza (90 grados)
+            var nuevaForma = new int[columnas, filas];
             for (int i = 0; i < filas; i++)
             {
                 for (int j = 0; j < columnas; j++)
@@ -35,51 +59,38 @@ namespace MyGame
                 }
             }
 
-            // Verificar si la nueva forma cabe dentro del tablero
-            for (int i = 0; i < nuevaForma.GetLength(0); i++)
-            {
-                for (int j = 0; j < nuevaForma.GetLength(1); j++)
-                {
-                    if (nuevaForma[i, j] != 1) continue; // Solo verificamos las celdas ocupadas por la pieza
-                    var x = Posicion.x + j;
-                    var y = Posicion.y + i;
+            Forma = nuevaForma; // Actualizar la forma de la pieza con la nueva forma rotada
+        }
+        
+        
+        private bool PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)
+        {
+            var filas = Forma.GetLength(0);
+            var columnas = Forma.GetLength(1);
 
-                    // Verificar si se sale del tablero
-                    if (x < 0 || x >= columnasTotalesTablero || y < 0 || y >= filasTotalesTablero)
-                    {
+            // Verificar las nuevas posiciones directamente sin crear una nueva matriz
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    if (Forma[i, j] != 1) continue;
+
+                    // Calcular las nuevas posiciones como si la pieza estuviera rotada
+                    var nuevoX = Posicion.x + (filas - i - 1);
+                    var nuevoY = Posicion.y + j;
+
+                    // Verificar si las nuevas posiciones se salen del tablero
+                    if (nuevoX < 0 || nuevoX >= columnasTotalesTablero || nuevoY < 0 || nuevoY >= filasTotalesTablero)
                         return false;
-                    }
                 }
             }
 
             return true;
         }
+
+        #endregion
         
-        public void Rotar(int columnasTotalesTablero, int filasTotalesTablero)
-        {
-            if (PuedeRotar(columnasTotalesTablero, filasTotalesTablero)) // Solo rotar si la rotación es válida
-            {
-                var filas = Forma.GetLength(0);
-                var columnas = Forma.GetLength(1);
-
-                // Realizar la rotación de la pieza (90 grados)
-                var nuevaForma = new int[columnas, filas];
-                for (int i = 0; i < filas; i++)
-                {
-                    for (int j = 0; j < columnas; j++)
-                    {
-                        nuevaForma[j, filas - i - 1] = Forma[i, j];
-                    }
-                }
-
-                Forma = nuevaForma; // Actualizar la forma de la pieza con la nueva forma rotada
-                Console.WriteLine("Pieza rotada correctamente.");
-            }
-            else
-            {
-                Console.WriteLine("No se puede rotar: La pieza se saldría del tablero.");
-            }
-        }
+        #region Mover Pieza
 
         // Método para mover la pieza hacia abajo
         public void MoverAbajo()
@@ -99,70 +110,72 @@ namespace MyGame
             Posicion = (Posicion.x + 1, Posicion.y);
         }
 
-        // Definimos todas las piezas clásicas del Tetris
-        public static class PiezasClasicas
+        #endregion
+        
+        #region Piezas del Juego
+
+        private static Pieza CrearPiezaI()
         {
-            public static Pieza CrearPiezaI()
+            return new Pieza(new int[,]
             {
-                return new Pieza(new int[,]
-                {
-                    { 1, 1, 1, 1 }
-                });
-            }
-
-            public static Pieza CrearPiezaO()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 1, 1 },
-                    { 1, 1 }
-                });
-            }
-
-            public static Pieza CrearPiezaT()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 0, 1, 0 },
-                    { 1, 1, 1 }
-                });
-            }
-
-            public static Pieza CrearPiezaL()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 1, 0, 0 },
-                    { 1, 1, 1 }
-                });
-            }
-
-            public static Pieza CrearPiezaJ()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 0, 0, 1 },
-                    { 1, 1, 1 }
-                });
-            }
-
-            public static Pieza CrearPiezaS()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 0, 1, 1 },
-                    { 1, 1, 0 }
-                });
-            }
-
-            public static Pieza CrearPiezaZ()
-            {
-                return new Pieza(new int[,]
-                {
-                    { 1, 1, 0 },
-                    { 0, 1, 1 }
-                });
-            }
+                { 1, 1, 1, 1 }
+            });
         }
+
+        private static Pieza CrearPiezaO()
+        {
+            return new Pieza(new int[,]
+            {
+                { 1, 1 },
+                { 1, 1 }
+            });
+        }
+
+        private static Pieza CrearPiezaT()
+        {
+            return new Pieza(new int[,]
+            {
+                { 0, 1, 0 },
+                { 1, 1, 1 }
+            });
+        }
+
+        private static Pieza CrearPiezaL()
+        {
+            return new Pieza(new int[,]
+            {
+                { 1, 0, 0 },
+                { 1, 1, 1 }
+            });
+        }
+
+        private static Pieza CrearPiezaJ()
+        {
+            return new Pieza(new int[,]
+            {
+                { 0, 0, 1 },
+                { 1, 1, 1 }
+            });
+        }
+
+        private static Pieza CrearPiezaS()
+        {
+            return new Pieza(new int[,]
+            {
+                { 0, 1, 1 },
+                { 1, 1, 0 }
+            });
+        }
+
+        private static Pieza CrearPiezaZ()
+        {
+            return new Pieza(new int[,]
+            {
+                { 1, 1, 0 },
+                { 0, 1, 1 }
+            });
+        }
+
+        #endregion
     }
 }
