@@ -38,6 +38,34 @@ namespace MyGame
                     throw new ArgumentOutOfRangeException(nameof(tipo), "Pieza desconocida.");
             }
         }
+
+        #region Fijar Pieza
+
+        public static void FijarPiezaEnTablero(Pieza pieza, int columnasTotalesTablero, int filasTotalesTablero, int[,] tablero)
+        {
+            int filas = pieza.Forma.GetLength(0);
+            int columnas = pieza.Forma.GetLength(1);
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    if (pieza.Forma[i, j] == 1)
+                    {
+                        int x = pieza.Posicion.x + j;
+                        int y = pieza.Posicion.y + i;
+
+                        // Asegurar que la pieza no se fije fuera de los límites del tablero
+                        if (x >= 0 && x < columnasTotalesTablero && y >= 0 && y < filasTotalesTablero)
+                        {
+                            tablero[y, x] = 1; // Marcar la celda como ocupada
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
         
         #region Rotar Pieza
 
