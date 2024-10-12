@@ -50,6 +50,10 @@
     <Compile Include="Engine\Font.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Engine\Image.cs" />
+    <Compile Include="Enums\TipoPieza.cs" />
+    <Compile Include="Grilla.cs" />
+    <Compile Include="MovementController.cs" />
+    <Compile Include="Pieza.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Engine\Sound.cs" />
@@ -78,6 +82,7 @@
     <Content Include="assets\TilePurple.png" />
     <Content Include="assets\TileRed.png" />
     <Content Include="assets\TileYellow.png" />
+    <Content Include="assets\TileYellow2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
