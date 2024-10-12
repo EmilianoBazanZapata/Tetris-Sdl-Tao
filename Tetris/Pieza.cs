@@ -8,7 +8,7 @@ namespace MyGame
         public int[,] Forma { get; private set; }
         public (int x, int y) Posicion { get; set; }
 
-        public Pieza(int[,] forma)
+        private Pieza(int[,] forma)
         {
             Forma = forma;
             Posicion = (0, 0);
@@ -36,6 +36,22 @@ namespace MyGame
                     return CrearPiezaZ();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(tipo), "Pieza desconocida.");
+            }
+        }
+        
+        public void DibujarPieza(Image imagenPiezaI, int celda)
+        {
+            var filas = Forma.GetLength(0);
+            var columnas = Forma.GetLength(1);
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    if (Forma[i, j] != 1) continue;
+                    // Dibujar la imagen de la pieza en la posición de la celda ocupada
+                    Engine.Draw(imagenPiezaI, (Posicion.x + j) * celda, (Posicion.y + i) * celda); // Dibujar la imagen
+                }
             }
         }
 
