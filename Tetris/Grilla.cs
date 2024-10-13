@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Tao.Sdl;
 
 namespace MyGame
@@ -8,13 +9,18 @@ namespace MyGame
         private int Columnas { get; set; }
         private int Filas { get; set; }
         private int Celdas { get; set; }
+        private Image ImagenCeldaEnBlanco { get; set; }
+        private Dictionary<int, Image> ImagenesPiezas { get; set; }
 
-        public Grilla(int[,] tablero, int columnas, int filas, int celdas)
+        public Grilla(int[,] tablero, int columnas, int filas, int celdas, Image imagenCeldaEnBlanco,
+            Dictionary<int, Image> imagenesPiezas)
         {
             Tablero = tablero;
             Columnas = columnas;
             Filas = filas;
             Celdas = celdas;
+            ImagenCeldaEnBlanco = imagenCeldaEnBlanco;
+            ImagenesPiezas = imagenesPiezas;
         }
 
         public void InicializarTablero()
@@ -30,34 +36,24 @@ namespace MyGame
 
         public void DibujarTablero()
         {
-            // Fondo negro
-            DrawRect(0, 0, Columnas * Celdas, Filas * Celdas, 0, 0, 0); // Fondo negro
-            
-            // Dibujamos el tablero
             for (var i = 0; i < Filas; i++)
             {
                 for (var j = 0; j < Columnas; j++)
                 {
-                    // Dibujar el borde de la celda (separador entre celdas)
-                    DrawRect(j * Celdas, i * Celdas, Celdas, Celdas, 0, 0, 0); // Borde negro
+                    var tipoPieza = Tablero[i, j];
 
-                    switch (Tablero[i, j])
+                    if (tipoPieza == 0)
                     {
-                        case 0:
-                            // Dibujar la celda vacía (color azul)
-                            DrawRect(j * Celdas + 1, i * Celdas + 1, Celdas - 2, Celdas - 2, 0, 0,
-                                255);
-                            break;
-                        case 1:
-                            // Dibujar la celda ocupada (color rojo)
-                            DrawRect(j * Celdas + 1, i * Celdas + 1, Celdas - 2, Celdas - 2, 255, 0,
-                                0);
-                            break;
+                        Engine.Draw(ImagenCeldaEnBlanco.Pointer, j * Celdas, i * Celdas);
+                    }
+                    else
+                    {
+                        Engine.Draw(ImagenesPiezas[tipoPieza].Pointer, j * Celdas, i * Celdas);
                     }
                 }
             }
         }
-        
+
         public void LimpiarFilasCompletas()
         {
             for (int i = 40 - 1; i >= 0; i--) // Empezar desde abajo
@@ -81,7 +77,7 @@ namespace MyGame
                 }
             }
         }
-        
+
         private void EliminarFila(int fila)
         {
             // Mover todas las filas superiores una fila hacia abajo
@@ -122,6 +118,5 @@ namespace MyGame
         {
             return (uint)((r << 16) | (g << 8) | b); // Combina los valores RGB en un solo uint
         }
-
     }
 }

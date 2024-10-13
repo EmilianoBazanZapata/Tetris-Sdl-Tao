@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MyGame.Enums;
 using Tao.Sdl;
 
@@ -6,8 +7,40 @@ namespace MyGame
 {
     internal class Program
     {
+        static Image imagenCeldaEnBlanco =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Grid.png");
+
+        static Image imagenPiezaJ =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png");
+
         static Image imagenPiezaI =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow2.png");
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png");
+
+        static Image imagenPiezaT =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
+
+        static Image imagenPiezaO =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png");
+
+        static Image imagenPiezaL =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png");
+
+        static Image imagenPiezaS =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
+
+        static Image imagenPiezaZ =
+            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png");
+
+        static Dictionary<int, Image> imagenesPiezas = new Dictionary<int, Image>
+        {
+            { 1, imagenPiezaI },
+            { 2, imagenPiezaO },
+            { 3, imagenPiezaT },
+            { 4, imagenPiezaL },
+            { 5, imagenPiezaJ },
+            { 6, imagenPiezaS },
+            { 7, imagenPiezaZ }
+        };
 
         static int columnas = 20;
         static int filas = 40;
@@ -17,8 +50,9 @@ namespace MyGame
 
         static IntPtr pantalla; // Representación de la ventana principal
 
+
         static Pieza piezaActual = new Pieza();
-        static Grilla grilla = new Grilla(tablero, columnas, filas, celda);
+        static Grilla grilla = new Grilla(tablero, columnas, filas, celda, imagenCeldaEnBlanco, imagenesPiezas);
 
         private static MovementController controller = new MovementController(tablero);
 
@@ -51,9 +85,9 @@ namespace MyGame
             Engine.Initialize();
             pantalla = Sdl.SDL_SetVideoMode(300, 600, 32, Sdl.SDL_SWSURFACE); // Definir la ventana
 
-            piezaActual = GenerarPiezaAleatoria();
-
             grilla.InicializarTablero();
+
+            piezaActual = GenerarPiezaAleatoria();
 
             Sdl.SDL_Event evento;
             var running = true;
@@ -63,9 +97,7 @@ namespace MyGame
                 while (Sdl.SDL_PollEvent(out evento) != 0)
                 {
                     if (evento.type == Sdl.SDL_QUIT)
-                    {
                         running = false;
-                    }
                 }
 
                 CheckInputs();
@@ -110,7 +142,7 @@ namespace MyGame
                 {
                     if (controller.PuedeMoverIzquierda(piezaActual))
                     {
-                        piezaActual.Posicion = (piezaActual.Posicion.x - 1, piezaActual.Posicion.y);
+                        piezaActual.MoverIzquierda();
                         Console.WriteLine("Pieza movida a la izquierda.");
                     }
 
@@ -144,7 +176,7 @@ namespace MyGame
                 {
                     if (controller.PuedeMoverDerecha(piezaActual))
                     {
-                        piezaActual.Posicion = (piezaActual.Posicion.x + 1, piezaActual.Posicion.y);
+                        piezaActual.MoverDerecha();
                         Console.WriteLine("Pieza movida a la derecha.");
                     }
 
@@ -207,7 +239,7 @@ namespace MyGame
             contadorTiempo++;
 
             MoverPiezaAutomnaticamente();
-            
+
             contadorTiempo++;
         }
 
@@ -241,11 +273,11 @@ namespace MyGame
         {
             grilla.DibujarTablero();
 
-            piezaActual.DibujarPieza(imagenPiezaI, celda);
-            // Mostrar los cambios en pantalla
+            piezaActual.DibujarPieza(celda);
+
             Engine.Show();
         }
-        
+
         private static Pieza GenerarPiezaAleatoria()
         {
             var random = new Random();

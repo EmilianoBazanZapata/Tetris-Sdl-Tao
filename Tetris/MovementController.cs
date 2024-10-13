@@ -3,14 +3,14 @@ namespace MyGame
     public class MovementController
     {
         private int[,] Tablero { get; set; }
-        
+
         public MovementController(int[,] tablero)
         {
             Tablero = tablero;
         }
-        
+
         #region Verificar Movimiento
-        
+
         public bool PuedeMoverAbajo(Pieza pieza, int filasDelTablero)
         {
             var filas = pieza.Forma.GetLength(0);
@@ -25,9 +25,10 @@ namespace MyGame
             {
                 for (int j = 0; j < columnas; j++)
                 {
-                    if (pieza.Forma[i, j] != 1) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
                     // Verificar si la celda debajo está ocupada
-                    if (Tablero[(pieza.Posicion.y + i) + 1, (pieza.Posicion.x + j)] == 1) // +1 en y para mirar la celda de abajo
+                    if (Tablero[(pieza.Posicion.y + i) + 1, (pieza.Posicion.x + j)] !=
+                        0) // +1 en y para mirar la celda de abajo
                         return false; // Hay una colisión con otra pieza
                 }
             }
@@ -50,10 +51,10 @@ namespace MyGame
             {
                 for (int j = 0; j < columnas; j++)
                 {
-                    if (pieza.Forma[i, j] != 1) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
 
                     // Verificar si la celda a la izquierda está ocupada
-                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) - 1] == 1)
+                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) - 1] != 0)
                         return false; // Hay una pieza a la izquierda
                 }
             }
@@ -76,16 +77,16 @@ namespace MyGame
             {
                 for (int j = 0; j < columnas; j++)
                 {
-                    if (pieza.Forma[i, j] != 1) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
                     // Verificar si la celda a la derecha está ocupada
-                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) + 1] == 1)
+                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) + 1] != 0)
                         return false; // Hay una pieza a la derecha
                 }
             }
 
             return true; // Puede moverse a la derecha
         }
-        
+
         #endregion
     }
 }

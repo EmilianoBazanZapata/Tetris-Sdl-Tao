@@ -10,13 +10,19 @@ public class Image
         LoadImage(imagePath);
     }
 
-    private void LoadImage(string imagePath)
+    public void LoadImage(string imagePath)
     {
         Pointer = SdlImage.IMG_Load(imagePath);
-        if (Pointer == IntPtr.Zero)
-        {
-            Console.WriteLine("Imagen inexistente: {0}", imagePath);
-            Environment.Exit(4);
-        }
+        if (Pointer != IntPtr.Zero) return;
+        var error = SdlImage.IMG_GetError();
+        Console.WriteLine("Error al cargar la imagen {0}: {1}", imagePath, error);
+        throw new InvalidOperationException($"No se pudo cargar la imagen {imagePath}: {error}");
+    }
+
+    ~Image()
+    {
+        if (Pointer == IntPtr.Zero) return;
+        Sdl.SDL_FreeSurface(Pointer);
+        Pointer = IntPtr.Zero;
     }
 }

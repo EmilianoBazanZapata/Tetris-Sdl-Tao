@@ -8,9 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/Grid.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/Image.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grilla.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Grilla.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pieza.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pieza.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetris.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Block-Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileBlue.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileBlue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileCyan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileCyan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileEmpty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileGreen.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileGreen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileOrange.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileOrange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TilePurple.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TilePurple.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileRed.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileRed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TileYellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileYellow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fondo.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +35,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Engine/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Grilla.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Grilla.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Pieza.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Pieza.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -29,28 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Tetris.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20241006_0002&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Tetris.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.google.cloudcode.ide_session_index": "20241006_0002",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tetris" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/MyGame.exe" />
@@ -83,6 +106,10 @@
       <workItem from="1728227957682" duration="2160000" />
       <workItem from="1728259445973" duration="680000" />
       <workItem from="1728269674896" duration="446000" />
+      <workItem from="1728339422703" duration="9429000" />
+      <workItem from="1728649825883" duration="12030000" />
+      <workItem from="1728738176825" duration="13046000" />
+      <workItem from="1728786964005" duration="3314000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -100,7 +127,71 @@
       <option name="project" value="LOCAL" />
       <updated>1728259622630</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add a first unoptimized version to draw the matrix I'm going to use">
+      <option name="closed" value="true" />
+      <created>1728339686905</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728339686905</updated>
+    </task>
+    <task id="LOCAL-00004" summary="This C# code defines a `Pieza` class which represents a Tetris piece. Here's a breakdown:&#10;&#10;**Class Definition:**&#10;&#10;- `namespace MyGame`:  Indicates that the `Pieza` class belongs to the `MyGame` namespace.&#10;- `public class Pieza`: Defines a public class named `Pieza`.&#10;&#10;**Properties:**&#10;&#10;- `public int[,] Forma { get; private set; }`: A 2D integer array representing the shape of the Tetris piece. It's publicly accessible for reading but can only be set within the class.&#10;- `public (int x, int y) Posicion { get; set; }`: A tuple representing the (x, y) coordinates of the piece's position on the game board. It's publicly accessible for both reading and writing.&#10;&#10;**Constructors:**&#10;&#10;- `public Pieza(int[,] forma)`: Constructor that takes a 2D integer array (`forma`) to initialize the `Forma` property. It also sets the initial position to (0, 0).&#10;- `public Pieza()`: Default constructor that doesn't initialize the `Forma` property. This might be used if you plan to set the shape later.&#10;&#10;**Methods:**&#10;&#10;- `public bool PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`: &#10;    - Takes the total number of columns and rows of the game board as input.&#10;    - Checks if the piece can be rotated 90 degrees clockwise without going out of bounds or colliding with anything.&#10;    - Returns `true` if rotation is possible, `false` otherwise.&#10;- `public void Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:&#10;    - Attempts to rotate the piece 90 degrees clockwise.&#10;    - Calls `PuedeRotar` to check if rotation is valid.&#10;    - If valid, updates the `Forma` property with the rotated shape.&#10;    - Prints messages to the console indicating success or failure.&#10;- `public void MoverAbajo()`, `public void MoverIzquierda()`, `public void MoverDerecha()`:&#10;    - These methods move the piece one unit down, left, or right, respectively, by updating the `Posicion` property.&#10;&#10;**Nested Class: `PiezasClasicas`**&#10;&#10;- `public static class PiezasClasicas`: A nested static class that provides methods to create instances of the classic Tetris pieces (I, O, T, L, J, S, Z).&#10;- Each method (`CrearPiezaI`, `CrearPiezaO`, etc.) returns a new `Pieza` object with the appropriate shape defined as a 2D array.&#10;&#10;**Example Usage:**&#10;&#10;```csharp&#10;// Create an 'L' shaped piece&#10;Pieza piezaL = Pieza.PiezasClasicas.CrearPiezaL();&#10;&#10;// Move the piece down&#10;piezaL.MoverAbajo();&#10;&#10;// Attempt to rotate the piece&#10;piezaL.Rotar(10, 20); // Assuming a 10x20 game board&#10;```&#10;&#10;**Key Points:**&#10;&#10;- The code provides a basic structure for representing and manipulating Tetris pieces.&#10;- It includes methods for movement and rotation, taking into account boundary checks.&#10;- The `PiezasClasicas` nested class makes it easy to create instances of the standard Tetris shapes.&#10;- You would typically use this `Pieza` class within a larger game loop that handles user input, collision detection, and game logic.">
+      <option name="closed" value="true" />
+      <created>1728656116899</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728656116899</updated>
+    </task>
+    <task id="LOCAL-00005" summary="The code defines a `Pieza` class representing a Tetris piece and includes logic for rotating and moving the piece. Here's a breakdown:&#10;&#10;**1. Enums/TipoPieza.cs:**&#10;&#10;- Defines an enum `TipoPieza` with values representing the seven standard Tetris pieces (I, O, T, L, J, S, Z).&#10;&#10;**2. Pieza.cs:**&#10;&#10;- **Class Definition:**&#10;    - `Forma`: A 2D integer array representing the shape of the piece (1 for occupied, 0 for empty).&#10;    - `Posicion`: A tuple `(x, y)` representing the piece's position on the game board.&#10;&#10;- **Constructors:**&#10;    - `Pieza(int[,] forma)`: Initializes a new piece with the given shape and position (0, 0).&#10;    - `Pieza()`: Default constructor, likely for initialization later.&#10;&#10;- **`CrearPieza(TipoPieza tipo)`:**&#10;    - A static factory method that creates a `Pieza` instance of the specified `TipoPieza`.&#10;    - Uses a `switch` statement to create the appropriate piece shape based on the `tipo`.&#10;&#10;- **`Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Rotates the piece 90 degrees clockwise if the rotation is valid within the game board boundaries.&#10;    - Calls `PuedeRotar` to check for validity before rotating.&#10;&#10;- **`PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Checks if the piece can be rotated without going out of bounds.&#10;    - Iterates through the piece's shape and calculates the new positions of occupied cells after rotation.&#10;    - Returns `false` if any new position is outside the board boundaries, otherwise `true`.&#10;&#10;- **`MoverAbajo()`, `MoverIzquierda()`, `MoverDerecha()`:**&#10;    - Methods to move the piece one unit down, left, or right, respectively.&#10;    - These methods directly modify the `Posicion` of the piece.&#10;&#10;- **Private Static Methods for Piece Creation:**&#10;    - `CrearPiezaI()`, `CrearPiezaO()`, `CrearPiezaT()`, `CrearPiezaL()`, `CrearPiezaJ()`, `CrearPiezaS()`, `CrearPiezaZ()`:&#10;    - Each method defines the shape of a specific Tetris piece as a 2D integer array and returns a new `Pieza` instance with that shape.&#10;&#10;**Overall, the code provides a well-structured representation of Tetris pieces and includes essential functionality for manipulating them within a Tetris game.**">
+      <option name="closed" value="true" />
+      <created>1728659526296</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728659526296</updated>
+    </task>
+    <task id="LOCAL-00006" summary="The code you provided defines a method `FijarPiezaEnTablero` within the `Pieza` class (presumably representing a Tetris piece). This method takes the following arguments:&#10;&#10;* `pieza`: The `Pieza` object to be fixed on the game board.&#10;* `columnasTotalesTablero`: The total number of columns in the game board.&#10;* `filasTotalesTablero`: The total number of rows in the game board.&#10;* `tablero`: A 2D array representing the game board, where 1 indicates a filled cell and 0 an empty one.&#10;&#10;The method iterates through the `Forma` property of the `pieza` object, which likely represents the shape of the Tetris piece as a 2D array of 1s and 0s. For each cell in the `Forma` array that contains a 1 (indicating a block of the piece), the method calculates its corresponding position on the game board based on the piece's current position (`pieza.Posicion`).&#10;&#10;Before marking the cell on the game board as occupied, the method checks if the calculated position is within the bounds of the game board. This prevents the piece from being fixed outside the playable area. If the position is valid, the corresponding cell in the `tablero` array is set to 1, effectively &quot;fixing&quot; the piece in its current location on the game board.&#10;&#10;In essence, this method handles the logic of transferring the Tetris piece's shape onto the game board when it lands and becomes part of the static blocks.">
+      <option name="closed" value="true" />
+      <created>1728665697987</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728665697987</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Grilla class for game grid handling&#10;&#10;- Implemented the `Grilla` class to manage a game grid.&#10;- Added functionality to initialize the grid (`InicializarTablero`), rendering the grid (`DibujarTablero`), and cleaning completed rows (`LimpiarFilasCompletas`).&#10;- `DibujarTablero` uses SDL to visually represent the grid, with empty cells in blue and occupied cells in red.&#10;- Rows are automatically removed when full, with rows above shifted downwards (`EliminarFila`).&#10;- The `DrawRect` function was added to draw grid cells and borders using SDL's `SDL_FillRect` function.&#10;- Utility method `MapRgb` was added to convert RGB values to the SDL-compatible color format.">
+      <option name="closed" value="true" />
+      <created>1728740563704</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728740563704</updated>
+    </task>
+    <task id="LOCAL-00008" summary="The code defines a `Pieza` class which seems to represent a Tetris piece. &#10;&#10;Here's a breakdown of the changes:&#10;&#10;- **Constructor made private:** The constructor `Pieza(int[,] forma)` is changed from `public` to `private`. This suggests that the class might be moving towards a factory pattern or a similar approach where instances are created through static methods instead of directly.&#10;&#10;- **New `DibujarPieza` method:** This method is added to handle drawing the piece on the screen. It takes the following arguments:&#10;    - `imagenPiezaI`: An `Image` object representing the visual of the piece.&#10;    - `celda`: Likely an integer representing the size of a grid cell in pixels.&#10;&#10;    The method iterates through the `Forma` array, which defines the shape of the piece. For each cell marked with '1', it draws the provided `imagenPiezaI` at the calculated position on the screen.&#10;&#10;- **Other parts of the code:**&#10;    - The `ObtenerPieza` method seems to be a factory method that returns a `Pieza` instance based on the provided `tipo`.&#10;    - The `FijarPiezaEnTablero` method likely handles the logic for merging the piece with the game board when it lands.&#10;&#10;**Overall, the changes suggest improvements in how Tetris pieces are created, managed, and rendered within the game.**">
+      <option name="closed" value="true" />
+      <created>1728742991911</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728742991911</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add MovementController class for piece movement validation&#10;&#10;- Implemented the `MovementController` class to handle piece movement logic within the game grid.&#10;- Added methods to verify if a piece can move:&#10;  - `PuedeMoverAbajo` checks if the piece can move downwards, detecting collision with the bottom of the grid or other pieces below.&#10;  - `PuedeMoverIzquierda` validates if the piece can move left, checking for grid boundaries and other pieces on the left.&#10;  - `PuedeMoverDerecha` validates if the piece can move right, ensuring no collision with other pieces or the right boundary.&#10;- Each method evaluates the piece's current position and its shape (`Forma`) in relation to the grid (`Tablero`).">
+      <option name="closed" value="true" />
+      <created>1728743118641</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1728743118641</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method.">
+      <option name="closed" value="true" />
+      <created>1728743176424</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1728743176425</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,10 +199,61 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0." />
     <MESSAGE value="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**" />
-    <option name="LAST_COMMIT_MESSAGE" value="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**" />
+    <MESSAGE value="Add a first unoptimized version to draw the matrix I'm going to use" />
+    <MESSAGE value="This C# code defines a `Pieza` class which represents a Tetris piece. Here's a breakdown:&#10;&#10;**Class Definition:**&#10;&#10;- `namespace MyGame`:  Indicates that the `Pieza` class belongs to the `MyGame` namespace.&#10;- `public class Pieza`: Defines a public class named `Pieza`.&#10;&#10;**Properties:**&#10;&#10;- `public int[,] Forma { get; private set; }`: A 2D integer array representing the shape of the Tetris piece. It's publicly accessible for reading but can only be set within the class.&#10;- `public (int x, int y) Posicion { get; set; }`: A tuple representing the (x, y) coordinates of the piece's position on the game board. It's publicly accessible for both reading and writing.&#10;&#10;**Constructors:**&#10;&#10;- `public Pieza(int[,] forma)`: Constructor that takes a 2D integer array (`forma`) to initialize the `Forma` property. It also sets the initial position to (0, 0).&#10;- `public Pieza()`: Default constructor that doesn't initialize the `Forma` property. This might be used if you plan to set the shape later.&#10;&#10;**Methods:**&#10;&#10;- `public bool PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`: &#10;    - Takes the total number of columns and rows of the game board as input.&#10;    - Checks if the piece can be rotated 90 degrees clockwise without going out of bounds or colliding with anything.&#10;    - Returns `true` if rotation is possible, `false` otherwise.&#10;- `public void Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:&#10;    - Attempts to rotate the piece 90 degrees clockwise.&#10;    - Calls `PuedeRotar` to check if rotation is valid.&#10;    - If valid, updates the `Forma` property with the rotated shape.&#10;    - Prints messages to the console indicating success or failure.&#10;- `public void MoverAbajo()`, `public void MoverIzquierda()`, `public void MoverDerecha()`:&#10;    - These methods move the piece one unit down, left, or right, respectively, by updating the `Posicion` property.&#10;&#10;**Nested Class: `PiezasClasicas`**&#10;&#10;- `public static class PiezasClasicas`: A nested static class that provides methods to create instances of the classic Tetris pieces (I, O, T, L, J, S, Z).&#10;- Each method (`CrearPiezaI`, `CrearPiezaO`, etc.) returns a new `Pieza` object with the appropriate shape defined as a 2D array.&#10;&#10;**Example Usage:**&#10;&#10;```csharp&#10;// Create an 'L' shaped piece&#10;Pieza piezaL = Pieza.PiezasClasicas.CrearPiezaL();&#10;&#10;// Move the piece down&#10;piezaL.MoverAbajo();&#10;&#10;// Attempt to rotate the piece&#10;piezaL.Rotar(10, 20); // Assuming a 10x20 game board&#10;```&#10;&#10;**Key Points:**&#10;&#10;- The code provides a basic structure for representing and manipulating Tetris pieces.&#10;- It includes methods for movement and rotation, taking into account boundary checks.&#10;- The `PiezasClasicas` nested class makes it easy to create instances of the standard Tetris shapes.&#10;- You would typically use this `Pieza` class within a larger game loop that handles user input, collision detection, and game logic." />
+    <MESSAGE value="The code defines a `Pieza` class representing a Tetris piece and includes logic for rotating and moving the piece. Here's a breakdown:&#10;&#10;**1. Enums/TipoPieza.cs:**&#10;&#10;- Defines an enum `TipoPieza` with values representing the seven standard Tetris pieces (I, O, T, L, J, S, Z).&#10;&#10;**2. Pieza.cs:**&#10;&#10;- **Class Definition:**&#10;    - `Forma`: A 2D integer array representing the shape of the piece (1 for occupied, 0 for empty).&#10;    - `Posicion`: A tuple `(x, y)` representing the piece's position on the game board.&#10;&#10;- **Constructors:**&#10;    - `Pieza(int[,] forma)`: Initializes a new piece with the given shape and position (0, 0).&#10;    - `Pieza()`: Default constructor, likely for initialization later.&#10;&#10;- **`CrearPieza(TipoPieza tipo)`:**&#10;    - A static factory method that creates a `Pieza` instance of the specified `TipoPieza`.&#10;    - Uses a `switch` statement to create the appropriate piece shape based on the `tipo`.&#10;&#10;- **`Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Rotates the piece 90 degrees clockwise if the rotation is valid within the game board boundaries.&#10;    - Calls `PuedeRotar` to check for validity before rotating.&#10;&#10;- **`PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Checks if the piece can be rotated without going out of bounds.&#10;    - Iterates through the piece's shape and calculates the new positions of occupied cells after rotation.&#10;    - Returns `false` if any new position is outside the board boundaries, otherwise `true`.&#10;&#10;- **`MoverAbajo()`, `MoverIzquierda()`, `MoverDerecha()`:**&#10;    - Methods to move the piece one unit down, left, or right, respectively.&#10;    - These methods directly modify the `Posicion` of the piece.&#10;&#10;- **Private Static Methods for Piece Creation:**&#10;    - `CrearPiezaI()`, `CrearPiezaO()`, `CrearPiezaT()`, `CrearPiezaL()`, `CrearPiezaJ()`, `CrearPiezaS()`, `CrearPiezaZ()`:&#10;    - Each method defines the shape of a specific Tetris piece as a 2D integer array and returns a new `Pieza` instance with that shape.&#10;&#10;**Overall, the code provides a well-structured representation of Tetris pieces and includes essential functionality for manipulating them within a Tetris game.**" />
+    <MESSAGE value="The code you provided defines a method `FijarPiezaEnTablero` within the `Pieza` class (presumably representing a Tetris piece). This method takes the following arguments:&#10;&#10;* `pieza`: The `Pieza` object to be fixed on the game board.&#10;* `columnasTotalesTablero`: The total number of columns in the game board.&#10;* `filasTotalesTablero`: The total number of rows in the game board.&#10;* `tablero`: A 2D array representing the game board, where 1 indicates a filled cell and 0 an empty one.&#10;&#10;The method iterates through the `Forma` property of the `pieza` object, which likely represents the shape of the Tetris piece as a 2D array of 1s and 0s. For each cell in the `Forma` array that contains a 1 (indicating a block of the piece), the method calculates its corresponding position on the game board based on the piece's current position (`pieza.Posicion`).&#10;&#10;Before marking the cell on the game board as occupied, the method checks if the calculated position is within the bounds of the game board. This prevents the piece from being fixed outside the playable area. If the position is valid, the corresponding cell in the `tablero` array is set to 1, effectively &quot;fixing&quot; the piece in its current location on the game board.&#10;&#10;In essence, this method handles the logic of transferring the Tetris piece's shape onto the game board when it lands and becomes part of the static blocks." />
+    <MESSAGE value="Add Grilla class for game grid handling&#10;&#10;- Implemented the `Grilla` class to manage a game grid.&#10;- Added functionality to initialize the grid (`InicializarTablero`), rendering the grid (`DibujarTablero`), and cleaning completed rows (`LimpiarFilasCompletas`).&#10;- `DibujarTablero` uses SDL to visually represent the grid, with empty cells in blue and occupied cells in red.&#10;- Rows are automatically removed when full, with rows above shifted downwards (`EliminarFila`).&#10;- The `DrawRect` function was added to draw grid cells and borders using SDL's `SDL_FillRect` function.&#10;- Utility method `MapRgb` was added to convert RGB values to the SDL-compatible color format." />
+    <MESSAGE value="The code defines a `Pieza` class which seems to represent a Tetris piece. &#10;&#10;Here's a breakdown of the changes:&#10;&#10;- **Constructor made private:** The constructor `Pieza(int[,] forma)` is changed from `public` to `private`. This suggests that the class might be moving towards a factory pattern or a similar approach where instances are created through static methods instead of directly.&#10;&#10;- **New `DibujarPieza` method:** This method is added to handle drawing the piece on the screen. It takes the following arguments:&#10;    - `imagenPiezaI`: An `Image` object representing the visual of the piece.&#10;    - `celda`: Likely an integer representing the size of a grid cell in pixels.&#10;&#10;    The method iterates through the `Forma` array, which defines the shape of the piece. For each cell marked with '1', it draws the provided `imagenPiezaI` at the calculated position on the screen.&#10;&#10;- **Other parts of the code:**&#10;    - The `ObtenerPieza` method seems to be a factory method that returns a `Pieza` instance based on the provided `tipo`.&#10;    - The `FijarPiezaEnTablero` method likely handles the logic for merging the piece with the game board when it lands.&#10;&#10;**Overall, the changes suggest improvements in how Tetris pieces are created, managed, and rendered within the game.**" />
+    <MESSAGE value="Add MovementController class for piece movement validation&#10;&#10;- Implemented the `MovementController` class to handle piece movement logic within the game grid.&#10;- Added methods to verify if a piece can move:&#10;  - `PuedeMoverAbajo` checks if the piece can move downwards, detecting collision with the bottom of the grid or other pieces below.&#10;  - `PuedeMoverIzquierda` validates if the piece can move left, checking for grid boundaries and other pieces on the left.&#10;  - `PuedeMoverDerecha` validates if the piece can move right, ensuring no collision with other pieces or the right boundary.&#10;- Each method evaluates the piece's current position and its shape (`Forma`) in relation to the grid (`Tablero`)." />
+    <MESSAGE value="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Pieza.cs</url>
+          <line>82</line>
+          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Pieza.cs" containingFunctionPresentation="Method 'FijarPiezaEnTablero'">
+            <startOffsets>
+              <option value="2613" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2647" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Grilla.cs</url>
+          <line>50</line>
+          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Grilla.cs" containingFunctionPresentation="Method 'DibujarTablero'">
+            <startOffsets>
+              <option value="1535" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1606" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
