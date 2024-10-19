@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MyGame.Managers
+namespace MyGame.Configuration
 {
     public class GlobalGameConfiguration
     {

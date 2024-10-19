@@ -1,6 +1,6 @@
 ﻿using System;
+using MyGame.Configuration;
 using MyGame.Enums;
-using MyGame.Managers;
 using Tao.Sdl;
 
 namespace MyGame

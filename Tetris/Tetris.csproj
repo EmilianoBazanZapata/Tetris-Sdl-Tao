@@ -57,7 +57,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Engine\Sound.cs" />
-    <Compile Include="Managers\GlobalGameConfiguration.cs" />
+    <Compile Include="Configuration\GlobalGameConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
