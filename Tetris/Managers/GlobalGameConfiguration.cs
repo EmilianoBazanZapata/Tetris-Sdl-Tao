@@ -19,14 +19,14 @@ namespace MyGame.Managers
         public Image PieceZImage { get; set; }
 
         public Dictionary<int, Image> PieceImages { get; set; }
-        public Pieza CurrentPiece { get; set; }
-        public Pieza NextPiece { get; set; }
+        public Piece CurrentPiece { get; set; }
+        public Piece NextPiece { get; set; }
 
         public int Columns { get; set; }
         public int Rows { get; set; }
         public int CellSize { get; set; }
         public int[,] Board { get; set; }
-        public Grilla GameGrid { get; set; }
+        public Grid GameGrid { get; set; }
         public MovementController MovementController { get; set; }
 
         public int TimeCounter { get; set; }
@@ -68,7 +68,7 @@ namespace MyGame.Managers
             CellSize = 30; // Tamaño de cada celda en píxeles
 
             Board = new int[Rows, Columns]; // Matriz del tablero
-            GameGrid = new Grilla(Board, Columns, Rows, CellSize, EmptyCellImage, PieceImages);
+            GameGrid = new Grid(Board, Columns, Rows, CellSize, EmptyCellImage, PieceImages);
             MovementController = new MovementController(Board);
             
             TimeCounter = 0;

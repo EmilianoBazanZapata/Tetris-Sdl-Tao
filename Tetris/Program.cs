@@ -8,18 +8,17 @@ namespace MyGame
     internal class Program
     {
         private static GlobalGameConfiguration config;
-        
+
         private static void Main(string[] args)
         {
             Engine.Initialize();
             Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
-            
-            config = GlobalGameConfiguration.Instance;
-            
-            config.GameGrid.InicializarTablero();
 
-            (config.CurrentPiece, config.NextPiece) =
-                GenerarPiezasAleatorias();
+            config = GlobalGameConfiguration.Instance;
+
+            config.GameGrid.InitializeBoard();
+
+            (config.CurrentPiece, config.NextPiece) = GenerateRandomPieces();
 
             Sdl.SDL_Event evento;
             var running = true;
@@ -43,16 +42,18 @@ namespace MyGame
 
         private static void CheckInputs()
         {
-            var config = Managers.GlobalGameConfiguration.Instance; // Accede a la configuración global
+            // Accede a la configuración global
+            // Ya no necesitas acceder a config como GlobalGameConfiguration.Instance
+            // Puedes usar la variable estática config directamente
 
             // Detectar si la tecla de rotación está siendo presionada
             if (Engine.KeyPress(Engine.KEY_R) &&
-                config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
+                config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
             {
                 // Si la tecla se presiona y no hemos rotado aún
                 if (!config.RotationPerformed)
                 {
-                    config.CurrentPiece.Rotar(config.Columns, config.Rows);
+                    config.CurrentPiece.Rotate(config.Columns, config.Rows);
                     Console.WriteLine("Pieza rotada correctamente.");
 
                     config.RotationPerformed = true; // Marcar que ya se realizó la rotación
@@ -75,9 +76,9 @@ namespace MyGame
                 // Mover inmediatamente si se presiona una vez
                 if (!config.LeftMovementPerformed)
                 {
-                    if (config.MovementController.PuedeMoverIzquierda(config.CurrentPiece))
+                    if (config.MovementController.CanMoveLeft(config.CurrentPiece))
                     {
-                        config.CurrentPiece.MoverIzquierda();
+                        config.CurrentPiece.MoveLeft();
                         Console.WriteLine("Pieza movida a la izquierda.");
                     }
 
@@ -88,10 +89,10 @@ namespace MyGame
                 // Mover continuamente mientras se mantenga presionada la tecla
                 if (config.LateralMovementCounter >= config.LateralMovementInterval)
                 {
-                    if (config.MovementController.PuedeMoverIzquierda(config.CurrentPiece))
+                    if (config.MovementController.CanMoveLeft(config.CurrentPiece))
                     {
-                        config.CurrentPiece.Posicion =
-                            (config.CurrentPiece.Posicion.x - 1, config.CurrentPiece.Posicion.y);
+                        config.CurrentPiece.Position =
+                            (config.CurrentPiece.Position.x - 1, config.CurrentPiece.Position.y);
                         Console.WriteLine("Pieza movida a la izquierda.");
                     }
 
@@ -110,9 +111,9 @@ namespace MyGame
                 // Mover inmediatamente si se presiona una vez
                 if (!config.RightMovementPerformed)
                 {
-                    if (config.MovementController.PuedeMoverDerecha(config.CurrentPiece))
+                    if (config.MovementController.CanMoveRight(config.CurrentPiece))
                     {
-                        config.CurrentPiece.MoverDerecha();
+                        config.CurrentPiece.MoveRight();
                         Console.WriteLine("Pieza movida a la derecha.");
                     }
 
@@ -123,10 +124,10 @@ namespace MyGame
                 // Mover continuamente mientras se mantenga presionada la tecla
                 if (config.LateralMovementCounter >= config.LateralMovementInterval)
                 {
-                    if (config.MovementController.PuedeMoverDerecha(config.CurrentPiece))
+                    if (config.MovementController.CanMoveRight(config.CurrentPiece))
                     {
-                        config.CurrentPiece.Posicion =
-                            (config.CurrentPiece.Posicion.x + 1, config.CurrentPiece.Posicion.y);
+                        config.CurrentPiece.Position =
+                            (config.CurrentPiece.Position.x + 1, config.CurrentPiece.Position.y);
                         Console.WriteLine("Pieza movida a la derecha.");
                     }
 
@@ -147,10 +148,10 @@ namespace MyGame
                 // Movimiento inmediato hacia abajo
                 if (!config.DownMovementPerformed)
                 {
-                    if (config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
+                    if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
                     {
-                        config.CurrentPiece.Posicion =
-                            (config.CurrentPiece.Posicion.x, config.CurrentPiece.Posicion.y + 1);
+                        config.CurrentPiece.Position =
+                            (config.CurrentPiece.Position.x, config.CurrentPiece.Position.y + 1);
                     }
 
                     config.DownMovementPerformed = true;
@@ -159,9 +160,9 @@ namespace MyGame
 
                 // Movimiento continuo mientras se mantenga presionada la tecla "S"
                 if (config.DownMovementCounter < config.DownMovementInterval) return;
-                if (config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
+                if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
                 {
-                    config.CurrentPiece.Posicion = (config.CurrentPiece.Posicion.x, config.CurrentPiece.Posicion.y + 1);
+                    config.CurrentPiece.Position = (config.CurrentPiece.Position.x, config.CurrentPiece.Position.y + 1);
                 }
 
                 config.DownMovementCounter = 0; // Reiniciar el contador
@@ -177,38 +178,38 @@ namespace MyGame
         {
             config.TimeCounter++;
 
-            MoverPiezaAutomnaticamente();
+            MovePieceAutomatically();
 
             config.TimeCounter++;
         }
 
-        private static void MoverPiezaAutomnaticamente()
+        private static void MovePieceAutomatically()
         {
             // Mover la pieza hacia abajo después de cierto tiempo
             if (config.TimeCounter < config.DropInterval) return;
 
             // Verificar si la pieza puede moverse hacia abajo
-            if (config.MovementController.PuedeMoverAbajo(
+            if (config.MovementController.CanMoveDown(
                     config.CurrentPiece, config.Rows))
             {
-                config.CurrentPiece.MoverAbajo();
+                config.CurrentPiece.MoveDown();
             }
             else
             {
                 // Fijar la pieza en el tablero
-                Pieza.FijarPiezaEnTablero(config.CurrentPiece,
+                Piece.FixPieceOnBoard(config.CurrentPiece,
                     config.Columns,
                     config.Rows,
                     config.Board);
 
                 // Limpiar filas completas
-                config.GameGrid.LimpiarFilasCompletas();
+                config.GameGrid.ClearCompleteRows();
 
                 // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
                 config.CurrentPiece =
                     config.NextPiece; // La actual se convierte en la siguiente
                 (config.NextPiece, _) =
-                    GenerarPiezasAleatorias(); // Generar una nueva siguiente pieza
+                    GenerateRandomPieces(); // Generar una nueva siguiente pieza
             }
 
             config.TimeCounter = 0; // Reiniciar el contador
@@ -217,29 +218,29 @@ namespace MyGame
 
         private static void Render()
         {
-            config.GameGrid.DibujarTablero();
+            config.GameGrid.DrawBoard();
 
-            config.CurrentPiece.DibujarPieza(config.CellSize);
+            config.CurrentPiece.DrawPiece(config.CellSize);
 
             Engine.Show();
         }
 
-        private static (Pieza piezaActual, Pieza piezaSiguiente) GenerarPiezasAleatorias()
+        private static (Piece currentPiece, Piece nextPiece) GenerateRandomPieces()
         {
             var random = new Random();
 
             // Generar la pieza actual
-            var tipoPiezaActual = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
-            var piezaActual = Pieza.CrearPieza(tipoPiezaActual);
-            piezaActual.Posicion = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
+            var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
+            var currentPiece = Piece.CreatePiece(currentPieceType);
+            currentPiece.Position = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
 
             // Generar la siguiente pieza
-            var tipoPiezaSiguiente =
+            var nextPieceType =
                 (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
-            var piezaSiguiente = Pieza.CrearPieza(tipoPiezaSiguiente);
-            piezaSiguiente.Posicion = (10, 0);
+            var nextPiece = Piece.CreatePiece(nextPieceType);
+            nextPiece.Position = (10, 0);
 
-            return (piezaActual, piezaSiguiente); // Retornar ambas piezas
+            return (currentPiece, nextPiece); // Retornar ambas piezas
         }
     }
 }

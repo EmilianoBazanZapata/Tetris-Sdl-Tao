@@ -2,33 +2,32 @@ namespace MyGame
 {
     public class MovementController
     {
-        private int[,] Tablero { get; set; }
+        private int[,] Board { get; set; }
 
-        public MovementController(int[,] tablero)
+        public MovementController(int[,] board)
         {
-            Tablero = tablero;
+            Board = board;
         }
 
         #region Verificar Movimiento
 
-        public bool PuedeMoverAbajo(Pieza pieza, int filasDelTablero)
+        public bool CanMoveDown(Piece piece, int boardRows)
         {
-            var filas = pieza.Forma.GetLength(0);
-            var columnas = pieza.Forma.GetLength(1);
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
 
             // Verificar si la pieza ha alcanzado el fondo del tablero
-            if (pieza.Posicion.y + filas >= filasDelTablero)
+            if (piece.Position.y + rows >= boardRows)
                 return false; // La pieza ha alcanzado el límite inferior del tablero
 
             // Verificar si hay una pieza abajo
-            for (int i = 0; i < filas; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columnas; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
                     // Verificar si la celda debajo está ocupada
-                    if (Tablero[(pieza.Posicion.y + i) + 1, (pieza.Posicion.x + j)] !=
-                        0) // +1 en y para mirar la celda de abajo
+                    if (Board[(piece.Position.y + i) + 1, (piece.Position.x + j)] != 0) // +1 en y para mirar la celda de abajo
                         return false; // Hay una colisión con otra pieza
                 }
             }
@@ -37,24 +36,24 @@ namespace MyGame
         }
 
         // Verificar si la pieza puede moverse a la izquierda
-        public bool PuedeMoverIzquierda(Pieza pieza)
+        public bool CanMoveLeft(Piece piece)
         {
-            var filas = pieza.Forma.GetLength(0);
-            var columnas = pieza.Forma.GetLength(1);
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
 
             // Verificar los límites del tablero
-            if (pieza.Posicion.x <= 0)
+            if (piece.Position.x <= 0)
                 return false; // La pieza está en el borde izquierdo
 
             // Verificar si hay una pieza a la izquierda
-            for (int i = 0; i < filas; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columnas; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
 
                     // Verificar si la celda a la izquierda está ocupada
-                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) - 1] != 0)
+                    if (Board[(piece.Position.y + i), (piece.Position.x + j) - 1] != 0)
                         return false; // Hay una pieza a la izquierda
                 }
             }
@@ -63,23 +62,23 @@ namespace MyGame
         }
 
         // Verificar si la pieza puede moverse a la derecha
-        public bool PuedeMoverDerecha(Pieza pieza)
+        public bool CanMoveRight(Piece piece)
         {
-            var filas = pieza.Forma.GetLength(0);
-            var columnas = pieza.Forma.GetLength(1);
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
 
             // Verificar los límites del tablero
-            if (pieza.Posicion.x + columnas >= 20)
+            if (piece.Position.x + columns >= 20)
                 return false; // La pieza está en el borde derecho
 
             // Verificar si hay una pieza a la derecha
-            for (int i = 0; i < filas; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columnas; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    if (pieza.Forma[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
+                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
                     // Verificar si la celda a la derecha está ocupada
-                    if (Tablero[(pieza.Posicion.y + i), (pieza.Posicion.x + j) + 1] != 0)
+                    if (Board[(piece.Position.y + i), (piece.Position.x + j) + 1] != 0)
                         return false; // Hay una pieza a la derecha
                 }
             }
