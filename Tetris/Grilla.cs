@@ -36,6 +36,8 @@ namespace MyGame
 
         public void DibujarTablero()
         {
+            int desplazamientoX = 90; // Ajusta este valor según lo que necesites
+
             for (var i = 0; i < Filas; i++)
             {
                 for (var j = 0; j < Columnas; j++)
@@ -44,24 +46,25 @@ namespace MyGame
 
                     if (tipoPieza == 0)
                     {
-                        Engine.Draw(ImagenCeldaEnBlanco.Pointer, j * Celdas, i * Celdas);
+                        Engine.Draw(ImagenCeldaEnBlanco.Pointer, j * Celdas + desplazamientoX, i * Celdas);
                     }
                     else
                     {
-                        Engine.Draw(ImagenesPiezas[tipoPieza].Pointer, j * Celdas, i * Celdas);
+                        Engine.Draw(ImagenesPiezas[tipoPieza].Pointer, j * Celdas + desplazamientoX, i * Celdas);
                     }
                 }
             }
         }
 
+
         public void LimpiarFilasCompletas()
         {
-            for (int i = 40 - 1; i >= 0; i--) // Empezar desde abajo
+            for (int i = Filas - 1; i >= 0; i--) // Empezar desde abajo
             {
                 bool filaCompleta = true;
 
                 // Verificar si la fila está completamente ocupada
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < Columnas; j++)
                 {
                     if (Tablero[i, j] == 0) // Si encontramos una celda vacía
                     {
@@ -94,23 +97,6 @@ namespace MyGame
             {
                 Tablero[0, j] = 0; // La fila superior ahora queda vacía
             }
-        }
-        
-        // Método para dibujar un rectángulo usando SDL
-        private static void DrawRect(int x, int y, int width, int height, byte r, byte g, byte b)
-        {
-            var rect = new Sdl.SDL_Rect
-            {
-                x = (short)x,
-                y = (short)y,
-                w = (short)width,
-                h = (short)height
-            };
-
-            var surface = Sdl.SDL_GetVideoSurface();
-            var color = MapRgb(r, g, b);
-            var intColor = unchecked((int)color);
-            Sdl.SDL_FillRect(surface, ref rect, intColor);
         }
         
         // Método para calcular el color en formato RGB888

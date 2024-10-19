@@ -1,93 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using MyGame.Enums;
+using MyGame.Managers;
 using Tao.Sdl;
 
 namespace MyGame
 {
     internal class Program
     {
-        static Image imagenCeldaEnBlanco =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Grid.png");
-
-        static Image imagenPiezaJ =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png");
-
-        static Image imagenPiezaI =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png");
-
-        static Image imagenPiezaT =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
-
-        static Image imagenPiezaO =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png");
-
-        static Image imagenPiezaL =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png");
-
-        static Image imagenPiezaS =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
-
-        static Image imagenPiezaZ =
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png");
-
-        static Dictionary<int, Image> imagenesPiezas = new Dictionary<int, Image>
-        {
-            { 1, imagenPiezaI },
-            { 2, imagenPiezaO },
-            { 3, imagenPiezaT },
-            { 4, imagenPiezaL },
-            { 5, imagenPiezaJ },
-            { 6, imagenPiezaS },
-            { 7, imagenPiezaZ }
-        };
-
-        static int columnas = 20;
-        static int filas = 40;
-        static int celda = 15; // Tamaño de cada celda en píxeles
-
-        static int[,] tablero = new int[filas, columnas]; // Matriz del tablero
-
-        static IntPtr pantalla; // Representación de la ventana principal
-
-
-        static Pieza piezaActual = new Pieza();
-        static Grilla grilla = new Grilla(tablero, columnas, filas, celda, imagenCeldaEnBlanco, imagenesPiezas);
-
-        private static MovementController controller = new MovementController(tablero);
-
-        // Temporizador para bajar la pieza automáticamente
-        static int contadorTiempo = 0;
-        static int intervaloTiempo = 30; // Controla la velocidad de caída (ajústalo según prefieras)
-
-        // Variable para controlar la rotación
-        // Variable para controlar si ya se ha realizado la rotación
-        static bool rotacionRealizada = false;
-
-        // Variable para verificar si la tecla está siendo presionada
-        static bool teclaRotacionPresionada = false;
-
-        // Variables para controlar el movimiento lateral
-        static bool movimientoIzquierdaRealizado = false;
-        static bool movimientoDerechaRealizado = false;
-
-        // Contadores para el movimiento lateral
-        static int contadorMovimientoLateral = 0;
-        static int intervaloMovimientoLateral = 10; // Ajusta este valor según la velocidad que quieras
-
-        // Variables para controlar el movimiento hacia abajo con "S"
-        static bool movimientoAbajoRealizado = false;
-        static int contadorMovimientoAbajo = 0;
-        static int intervaloMovimientoAbajo = 10; // Ajusta este valor según la velocidad deseada
-
+        private static GlobalGameConfiguration config;
+        
         private static void Main(string[] args)
         {
             Engine.Initialize();
-            pantalla = Sdl.SDL_SetVideoMode(300, 600, 32, Sdl.SDL_SWSURFACE); // Definir la ventana
+            Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
+            
+            config = GlobalGameConfiguration.Instance;
+            
+            config.GameGrid.InicializarTablero();
 
-            grilla.InicializarTablero();
-
-            piezaActual = GenerarPiezaAleatoria();
+            (config.CurrentPiece, config.NextPiece) =
+                GenerarPiezasAleatorias();
 
             Sdl.SDL_Event evento;
             var running = true;
@@ -111,183 +43,203 @@ namespace MyGame
 
         private static void CheckInputs()
         {
+            var config = Managers.GlobalGameConfiguration.Instance; // Accede a la configuración global
+
             // Detectar si la tecla de rotación está siendo presionada
-            if (Engine.KeyPress(Engine.KEY_R) && controller.PuedeMoverAbajo(piezaActual, filas))
+            if (Engine.KeyPress(Engine.KEY_R) &&
+                config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
             {
                 // Si la tecla se presiona y no hemos rotado aún
-                if (!rotacionRealizada)
+                if (!config.RotationPerformed)
                 {
-                    piezaActual.Rotar(columnas, filas);
+                    config.CurrentPiece.Rotar(config.Columns, config.Rows);
                     Console.WriteLine("Pieza rotada correctamente.");
 
-                    rotacionRealizada = true; // Marcar que ya se realizó la rotación
+                    config.RotationPerformed = true; // Marcar que ya se realizó la rotación
                 }
 
-                teclaRotacionPresionada = true; // Marcar que la tecla está presionada
+                config.RotationKeyPressed = true; // Marcar que la tecla está presionada
             }
             else
             {
                 // Si la tecla ya no está presionada, reiniciar la posibilidad de rotar
-                teclaRotacionPresionada = false;
-                rotacionRealizada = false; // Permitir una nueva rotación en la siguiente pulsación
+                config.RotationKeyPressed = false;
+                config.RotationPerformed = false; // Permitir una nueva rotación en la siguiente pulsación
             }
 
-            contadorMovimientoLateral++;
+            config.LateralMovementCounter++;
 
             // Movimiento a la izquierda con "A"
             if (Engine.KeyPress(Engine.KEY_A))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!movimientoIzquierdaRealizado)
+                if (!config.LeftMovementPerformed)
                 {
-                    if (controller.PuedeMoverIzquierda(piezaActual))
+                    if (config.MovementController.PuedeMoverIzquierda(config.CurrentPiece))
                     {
-                        piezaActual.MoverIzquierda();
+                        config.CurrentPiece.MoverIzquierda();
                         Console.WriteLine("Pieza movida a la izquierda.");
                     }
 
-                    movimientoIzquierdaRealizado = true;
-                    contadorMovimientoLateral = 0; // Reiniciar el contador al mover inmediatamente
+                    config.LeftMovementPerformed = true;
+                    config.LateralMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
                 // Mover continuamente mientras se mantenga presionada la tecla
-                if (contadorMovimientoLateral >= intervaloMovimientoLateral)
+                if (config.LateralMovementCounter >= config.LateralMovementInterval)
                 {
-                    if (controller.PuedeMoverIzquierda(piezaActual))
+                    if (config.MovementController.PuedeMoverIzquierda(config.CurrentPiece))
                     {
-                        piezaActual.Posicion = (piezaActual.Posicion.x - 1, piezaActual.Posicion.y);
+                        config.CurrentPiece.Posicion =
+                            (config.CurrentPiece.Posicion.x - 1, config.CurrentPiece.Posicion.y);
                         Console.WriteLine("Pieza movida a la izquierda.");
                     }
 
-                    contadorMovimientoLateral = 0; // Reiniciar el contador
+                    config.LateralMovementCounter = 0; // Reiniciar el contador
                 }
             }
             else
             {
                 // Cuando se suelta la tecla "A", permitir un nuevo movimiento
-                movimientoIzquierdaRealizado = false;
+                config.LeftMovementPerformed = false;
             }
 
             // Movimiento a la derecha con "D"
             if (Engine.KeyPress(Engine.KEY_D))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!movimientoDerechaRealizado)
+                if (!config.RightMovementPerformed)
                 {
-                    if (controller.PuedeMoverDerecha(piezaActual))
+                    if (config.MovementController.PuedeMoverDerecha(config.CurrentPiece))
                     {
-                        piezaActual.MoverDerecha();
+                        config.CurrentPiece.MoverDerecha();
                         Console.WriteLine("Pieza movida a la derecha.");
                     }
 
-                    movimientoDerechaRealizado = true;
-                    contadorMovimientoLateral = 0; // Reiniciar el contador al mover inmediatamente
+                    config.RightMovementPerformed = true;
+                    config.LateralMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
                 // Mover continuamente mientras se mantenga presionada la tecla
-                if (contadorMovimientoLateral >= intervaloMovimientoLateral)
+                if (config.LateralMovementCounter >= config.LateralMovementInterval)
                 {
-                    if (controller.PuedeMoverDerecha(piezaActual))
+                    if (config.MovementController.PuedeMoverDerecha(config.CurrentPiece))
                     {
-                        piezaActual.Posicion = (piezaActual.Posicion.x + 1, piezaActual.Posicion.y);
+                        config.CurrentPiece.Posicion =
+                            (config.CurrentPiece.Posicion.x + 1, config.CurrentPiece.Posicion.y);
                         Console.WriteLine("Pieza movida a la derecha.");
                     }
 
-                    contadorMovimientoLateral = 0; // Reiniciar el contador
+                    config.LateralMovementCounter = 0; // Reiniciar el contador
                 }
             }
             else
             {
                 // Cuando se suelta la tecla "D", permitir un nuevo movimiento
-                movimientoDerechaRealizado = false;
+                config.RightMovementPerformed = false;
             }
 
-            contadorMovimientoAbajo++;
+            config.DownMovementCounter++;
 
             // Movimiento hacia abajo con "S"
             if (Engine.KeyPress(Engine.KEY_S))
             {
                 // Movimiento inmediato hacia abajo
-                if (!movimientoAbajoRealizado)
+                if (!config.DownMovementPerformed)
                 {
-                    if (controller.PuedeMoverAbajo(piezaActual, filas))
+                    if (config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
                     {
-                        piezaActual.Posicion = (piezaActual.Posicion.x, piezaActual.Posicion.y + 1);
+                        config.CurrentPiece.Posicion =
+                            (config.CurrentPiece.Posicion.x, config.CurrentPiece.Posicion.y + 1);
                     }
 
-                    movimientoAbajoRealizado = true;
-                    contadorMovimientoAbajo = 0; // Reiniciar el contador al mover inmediatamente
+                    config.DownMovementPerformed = true;
+                    config.DownMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
                 // Movimiento continuo mientras se mantenga presionada la tecla "S"
-                if (contadorMovimientoAbajo < intervaloMovimientoAbajo) return;
-                if (controller.PuedeMoverAbajo(piezaActual, filas))
+                if (config.DownMovementCounter < config.DownMovementInterval) return;
+                if (config.MovementController.PuedeMoverAbajo(config.CurrentPiece, config.Rows))
                 {
-                    piezaActual.Posicion = (piezaActual.Posicion.x, piezaActual.Posicion.y + 1);
+                    config.CurrentPiece.Posicion = (config.CurrentPiece.Posicion.x, config.CurrentPiece.Posicion.y + 1);
                 }
 
-                contadorMovimientoAbajo = 0; // Reiniciar el contador
+                config.DownMovementCounter = 0; // Reiniciar el contador
             }
             else
             {
-                movimientoAbajoRealizado = false;
+                config.DownMovementPerformed = false;
             }
         }
 
+
         private static void Update()
         {
-            contadorTiempo++;
+            config.TimeCounter++;
 
             MoverPiezaAutomnaticamente();
 
-            contadorTiempo++;
+            config.TimeCounter++;
         }
 
         private static void MoverPiezaAutomnaticamente()
         {
             // Mover la pieza hacia abajo después de cierto tiempo
-            if (contadorTiempo < intervaloTiempo) return;
+            if (config.TimeCounter < config.DropInterval) return;
+
             // Verificar si la pieza puede moverse hacia abajo
-            if (controller.PuedeMoverAbajo(piezaActual, filas))
+            if (config.MovementController.PuedeMoverAbajo(
+                    config.CurrentPiece, config.Rows))
             {
-                piezaActual.MoverAbajo();
+                config.CurrentPiece.MoverAbajo();
             }
             else
             {
                 // Fijar la pieza en el tablero
-                Pieza.FijarPiezaEnTablero(piezaActual, columnas, filas, tablero);
+                Pieza.FijarPiezaEnTablero(config.CurrentPiece,
+                    config.Columns,
+                    config.Rows,
+                    config.Board);
 
                 // Limpiar filas completas
-                grilla.LimpiarFilasCompletas();
+                config.GameGrid.LimpiarFilasCompletas();
 
-                // Generar una nueva pieza (por ahora, seguimos con la pieza "I")
-                piezaActual = GenerarPiezaAleatoria();
-
-                // En el futuro, podrías agregar lógica aquí para verificar si el jugador ha perdido
+                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
+                config.CurrentPiece =
+                    config.NextPiece; // La actual se convierte en la siguiente
+                (config.NextPiece, _) =
+                    GenerarPiezasAleatorias(); // Generar una nueva siguiente pieza
             }
 
-            contadorTiempo = 0; // Reiniciar el contador
+            config.TimeCounter = 0; // Reiniciar el contador
         }
+
 
         private static void Render()
         {
-            grilla.DibujarTablero();
+            config.GameGrid.DibujarTablero();
 
-            piezaActual.DibujarPieza(celda);
+            config.CurrentPiece.DibujarPieza(config.CellSize);
 
             Engine.Show();
         }
 
-        private static Pieza GenerarPiezaAleatoria()
+        private static (Pieza piezaActual, Pieza piezaSiguiente) GenerarPiezasAleatorias()
         {
             var random = new Random();
-            var tipoPieza = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 y lo convierte al enum
 
-            //Posicionar la nueva pieza en la parte superior del tablero
-            var piezaActual = Pieza.CrearPieza(tipoPieza);
-            piezaActual.Posicion = (10, 0);
+            // Generar la pieza actual
+            var tipoPiezaActual = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
+            var piezaActual = Pieza.CrearPieza(tipoPiezaActual);
+            piezaActual.Posicion = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
 
-            return piezaActual;
+            // Generar la siguiente pieza
+            var tipoPiezaSiguiente =
+                (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
+            var piezaSiguiente = Pieza.CrearPieza(tipoPiezaSiguiente);
+            piezaSiguiente.Posicion = (10, 0);
+
+            return (piezaActual, piezaSiguiente); // Retornar ambas piezas
         }
     }
 }
