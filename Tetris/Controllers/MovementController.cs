@@ -1,3 +1,4 @@
+using MyGame.Configuration;
 using MyGame.Interfaces;
 
 namespace MyGame.Controllers
@@ -65,13 +66,13 @@ namespace MyGame.Controllers
         }
 
         // Verificar si la pieza puede moverse a la derecha
-        public bool CanMoveRight(IPiece piece)
+        public bool CanMoveRight(IPiece piece, GlobalGameConfiguration config)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
             // Verificar los límites del tablero
-            if (piece.Position.x + columns >= 20)
+            if (piece.Position.x + columns >= config.Columns)
                 return false; // La pieza está en el borde derecho
 
             // Verificar si hay una pieza a la derecha

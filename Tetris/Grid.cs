@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MyGame.Configuration;
 
 namespace MyGame
 {
@@ -35,7 +36,7 @@ namespace MyGame
 
         public void DrawBoard()
         {
-            int offsetX = 90; // Ajusta este valor según lo que necesites
+            var offsetX = 90; // Ajusta este valor según lo que necesites
 
             for (var i = 0; i < Rows; i++)
             {
@@ -59,48 +60,38 @@ namespace MyGame
         {
             for (int i = Rows - 1; i >= 0; i--) // Empezar desde abajo
             {
-                bool completeRow = true;
+                var completeRow = true;
 
                 // Verificar si la fila está completamente ocupada
                 for (int j = 0; j < Columns; j++)
                 {
-                    if (Board[i, j] == 0) // Si encontramos una celda vacía
-                    {
-                        completeRow = false;
-                        break;
-                    }
+                    if (Board[i, j] != 0) continue; // Si encontramos una celda vacía
+                    completeRow = false;
+                    break;
                 }
 
                 // Si la fila está completa, la limpiamos
                 if (completeRow)
-                {
-                    RemoveRow(i);
-                }
+                    RemoveRow(i, Columns);
             }
         }
 
-        private void RemoveRow(int row)
+        private void RemoveRow(int row, int columns)
         {
             // Mover todas las filas superiores una fila hacia abajo
             for (int i = row; i > 0; i--)
             {
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     Board[i, j] = Board[i - 1, j]; // La fila actual toma el valor de la fila superior
                 }
             }
 
             // Limpiar la fila superior (ahora vacía)
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < columns; j++)
             {
                 Board[0, j] = 0; // La fila superior ahora queda vacía
             }
-        }
-
-        // Método para calcular el color en formato RGB888
-        private static uint MapRgb(byte r, byte g, byte b)
-        {
-            return (uint)((r << 16) | (g << 8) | b); // Combina los valores RGB en un solo uint
         }
     }
 }

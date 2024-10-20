@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using MyGame.Controllers;
-using MyGame.Inputs;
 using IPiece = MyGame.Interfaces.IPiece;
 
 namespace MyGame.Configuration
@@ -8,8 +7,7 @@ namespace MyGame.Configuration
     public class GlobalGameConfiguration
     {
         private static GlobalGameConfiguration _instance;
-
-        // Lock object for thread safety
+        
         private static readonly object _lock = new object();
         
         public Image EmptyCellImage { get; set; }
@@ -38,11 +36,13 @@ namespace MyGame.Configuration
         public bool RotationKeyPressed { get; set; }
         public bool LeftMovementPerformed { get; set; }
         public bool RightMovementPerformed { get; set; }
-        public int LateralMovementCounter { get; set; }
+        public int LateralLeftMovementCounter { get; set; }
         public int LateralMovementInterval { get; set; }
+        public int LateralRightMovementCounter { get; set; }
         public bool DownMovementPerformed { get; set; }
         public int DownMovementCounter { get; set; }
         public int DownMovementInterval { get; set; }
+
 
         private  GlobalGameConfiguration()
         {
@@ -66,7 +66,7 @@ namespace MyGame.Configuration
                 { 7, PieceZImage }
             };
 
-            Columns = 20;
+            Columns = 15;
             Rows = 24;
             CellSize = 30; // Tamaño de cada celda en píxeles
 
@@ -80,11 +80,11 @@ namespace MyGame.Configuration
             RotationKeyPressed = false;
             LeftMovementPerformed = false;
             RightMovementPerformed = false;
-            LateralMovementCounter = 0;
-            LateralMovementInterval = 10; // Ajusta según la velocidad deseada
+            LateralMovementInterval = 7; // Ajusta según la velocidad deseada
             DownMovementPerformed = false;
             DownMovementCounter = 0;
-            DownMovementInterval = 10; // Ajusta según la velocidad deseada
+            DownMovementInterval = 7; // Ajusta según la velocidad deseada
+            LateralRightMovementCounter = 7; // Ajusta según la velocidad deseada
         }
         
         public static GlobalGameConfiguration Instance
