@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using MyGame.Entities;
-using MyGame.Interfaces;
+using MyGame.Controllers;
+using MyGame.Inputs;
 using IPiece = MyGame.Interfaces.IPiece;
 
 namespace MyGame.Configuration
