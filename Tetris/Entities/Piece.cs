@@ -1,53 +1,34 @@
 using System;
+using MyGame.Configuration;
 using MyGame.Enums;
+using MyGame.Factories;
+using MyGame.Interfaces;
 
-namespace MyGame
+namespace MyGame.Entities
 {
-    public class Piece
+    public class Piece : IPiece
     {
         public int[,] Shape { get; set; }
         public (int x, int y) Position { get; set; }
         public Image Image { get; set; }
 
-        private Piece(int[,] shape, Image image)
+        public Piece(int[,] shape, Image image)
         {
             Shape = shape;
             Position = (0, 0);
             Image = image;
         }
-
-        public Piece()
+        
+        public Piece CreatePiece(TipoPieza tipo)
         {
-        }
-
-        public static Piece CreatePiece(TipoPieza tipo)
-        {
-            switch (tipo)
-            {
-                case TipoPieza.I:
-                    return CreatePieceI();
-                case TipoPieza.O:
-                    return CreatePieceO();
-                case TipoPieza.T:
-                    return CreatePieceT();
-                case TipoPieza.L:
-                    return CreatePieceL();
-                case TipoPieza.J:
-                    return CreatePieceJ();
-                case TipoPieza.S:
-                    return CreatePieceS();
-                case TipoPieza.Z:
-                    return CreatePieceZ();
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(tipo), "Unknown piece.");
-            }
+            throw new System.NotImplementedException();
         }
 
         public void DrawPiece(int cell)
         {
             var rows = Shape.GetLength(0);
             var columns = Shape.GetLength(1);
-            int offsetX = 90; // Asegúrate de que este valor coincida con el usado en el tablero
+            const int offsetX = 90; // Asegúrate de que este valor coincida con el usado en el tablero
 
             for (int i = 0; i < rows; i++)
             {
@@ -56,17 +37,12 @@ namespace MyGame
                     if (Shape[i, j] == 0) continue;
 
                     // Dibujar la imagen de la pieza en la posición de la celda ocupada, aplicando el desplazamiento
-                    Engine.Draw(Image.Pointer, (Position.x + j) * cell + offsetX,
-                        (Position.y + i) * cell); // Dibujar la imagen
+                    Engine.Draw(Image.Pointer, (Position.x + j) * cell + offsetX, (Position.y + i) * cell); // Dibujar la imagen
                 }
             }
         }
 
-
-        #region Fix Piece
-
-        public static void FixPieceOnBoard(Piece piece, int totalBoardColumns, int totalBoardRows,
-            int[,] board)
+        public void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
@@ -87,10 +63,7 @@ namespace MyGame
                 }
             }
         }
-
-        #endregion
-
-        #region Rotate Piece
+        
 
         public void Rotate(int totalBoardColumns, int totalBoardRows)
         {
@@ -113,8 +86,7 @@ namespace MyGame
             Shape = newShape; // Actualizar la forma de la pieza con la nueva forma rotada
         }
 
-
-        private bool CanRotate(int totalBoardColumns, int totalBoardRows)
+        public bool CanRotate(int totalBoardColumns, int totalBoardRows)
         {
             var rows = Shape.GetLength(0);
             var columns = Shape.GetLength(1);
@@ -139,9 +111,6 @@ namespace MyGame
             return true;
         }
 
-        #endregion
-
-        #region Move Piece
 
         // Método para mover la pieza hacia abajo
         public void MoveDown()
@@ -161,61 +130,52 @@ namespace MyGame
             Position = (Position.x + 1, Position.y);
         }
 
-        #endregion
 
-        #region Game Pieces
-
-        private static Piece CreatePieceI()
+        public void MovePieceAutomatically(GlobalGameConfiguration config)
         {
-            return new Piece(new int[,] { { 1, 1, 1, 1 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png"));
-        }
+            // Mover la pieza hacia abajo después de cierto tiempo
+            if (config.TimeCounter < config.DropInterval) return;
 
-        private static Piece CreatePieceO()
-        {
-            return new Piece(new int[,] { { 2, 2 }, { 2, 2 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png"));
-        }
-
-        private static Piece CreatePieceT()
-        {
-            return new Piece(new int[,] { { 0, 3, 0 }, { 3, 3, 3 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png"));
-        }
-
-        private static Piece CreatePieceL()
-        {
-            return new Piece(new int[,] { { 4, 0, 0 }, { 4, 4, 4 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png"));
-        }
-
-        private static Piece CreatePieceJ()
-        {
-            return new Piece(new int[,]
+            // Verificar si la pieza puede moverse hacia abajo
+            if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
             {
-                { 0, 0, 5 },
-                { 5, 5, 5 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png"));
-        }
-
-        private static Piece CreatePieceS()
-        {
-            return new Piece(new int[,]
+                config.CurrentPiece.MoveDown();
+            }
+            else
             {
-                { 0, 6, 6 },
-                { 6, 6, 0 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png"));
+                // Fijar la pieza en el tablero
+                FixPieceOnBoard(config.CurrentPiece,
+                    config.Columns,
+                    config.Rows,
+                    config.Board);
+
+                // Limpiar filas completas
+                config.GameGrid.ClearCompleteRows();
+
+                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
+                config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente
+                (config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
+            }
+
+            config.TimeCounter = 0; // Reiniciar el contador
         }
 
-        private static Piece CreatePieceZ()
+        public static (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
         {
-            return new Piece(new int[,]
-            {
-                { 7, 7, 0 },
-                { 0, 7, 7 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png"));
-        }
+            var random = new Random();
 
-        #endregion
+            // Generar la pieza actual
+            var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
+            var currentPiece = PieceFactory.CreatePiece(currentPieceType);
+            currentPiece.Position = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
+
+            // Generar la siguiente pieza
+            var nextPieceType =
+                (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
+            var nextPiece = PieceFactory.CreatePiece(nextPieceType);
+            nextPiece.Position = (10, 0);
+
+            return (currentPiece, nextPiece); // Retornar ambas piezas
+        }
     }
 }

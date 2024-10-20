@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using MyGame.Entities;
+using MyGame.Interfaces;
+using IPiece = MyGame.Interfaces.IPiece;
 
 namespace MyGame.Configuration
 {
@@ -19,8 +22,8 @@ namespace MyGame.Configuration
         public Image PieceZImage { get; set; }
 
         public Dictionary<int, Image> PieceImages { get; set; }
-        public Piece CurrentPiece { get; set; }
-        public Piece NextPiece { get; set; }
+        public IPiece CurrentPiece { get; set; }
+        public IPiece NextPiece { get; set; }
 
         public int Columns { get; set; }
         public int Rows { get; set; }

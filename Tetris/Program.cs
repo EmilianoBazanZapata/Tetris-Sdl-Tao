@@ -1,11 +1,13 @@
 ﻿using System;
 using MyGame.Configuration;
 using MyGame.Enums;
+using MyGame.Factories;
+using MyGame.Interfaces;
 using Tao.Sdl;
 
 namespace MyGame
 {
-    internal class Program
+    public class Program
     {
         private static GlobalGameConfiguration config;
 
@@ -172,50 +174,17 @@ namespace MyGame
                 config.DownMovementPerformed = false;
             }
         }
-
-
+        
         private static void Update()
         {
             config.TimeCounter++;
 
-            MovePieceAutomatically();
+            MovePieceAutomatically(config);
 
             config.TimeCounter++;
         }
-
-        private static void MovePieceAutomatically()
-        {
-            // Mover la pieza hacia abajo después de cierto tiempo
-            if (config.TimeCounter < config.DropInterval) return;
-
-            // Verificar si la pieza puede moverse hacia abajo
-            if (config.MovementController.CanMoveDown(
-                    config.CurrentPiece, config.Rows))
-            {
-                config.CurrentPiece.MoveDown();
-            }
-            else
-            {
-                // Fijar la pieza en el tablero
-                Piece.FixPieceOnBoard(config.CurrentPiece,
-                    config.Columns,
-                    config.Rows,
-                    config.Board);
-
-                // Limpiar filas completas
-                config.GameGrid.ClearCompleteRows();
-
-                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
-                config.CurrentPiece =
-                    config.NextPiece; // La actual se convierte en la siguiente
-                (config.NextPiece, _) =
-                    GenerateRandomPieces(); // Generar una nueva siguiente pieza
-            }
-
-            config.TimeCounter = 0; // Reiniciar el contador
-        }
-
-
+        
+        
         private static void Render()
         {
             config.GameGrid.DrawBoard();
@@ -224,23 +193,51 @@ namespace MyGame
 
             Engine.Show();
         }
-
-        private static (Piece currentPiece, Piece nextPiece) GenerateRandomPieces()
+        
+        private static (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
         {
             var random = new Random();
 
             // Generar la pieza actual
             var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
-            var currentPiece = Piece.CreatePiece(currentPieceType);
+            var currentPiece = PieceFactory.CreatePiece(currentPieceType);
             currentPiece.Position = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
 
             // Generar la siguiente pieza
-            var nextPieceType =
-                (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
-            var nextPiece = Piece.CreatePiece(nextPieceType);
+            var nextPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
+            var nextPiece = PieceFactory.CreatePiece(nextPieceType);
             nextPiece.Position = (10, 0);
 
             return (currentPiece, nextPiece); // Retornar ambas piezas
         }
+        public static void MovePieceAutomatically(GlobalGameConfiguration config)
+        {
+            // Mover la pieza hacia abajo después de cierto tiempo
+            if (config.TimeCounter < config.DropInterval) return;
+
+            // Verificar si la pieza puede moverse hacia abajo
+            if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
+            {
+                config.CurrentPiece.MoveDown();
+            }
+            else
+            {
+                // Fijar la pieza en el tablero
+                config.CurrentPiece.FixPieceOnBoard(config.CurrentPiece,
+                    config.Columns,
+                    config.Rows,
+                    config.Board);
+
+                // Limpiar filas completas
+                config.GameGrid.ClearCompleteRows();
+
+                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
+                config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente
+                (config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
+            }
+
+            config.TimeCounter = 0; // Reiniciar el contador
+        }
+
     }
 }

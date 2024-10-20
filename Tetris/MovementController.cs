@@ -1,3 +1,5 @@
+using MyGame.Interfaces;
+
 namespace MyGame
 {
     public class MovementController
@@ -11,7 +13,7 @@ namespace MyGame
 
         #region Verificar Movimiento
 
-        public bool CanMoveDown(Piece piece, int boardRows)
+        public bool CanMoveDown(IPiece piece, int boardRows)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
@@ -36,7 +38,7 @@ namespace MyGame
         }
 
         // Verificar si la pieza puede moverse a la izquierda
-        public bool CanMoveLeft(Piece piece)
+        public bool CanMoveLeft(IPiece piece)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
@@ -62,7 +64,7 @@ namespace MyGame
         }
 
         // Verificar si la pieza puede moverse a la derecha
-        public bool CanMoveRight(Piece piece)
+        public bool CanMoveRight(IPiece piece)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
