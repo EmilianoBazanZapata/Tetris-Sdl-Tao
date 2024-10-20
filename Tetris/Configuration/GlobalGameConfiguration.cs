@@ -18,8 +18,17 @@ namespace MyGame.Configuration
         public Image PieceLImage { get; set; }
         public Image PieceSImage { get; set; }
         public Image PieceZImage { get; set; }
+        
+        public Image PieceJIcon { get; set; }
+        public Image PieceIIcon { get; set; }
+        public Image PieceTIcon { get; set; }
+        public Image PieceOIcon { get; set; }
+        public Image PieceLIcon { get; set; }
+        public Image PieceSIcon { get; set; }
+        public Image PieceZIcon { get; set; }
 
         public Dictionary<int, Image> PieceImages { get; set; }
+        public Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
 
@@ -52,7 +61,7 @@ namespace MyGame.Configuration
             PieceTImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
             PieceOImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png");
             PieceLImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png");
-            PieceSImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
+            PieceSImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileGreen.png");
             PieceZImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png");
 
             PieceImages = new Dictionary<int, Image>
@@ -65,7 +74,26 @@ namespace MyGame.Configuration
                 { 6, PieceSImage },
                 { 7, PieceZImage }
             };
+            
+            PieceJIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-J.png");
+            PieceIIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-I.png");
+            PieceTIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-T.png");
+            PieceOIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-O.png");
+            PieceLIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-L.png");
+            PieceSIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-S.png");
+            PieceZIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-Z.png");
 
+            PieceICons = new Dictionary<int, Image>
+            {
+                { 1, PieceIIcon },
+                { 2, PieceOIcon },
+                { 3, PieceTIcon },
+                { 4, PieceLIcon },
+                { 5, PieceJIcon },
+                { 6, PieceSIcon },
+                { 7, PieceZIcon }
+            };
+            
             Columns = 15;
             Rows = 24;
             CellSize = 30; // Tamaño de cada celda en píxeles

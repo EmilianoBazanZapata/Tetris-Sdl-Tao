@@ -11,12 +11,14 @@ namespace MyGame.Entities
         public int[,] Shape { get; set; }
         public (int x, int y) Position { get; set; }
         public Image Image { get; set; }
+        public Image Icon { get; set; }
 
-        public Piece(int[,] shape, Image image)
+        public Piece(int[,] shape, Image image, Image icon)
         {
             Shape = shape;
             Position = (0, 0);
             Image = image;
+            Icon = icon;
         }
         
         public Piece CreatePiece(TipoPieza tipo)

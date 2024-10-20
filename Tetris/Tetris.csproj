@@ -56,6 +56,7 @@
     <Compile Include="Enums\TipoPieza.cs" />
     <Compile Include="Factories\PieceFactory.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="Interfaces\IGameVisualService.cs" />
     <Compile Include="Interfaces\IInputStrategy.cs" />
     <Compile Include="Interfaces\IPiece.cs" />
     <Compile Include="Program.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Engine\Sound.cs" />
     <Compile Include="Configuration\GlobalGameConfiguration.cs" />
     <Compile Include="Services\GameLogicService.cs" />
+    <Compile Include="Services\GameVisualService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

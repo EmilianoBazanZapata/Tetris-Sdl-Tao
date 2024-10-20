@@ -10,6 +10,7 @@ namespace MyGame
     {
         private static GlobalGameConfiguration config;
         private static IInputStrategy inputStrategy;
+        private static IGameVisualService gameVisualService = new GameVisualService();
 
         private static void Main(string[] args)
         {
@@ -61,9 +62,14 @@ namespace MyGame
         
         private static void Render()
         {
-            config.GameGrid.DrawBoard();
+            gameVisualService.DrawBoard(config.GameGrid);
+            gameVisualService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
+            gameVisualService.DrawNextPiece(config.NextPiece, 15, 2, config.CellSize); // Ajusta el offset según sea necesario
 
-            config.CurrentPiece.DrawPiece(config.CellSize);
+            
+            // config.GameGrid.DrawBoard();
+            //
+            // config.CurrentPiece.DrawPiece(config.CellSize);
 
             Engine.Show();
         }
