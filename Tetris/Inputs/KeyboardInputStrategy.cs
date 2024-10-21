@@ -1,5 +1,6 @@
 using MyGame.Configuration;
 using MyGame.Interfaces;
+using MyGame.Services;
 
 namespace MyGame.Inputs
 {
@@ -54,7 +55,8 @@ namespace MyGame.Inputs
             if (Engine.KeyPress(Engine.KEY_D))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!config.RightMovementPerformed && config.MovementController.CanMoveRight(config.CurrentPiece,config))
+                if (!config.RightMovementPerformed &&
+                    config.MovementController.CanMoveRight(config.CurrentPiece, config))
                 {
                     config.CurrentPiece.MoveRight();
                     config.RightMovementPerformed = true;
@@ -64,7 +66,7 @@ namespace MyGame.Inputs
                 config.LateralRightMovementCounter++;
 
                 if ((config.LateralRightMovementCounter >= config.LateralMovementInterval) &&
-                    config.MovementController.CanMoveRight(config.CurrentPiece,config))
+                    config.MovementController.CanMoveRight(config.CurrentPiece, config))
                 {
                     config.CurrentPiece.MoveRight();
                     config.LateralRightMovementCounter = 0;
@@ -99,6 +101,18 @@ namespace MyGame.Inputs
             else
             {
                 config.DownMovementPerformed = false;
+            }
+
+            // Almacenar Pieza
+            if (Engine.KeyPress(Engine.KEY_Q))
+            {
+                if (config.IsHoldKeyPressed) return;
+                GameLogicService.HoldPiece(config);
+                config.IsHoldKeyPressed = true;
+            }
+            else
+            {
+                config.IsHoldKeyPressed = false; 
             }
         }
     }

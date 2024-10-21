@@ -6,7 +6,7 @@ using Tao.Sdl;
 
 namespace MyGame
 {
-    public class Program
+    public static class Program
     {
         private static GlobalGameConfiguration config;
         private static IInputStrategy inputStrategy;
@@ -35,7 +35,6 @@ namespace MyGame
                         running = false;
                 }
 
-                inputStrategy.CheckInputs(config);
                 CheckInputs();
                 Update();
                 Render();
@@ -65,9 +64,12 @@ namespace MyGame
             Engine.Clear();
             gameVisualService.DrawBoard(config.GameGrid);
             gameVisualService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
-            gameVisualService.DrawNextPiece(config.NextPiece, 15, 2, config.CellSize);
-            gameVisualService.DrawText("Score", 550, 140, config.Font);
-            gameVisualService.DrawText(config.Score.ToString(), 557, 180, config.Font);
+            gameVisualService.DrawText("Next", 565, 5, config.Font);
+            gameVisualService.DrawNextPiece(config.NextPiece, 550, 30, config.CellSize);
+            gameVisualService.DrawText("Hold", 565, 155, config.Font);
+            gameVisualService.DrawHeldPiece(config.HeldPiece, 550, 180, config.CellSize);
+            gameVisualService.DrawText("Score", 550, 305, config.Font);
+            gameVisualService.DrawText(config.Score.ToString(), 557, 340, config.Font);
             Engine.Show();
         }
     }

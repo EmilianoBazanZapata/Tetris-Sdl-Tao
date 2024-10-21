@@ -17,12 +17,20 @@ namespace MyGame.Services
 
         public void DrawNextPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize)
         {
-            Engine.Draw(nextPiece.Icon.Pointer, 550, 0);
+            Engine.Draw(nextPiece.Icon.Pointer, offsetX, offsetY);
         }
 
         public void DrawText(string text, int positionX, int positionY, IntPtr font)
         {
             Engine.DrawText(text, positionX, positionY, 255, 255, 255, font);
+        }
+        
+        public void DrawHeldPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize)
+        {
+            if (nextPiece is null)
+                return;
+            
+            Engine.Draw(nextPiece.Icon.Pointer, offsetX, offsetY);
         }
     }
 }

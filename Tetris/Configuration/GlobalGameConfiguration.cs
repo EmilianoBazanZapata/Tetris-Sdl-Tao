@@ -9,9 +9,9 @@ namespace MyGame.Configuration
     public class GlobalGameConfiguration
     {
         private static GlobalGameConfiguration _instance;
-        
+
         private static readonly object _lock = new object();
-        
+
         public Image EmptyCellImage { get; set; }
         public Image PieceJImage { get; set; }
         public Image PieceIImage { get; set; }
@@ -32,6 +32,7 @@ namespace MyGame.Configuration
         public Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
+        public IPiece HeldPiece { get; set; }
 
         public int Columns { get; set; }
         public int Rows { get; set; }
@@ -42,6 +43,7 @@ namespace MyGame.Configuration
 
         public int TimeCounter { get; set; }
         public int DropInterval { get; set; }
+        public bool IsHoldKeyPressed { get; set; }
         public bool RotationPerformed { get; set; }
         public bool RotationKeyPressed { get; set; }
         public bool LeftMovementPerformed { get; set; }
@@ -54,10 +56,11 @@ namespace MyGame.Configuration
         public int DownMovementInterval { get; set; }
         public int Score { get; set; }
         public IntPtr Font { get; set; }
-        
-        private  GlobalGameConfiguration()
+
+        private GlobalGameConfiguration()
         {
-            EmptyCellImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\block original (1).png");
+            EmptyCellImage =
+                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\block original (1).png");
             PieceJImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png");
             PieceIImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png");
             PieceTImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
@@ -76,7 +79,7 @@ namespace MyGame.Configuration
                 { 6, PieceSImage },
                 { 7, PieceZImage }
             };
-            
+
             PieceJIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-J.png");
             PieceIIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-I.png");
             PieceTIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-T.png");
@@ -95,7 +98,7 @@ namespace MyGame.Configuration
                 { 6, PieceSIcon },
                 { 7, PieceZIcon }
             };
-            
+
             Columns = 15;
             Rows = 24;
             CellSize = 30; // Tamaño de cada celda en píxeles
@@ -103,7 +106,7 @@ namespace MyGame.Configuration
             Board = new int[Rows, Columns]; // Matriz del tablero
             GameGrid = new Grid(Board, Columns, Rows, CellSize, EmptyCellImage, PieceImages);
             MovementController = new MovementController(Board);
-            
+
             TimeCounter = 0;
             DropInterval = 20; // Controla la velocidad de caída
             RotationPerformed = false;
@@ -117,8 +120,9 @@ namespace MyGame.Configuration
             LateralRightMovementCounter = 7; // Ajusta según la velocidad deseada
             Font = TTF_OpenFont("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\Fonts\\PressStart2P-Regular.ttf", 24);
             Score = 0;
+            IsHoldKeyPressed = false;
         }
-        
+
         public static GlobalGameConfiguration Instance
         {
             get
@@ -132,6 +136,7 @@ namespace MyGame.Configuration
                         _instance = new GlobalGameConfiguration();
                     }
                 }
+
                 return _instance;
             }
         }

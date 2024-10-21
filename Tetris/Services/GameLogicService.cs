@@ -6,7 +6,7 @@ using MyGame.Interfaces;
 
 namespace MyGame.Services
 {
-    public class GameLogicService
+    public static class GameLogicService
     {
         public static (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
         {
@@ -23,6 +23,24 @@ namespace MyGame.Services
             nextPiece.Position = (10, 0);
 
             return (currentPiece, nextPiece); // Retornar ambas piezas
+        }
+        
+        public static void HoldPiece(GlobalGameConfiguration config)
+        {
+            if (config.HeldPiece == null)
+            {
+                config.HeldPiece = config.CurrentPiece;
+                config.HeldPiece.Position = (10, 0);
+                config.CurrentPiece = GenerateRandomPieces().currentPiece;
+            }
+            else
+            {
+                // Si ya hay una pieza guardada, intercambiarla con la pieza actual
+                var temp = config.CurrentPiece;
+                config.CurrentPiece = config.HeldPiece;
+                config.CurrentPiece.Position = (10, 0);
+                config.HeldPiece = temp; // Intercambiar las piezas
+            }
         }
 
         public static void MovePieceAutomatically(GlobalGameConfiguration config)
