@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using MyGame.Controllers;
-using IPiece = MyGame.Interfaces.IPiece;
+using MyGame.Interfaces;
+using static Tao.Sdl.SdlTtf;
 
 namespace MyGame.Configuration
 {
@@ -18,7 +20,6 @@ namespace MyGame.Configuration
         public Image PieceLImage { get; set; }
         public Image PieceSImage { get; set; }
         public Image PieceZImage { get; set; }
-        
         public Image PieceJIcon { get; set; }
         public Image PieceIIcon { get; set; }
         public Image PieceTIcon { get; set; }
@@ -51,8 +52,9 @@ namespace MyGame.Configuration
         public bool DownMovementPerformed { get; set; }
         public int DownMovementCounter { get; set; }
         public int DownMovementInterval { get; set; }
-
-
+        public int Score { get; set; }
+        public IntPtr Font { get; set; }
+        
         private  GlobalGameConfiguration()
         {
             EmptyCellImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\block original (1).png");
@@ -113,6 +115,8 @@ namespace MyGame.Configuration
             DownMovementCounter = 0;
             DownMovementInterval = 7; // Ajusta según la velocidad deseada
             LateralRightMovementCounter = 7; // Ajusta según la velocidad deseada
+            Font = TTF_OpenFont("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\Fonts\\PressStart2P-Regular.ttf", 24);
+            Score = 0;
         }
         
         public static GlobalGameConfiguration Instance

@@ -43,13 +43,13 @@ namespace MyGame.Services
                     config.Rows,
                     config.Board);
 
-                // Limpiar filas completas
-                config.GameGrid.ClearCompleteRows();
-
                 // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
                 config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente
                 (config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
             }
+            
+            // Limpiar filas completas
+            config.GameGrid.ClearCompleteRows(config);
 
             config.TimeCounter = 0; // Reiniciar el contador
         }

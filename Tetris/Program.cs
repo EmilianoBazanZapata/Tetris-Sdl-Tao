@@ -49,7 +49,7 @@ namespace MyGame
         {
             inputStrategy.CheckInputs(config);
         }
-        
+
         private static void Update()
         {
             config.TimeCounter++;
@@ -58,21 +58,17 @@ namespace MyGame
 
             config.TimeCounter++;
         }
-        
-        
+
+
         private static void Render()
         {
+            Engine.Clear();
             gameVisualService.DrawBoard(config.GameGrid);
             gameVisualService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
-            gameVisualService.DrawNextPiece(config.NextPiece, 15, 2, config.CellSize); // Ajusta el offset según sea necesario
-
-            
-            // config.GameGrid.DrawBoard();
-            //
-            // config.CurrentPiece.DrawPiece(config.CellSize);
-
+            gameVisualService.DrawNextPiece(config.NextPiece, 15, 2, config.CellSize);
+            gameVisualService.DrawText("Score", 550, 140, config.Font);
+            gameVisualService.DrawText(config.Score.ToString(), 557, 180, config.Font);
             Engine.Show();
         }
-
     }
 }

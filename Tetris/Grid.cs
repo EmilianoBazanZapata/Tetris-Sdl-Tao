@@ -56,25 +56,32 @@ namespace MyGame
             }
         }
 
-        public void ClearCompleteRows()
+        public void ClearCompleteRows(GlobalGameConfiguration configScore)
         {
+            int completedRowCount = 0; // Contador de filas completadas
+
             for (int i = Rows - 1; i >= 0; i--) // Empezar desde abajo
             {
-                var completeRow = true;
+                bool completeRow = true;
 
                 // Verificar si la fila está completamente ocupada
                 for (int j = 0; j < Columns; j++)
                 {
-                    if (Board[i, j] != 0) continue; // Si encontramos una celda vacía
-                    completeRow = false;
-                    break;
+                    if (Board[i, j] == 0) // Si encontramos una celda vacía
+                    {
+                        completeRow = false;
+                        break;
+                    }
                 }
 
                 // Si la fila está completa, la limpiamos
-                if (completeRow)
-                    RemoveRow(i, Columns);
+                if (!completeRow) continue;
+                completedRowCount++; // Incrementa el contador de filas completadas
+                RemoveRow(i, Columns);
+                configScore.Score += 100;
             }
         }
+
 
         private void RemoveRow(int row, int columns)
         {
@@ -91,6 +98,18 @@ namespace MyGame
             for (int j = 0; j < columns; j++)
             {
                 Board[0, j] = 0; // La fila superior ahora queda vacía
+            }
+        }
+        
+        public static  int CalculateScore(int completedRows)
+        {
+            switch (completedRows)
+            {
+                case 1: return 100; // 1 row
+                case 2: return 300; // 2 rows
+                case 3: return 500; // 3 rows
+                case 4: return 800; // 4 rows (tetris)
+                default: return 0;
             }
         }
     }

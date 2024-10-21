@@ -152,7 +152,7 @@ namespace MyGame.Entities
                     config.Board);
 
                 // Limpiar filas completas
-                config.GameGrid.ClearCompleteRows();
+                config.GameGrid.ClearCompleteRows(config);
 
                 // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
                 config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente

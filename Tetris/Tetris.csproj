@@ -87,6 +87,7 @@
     <Content Include="assets\TilePurple.png" />
     <Content Include="assets\TileRed.png" />
     <Content Include="assets\TileYellow.png" />
+    <Content Include="Fonts\PressStart2P-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

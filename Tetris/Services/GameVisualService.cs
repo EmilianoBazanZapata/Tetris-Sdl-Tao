@@ -1,4 +1,5 @@
 using MyGame.Interfaces;
+using System;
 
 namespace MyGame.Services
 {
@@ -17,6 +18,11 @@ namespace MyGame.Services
         public void DrawNextPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize)
         {
             Engine.Draw(nextPiece.Icon.Pointer, 550, 0);
+        }
+
+        public void DrawText(string text, int positionX, int positionY, IntPtr font)
+        {
+            Engine.DrawText(text, positionX, positionY, 255, 255, 255, font);
         }
     }
 }
