@@ -3,6 +3,7 @@ using MyGame.Configuration;
 using MyGame.Enums;
 using MyGame.Factories;
 using MyGame.Interfaces;
+using MyGame.Services;
 
 namespace MyGame.Entities
 {
@@ -26,12 +27,11 @@ namespace MyGame.Entities
             throw new System.NotImplementedException();
         }
 
-        public void DrawPiece(int cell)
+        public void DrawPiece(int cell, GlobalGameConfiguration config)
         {
             var rows = Shape.GetLength(0);
             var columns = Shape.GetLength(1);
-            const int offsetX = 90; // Asegúrate de que este valor coincida con el usado en el tablero
-
+            
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
@@ -39,7 +39,7 @@ namespace MyGame.Entities
                     if (Shape[i, j] == 0) continue;
 
                     // Dibujar la imagen de la pieza en la posición de la celda ocupada, aplicando el desplazamiento
-                    Engine.Draw(Image.Pointer, (Position.x + j) * cell + offsetX, (Position.y + i) * cell); // Dibujar la imagen
+                    Engine.Draw(Image.Pointer, (Position.x + j) * cell + config.OffsetX, (Position.y + i) * cell); // Dibujar la imagen
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace MyGame.Entities
                     config.Board);
 
                 // Limpiar filas completas
-                config.GameGrid.ClearCompleteRows(config);
+                GameLogicService.ClearCompleteRows(config);
 
                 // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
                 config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente

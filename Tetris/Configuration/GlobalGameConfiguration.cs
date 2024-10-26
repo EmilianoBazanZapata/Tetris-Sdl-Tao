@@ -12,24 +12,24 @@ namespace MyGame.Configuration
 
         private static readonly object _lock = new object();
 
-        public Image EmptyCellImage { get; set; }
-        public Image PieceJImage { get; set; }
-        public Image PieceIImage { get; set; }
-        public Image PieceTImage { get; set; }
-        public Image PieceOImage { get; set; }
-        public Image PieceLImage { get; set; }
-        public Image PieceSImage { get; set; }
-        public Image PieceZImage { get; set; }
-        public Image PieceJIcon { get; set; }
-        public Image PieceIIcon { get; set; }
-        public Image PieceTIcon { get; set; }
-        public Image PieceOIcon { get; set; }
-        public Image PieceLIcon { get; set; }
-        public Image PieceSIcon { get; set; }
-        public Image PieceZIcon { get; set; }
+        private Image EmptyCellImage { get; set; }
+        private Image PieceJImage { get; set; }
+        private Image PieceIImage { get; set; }
+        private Image PieceTImage { get; set; }
+        private Image PieceOImage { get; set; }
+        private Image PieceLImage { get; set; }
+        private Image PieceSImage { get; set; }
+        private Image PieceZImage { get; set; }
+        private Image PieceJIcon { get; set; }
+        private Image PieceIIcon { get; set; }
+        private Image PieceTIcon { get; set; }
+        private Image PieceOIcon { get; set; }
+        private Image PieceLIcon { get; set; }
+        private Image PieceSIcon { get; set; }
+        private Image PieceZIcon { get; set; }
 
-        public Dictionary<int, Image> PieceImages { get; set; }
-        public Dictionary<int, Image> PieceICons { get; set; }
+        private Dictionary<int, Image> PieceImages { get; set; }
+        private Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
         public IPiece HeldPiece { get; set; }
@@ -56,6 +56,11 @@ namespace MyGame.Configuration
         public int DownMovementInterval { get; set; }
         public int Score { get; set; }
         public IntPtr Font { get; set; }
+
+        public int OffsetX { get; set; }
+        public int PositionInterfaceX { get; set; }
+        
+        public (int x, int y) StartPosition { get; set; }
 
         private GlobalGameConfiguration()
         {
@@ -121,6 +126,9 @@ namespace MyGame.Configuration
             Font = TTF_OpenFont("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\Fonts\\PressStart2P-Regular.ttf", 24);
             Score = 0;
             IsHoldKeyPressed = false;
+            StartPosition = (6, 0);
+            OffsetX = 150;
+            PositionInterfaceX = 630;
         }
 
         public static GlobalGameConfiguration Instance

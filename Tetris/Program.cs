@@ -22,7 +22,7 @@ namespace MyGame
 
             config.GameGrid.InitializeBoard();
 
-            (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces();
+            (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces(config);
 
             Sdl.SDL_Event evento;
             var running = true;
@@ -64,12 +64,12 @@ namespace MyGame
             Engine.Clear();
             gameVisualService.DrawBoard(config.GameGrid);
             gameVisualService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
-            gameVisualService.DrawText("Next", 565, 5, config.Font);
-            gameVisualService.DrawNextPiece(config.NextPiece, 550, 30, config.CellSize);
-            gameVisualService.DrawText("Hold", 565, 155, config.Font);
-            gameVisualService.DrawHeldPiece(config.HeldPiece, 550, 180, config.CellSize);
-            gameVisualService.DrawText("Score", 550, 305, config.Font);
-            gameVisualService.DrawText(config.Score.ToString(), 557, 340, config.Font);
+            gameVisualService.DrawText("Next", config.PositionInterfaceX, 5, config.Font);
+            gameVisualService.DrawNextPiece(config.NextPiece, config.PositionInterfaceX, 30, config.CellSize);
+            gameVisualService.DrawText("Hold", config.PositionInterfaceX, 155, config.Font);
+            gameVisualService.DrawHeldPiece(config.HeldPiece, config.PositionInterfaceX, 180, config.CellSize);
+            gameVisualService.DrawText("Score", config.PositionInterfaceX, 305, config.Font);
+            gameVisualService.DrawText(config.Score.ToString(), config.PositionInterfaceX, 340, config.Font);
             Engine.Show();
         }
     }

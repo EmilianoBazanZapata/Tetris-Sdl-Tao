@@ -30,8 +30,7 @@ namespace MyGame.Controllers
                 {
                     if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
                     // Verificar si la celda debajo está ocupada
-                    if (Board[(piece.Position.y + i) + 1, (piece.Position.x + j)] !=
-                        0) // +1 en y para mirar la celda de abajo
+                    if (Board[(piece.Position.y + i) + 1, (piece.Position.x + j)] != 0) // +1 en y para mirar la celda de abajo
                         return false; // Hay una colisión con otra pieza
                 }
             }

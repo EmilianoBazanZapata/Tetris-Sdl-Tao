@@ -1,3 +1,4 @@
+using MyGame.Configuration;
 using MyGame.Entities;
 using MyGame.Enums;
 
@@ -10,7 +11,7 @@ namespace MyGame.Interfaces
         Image Image { get; set; }
         Image Icon { get; set; }
         Piece CreatePiece(TipoPieza tipo);
-        void DrawPiece(int cell);
+        void DrawPiece(int cell, GlobalGameConfiguration config);
         void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board);
         void Rotate(int totalBoardColumns, int totalBoardRows);
         bool CanRotate(int totalBoardColumns, int totalBoardRows);
