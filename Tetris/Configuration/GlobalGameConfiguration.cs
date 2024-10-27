@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using MyGame.Controllers;
 using MyGame.Interfaces;
 using Tao.Sdl;
@@ -19,15 +20,7 @@ namespace MyGame.Configuration
         private Image PieceLImage { get; set; }
         private Image PieceSImage { get; set; }
         private Image PieceZImage { get; set; }
-        private Image PieceJIcon { get; set; }
-        private Image PieceIIcon { get; set; }
-        private Image PieceTIcon { get; set; }
-        private Image PieceOIcon { get; set; }
-        private Image PieceLIcon { get; set; }
-        private Image PieceSIcon { get; set; }
-        private Image PieceZIcon { get; set; }
         public Dictionary<int, Image> PieceImages { get; set; }
-        private Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
         public IPiece HeldPiece { get; set; }
@@ -64,22 +57,27 @@ namespace MyGame.Configuration
 
         public Sdl.SDL_Color SelectedColor { get; set; } // Color rojo
         public Sdl.SDL_Color NormalColor { get; set; } // Color blanco
-        public int MenuStartX { get; set; } 
-        public int MenuStartY { get; set; } 
-        public int MenuOffsetY { get; set; }  // Espacio entre las opciones
+        public int MenuStartX { get; set; }
+        public int MenuStartY { get; set; }
+        public int MenuOffsetY { get; set; } // Espacio entre las opciones
 
         private GlobalGameConfiguration()
         {
-            EmptyCellImage =
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\block original (1).png");
-            PieceJImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png");
-            PieceIImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png");
-            PieceTImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png");
-            PieceOImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png");
-            PieceLImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png");
-            PieceSImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileGreen.png");
-            PieceZImage = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png");
-
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+            
+            var assetsPath = Path.Combine(projectDirectory, "assets");
+            var fontPath = Path.Combine(projectDirectory, "Fonts");
+            
+            EmptyCellImage = Engine.LoadImage(Path.Combine(assetsPath, "block original (1).png"));
+            PieceJImage = Engine.LoadImage(Path.Combine(assetsPath, "TileBlue.png"));
+            PieceIImage = Engine.LoadImage(Path.Combine(assetsPath, "TileCyan.png"));
+            PieceTImage = Engine.LoadImage(Path.Combine(assetsPath, "TilePurple.png"));
+            PieceOImage = Engine.LoadImage(Path.Combine(assetsPath, "TileYellow.png"));
+            PieceLImage = Engine.LoadImage(Path.Combine(assetsPath, "TileOrange.png"));
+            PieceSImage = Engine.LoadImage(Path.Combine(assetsPath, "TileGreen.png"));
+            PieceZImage = Engine.LoadImage(Path.Combine(assetsPath, "TileRed.png"));
+            
             PieceImages = new Dictionary<int, Image>
             {
                 { 1, PieceIImage },
@@ -90,26 +88,9 @@ namespace MyGame.Configuration
                 { 6, PieceSImage },
                 { 7, PieceZImage }
             };
-
-            PieceJIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-J.png");
-            PieceIIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-I.png");
-            PieceTIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-T.png");
-            PieceOIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-O.png");
-            PieceLIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-L.png");
-            PieceSIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-S.png");
-            PieceZIcon = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-Z.png");
-
-            PieceICons = new Dictionary<int, Image>
-            {
-                { 1, PieceIIcon },
-                { 2, PieceOIcon },
-                { 3, PieceTIcon },
-                { 4, PieceLIcon },
-                { 5, PieceJIcon },
-                { 6, PieceSIcon },
-                { 7, PieceZIcon }
-            };
-
+            
+            Font = TTF_OpenFont(Path.Combine(fontPath, "PressStart2P-Regular.ttf"), 24);
+            
             Columns = 15;
             Rows = 24;
             CellSize = 30; // Tamaño de cada celda en píxeles
@@ -129,7 +110,6 @@ namespace MyGame.Configuration
             DownMovementCounter = 0;
             DownMovementInterval = 7; // Ajusta según la velocidad deseada
             LateralRightMovementCounter = 7; // Ajusta según la velocidad deseada
-            Font = TTF_OpenFont("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\Fonts\\PressStart2P-Regular.ttf", 24);
             Score = 0;
             IsHoldKeyPressed = false;
             StartPosition = (6, 0);

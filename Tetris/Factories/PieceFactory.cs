@@ -2,11 +2,16 @@ using System;
 using MyGame.Entities;
 using MyGame.Enums;
 using MyGame.Interfaces;
+using System.IO;
 
 namespace MyGame.Factories
 {
     public static class PieceFactory
     {
+        private static readonly string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+        private static readonly string assetsPath = Path.Combine(projectDirectory, "assets");
+
         public static IPiece CreatePiece(TipoPieza tipo)
         {
             switch (tipo)
@@ -32,59 +37,58 @@ namespace MyGame.Factories
 
         private static IPiece CreatePieceI()
         {
-            return new Piece(new int[,] { { 1, 1, 1, 1 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileCyan.png"), 
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-I.png"));
+            return new Piece(
+                new int[,] { { 1, 1, 1, 1 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileCyan.png")), 
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-I.png")));
         }
 
         private static IPiece CreatePieceO()
         {
-            return new Piece(new int[,] { { 2, 2 }, { 2, 2 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileYellow.png"),
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-O.png"));
+            return new Piece(
+                new int[,] { { 2, 2 }, { 2, 2 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileYellow.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-O.png")));
         }
 
         private static IPiece CreatePieceT()
         {
-            return new Piece(new int[,] { { 0, 3, 0 }, { 3, 3, 3 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TilePurple.png"),
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-T.png"));
+            return new Piece(
+                new int[,] { { 0, 3, 0 }, { 3, 3, 3 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TilePurple.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-T.png")));
         }
 
         private static IPiece CreatePieceL()
         {
-            return new Piece(new int[,] { { 4, 0, 0 }, { 4, 4, 4 } },
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileOrange.png"),
-                Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-L.png"));
+            return new Piece(
+                new int[,] { { 4, 0, 0 }, { 4, 4, 4 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileOrange.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-L.png")));
         }
 
         private static IPiece CreatePieceJ()
         {
-            return new Piece(new int[,]
-            {
-                { 0, 0, 5 },
-                { 5, 5, 5 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileBlue.png"),
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-J.png"));
+            return new Piece(
+                new int[,] { { 0, 0, 5 }, { 5, 5, 5 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileBlue.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-J.png")));
         }
 
         private static IPiece CreatePieceS()
         {
-            return new Piece(new int[,]
-            {
-                { 0, 6, 6 },
-                { 6, 6, 0 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileGreen.png"),
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-S.png"));
+            return new Piece(
+                new int[,] { { 0, 6, 6 }, { 6, 6, 0 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileGreen.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-S.png")));
         }
+
         private static IPiece CreatePieceZ()
         {
-            return new Piece(new int[,]
-            {
-                { 7, 7, 0 },
-                { 0, 7, 7 }
-            }, Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\TileRed.png"),
-            Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Block-Z.png"));
+            return new Piece(
+                new int[,] { { 7, 7, 0 }, { 0, 7, 7 } },
+                Engine.LoadImage(Path.Combine(assetsPath, "TileRed.png")),
+                Engine.LoadImage(Path.Combine(assetsPath, "Block-Z.png")));
         }
     }
 }
