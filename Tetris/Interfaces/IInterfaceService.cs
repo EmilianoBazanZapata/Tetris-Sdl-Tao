@@ -2,7 +2,7 @@ using System;
 
 namespace MyGame.Interfaces
 {
-    public interface IGameVisualService
+    public interface IInterfaceService
     {
         void DrawBoard(Grid gameGrid);
         void DrawCurrentPiece(IPiece currentPiece, int cellSize);

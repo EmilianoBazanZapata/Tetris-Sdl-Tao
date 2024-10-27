@@ -4,7 +4,7 @@ using MyGame.Configuration;
 
 namespace MyGame.Services
 {
-    public class GameVisualService : IGameVisualService
+    public class GameInterfaceService : IInterfaceService
     {
         public void DrawBoard(Grid gameGrid)
         {

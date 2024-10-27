@@ -1,14 +1,20 @@
 using MyGame.Configuration;
 using MyGame.Interfaces;
 using MyGame.Services;
+using Tao.Sdl;
 
 namespace MyGame.Inputs
 {
     public class KeyboardInputStrategy : IInputStrategy
     {
-        public void CheckInputs(GlobalGameConfiguration config)
+        public void CheckInputs(GlobalGameConfiguration config, Sdl.SDL_Event sdlEvent)
         {
-            // Detectar si la tecla de rotación está siendo presionada
+            HandleKeyboardInputs(config);
+        }
+
+        private static void HandleKeyboardInputs(GlobalGameConfiguration config)
+        {
+                        // Detectar si la tecla de rotación está siendo presionada
             if (Engine.KeyPress(Engine.KEY_R))
             {
                 if (!config.RotationPerformed &&
@@ -112,7 +118,7 @@ namespace MyGame.Inputs
             }
             else
             {
-                config.IsHoldKeyPressed = false; 
+                config.IsHoldKeyPressed = false;
             }
         }
     }

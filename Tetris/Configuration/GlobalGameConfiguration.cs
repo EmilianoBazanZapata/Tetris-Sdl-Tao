@@ -9,9 +9,7 @@ namespace MyGame.Configuration
     public class GlobalGameConfiguration
     {
         private static GlobalGameConfiguration _instance;
-
         private static readonly object _lock = new object();
-
         private Image EmptyCellImage { get; set; }
         private Image PieceJImage { get; set; }
         private Image PieceIImage { get; set; }
@@ -27,20 +25,17 @@ namespace MyGame.Configuration
         private Image PieceLIcon { get; set; }
         private Image PieceSIcon { get; set; }
         private Image PieceZIcon { get; set; }
-
         private Dictionary<int, Image> PieceImages { get; set; }
         private Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
         public IPiece HeldPiece { get; set; }
-
         public int Columns { get; set; }
         public int Rows { get; set; }
         public int CellSize { get; set; }
         public int[,] Board { get; set; }
         public Grid GameGrid { get; set; }
         public MovementController MovementController { get; set; }
-
         public int TimeCounter { get; set; }
         public int DropInterval { get; set; }
         public bool IsHoldKeyPressed { get; set; }
@@ -56,11 +51,14 @@ namespace MyGame.Configuration
         public int DownMovementInterval { get; set; }
         public int Score { get; set; }
         public IntPtr Font { get; set; }
-
         public int OffsetX { get; set; }
         public int PositionInterfaceX { get; set; }
-        
         public (int x, int y) StartPosition { get; set; }
+        public bool Running { get; set; }
+        public Menu Menu { get; set; }
+
+        public IntPtr Screen { get; set; }
+        public int SelectedButtonInterface { get; set; }
 
         private GlobalGameConfiguration()
         {
@@ -129,6 +127,8 @@ namespace MyGame.Configuration
             StartPosition = (6, 0);
             OffsetX = 150;
             PositionInterfaceX = 630;
+            Running = true;
+            Menu = new Menu();
         }
 
         public static GlobalGameConfiguration Instance

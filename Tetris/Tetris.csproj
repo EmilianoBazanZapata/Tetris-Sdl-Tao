@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MovementController.cs" />
+    <Compile Include="Factories\MenuFactory.cs" />
     <Compile Include="Inputs\KeyboardInputStrategy.cs" />
     <Compile Include="Engine\Font.cs" />
     <Compile Include="Engine\Engine.cs" />
@@ -56,15 +57,18 @@
     <Compile Include="Enums\TipoPieza.cs" />
     <Compile Include="Factories\PieceFactory.cs" />
     <Compile Include="Grid.cs" />
-    <Compile Include="Interfaces\IGameVisualService.cs" />
+    <Compile Include="Inputs\MouseInputStrategy.cs" />
+    <Compile Include="Interfaces\IInterfaceService.cs" />
     <Compile Include="Interfaces\IInputStrategy.cs" />
     <Compile Include="Interfaces\IPiece.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Engine\Sound.cs" />
     <Compile Include="Configuration\GlobalGameConfiguration.cs" />
     <Compile Include="Services\GameLogicService.cs" />
-    <Compile Include="Services\GameVisualService.cs" />
+    <Compile Include="Services\GameInterfaceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
