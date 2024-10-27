@@ -5,6 +5,6 @@ namespace MyGame.Interfaces
 {
     public interface IInputStrategy
     {
-        void CheckInputs(GlobalGameConfiguration config, Sdl.SDL_Event sdlEvent);
+        void CheckInputs(GlobalGameConfiguration config);
     }
 }

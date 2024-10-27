@@ -6,7 +6,7 @@ namespace MyGame.Managers
 {
     public class GameManager
     {
-        private EGameState currentState;
+        public EGameState currentState;
         private List<IGameStateObserver> observers = new List<IGameStateObserver>();
 
         public GameManager()

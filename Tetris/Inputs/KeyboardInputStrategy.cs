@@ -7,7 +7,7 @@ namespace MyGame.Inputs
 {
     public class KeyboardInputStrategy : IInputStrategy
     {
-        public void CheckInputs(GlobalGameConfiguration config, Sdl.SDL_Event sdlEvent)
+        public void CheckInputs(GlobalGameConfiguration config)
         {
             HandleKeyboardInputs(config);
         }

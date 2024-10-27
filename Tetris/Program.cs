@@ -17,20 +17,16 @@ namespace MyGame
         private static IInputStrategy inputKeiboard = new KeyboardInputStrategy();
         private static IInputStrategy inputMouse = new MouseInputStrategy();
         private static IInterfaceService _interfaceService = new GameInterfaceService();
-        
         private static GameManager gameManager = new GameManager();
         private static GameObserver consoleObserver = new GameObserver();
-        
         private static MenuFactory MenuFactory = new MenuFactory(gameManager);
-
-        static Sdl.SDL_Event sdlEvent;
 
         private static void Main(string[] args)
         {
             gameManager.Subscribe(consoleObserver);
-            
+
             gameManager.ChangeState(EGameState.InMenu);
-            
+
             Engine.Initialize();
             var screen = Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
 
@@ -42,9 +38,6 @@ namespace MyGame
 
             (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces(config);
 
-            config.Menu = MenuFactory.CreateMainMenu();
-            config.Menu.Display(config.Screen, config.SelectedButtonInterface);
-
             config.GameGrid.InitializeBoard();
             (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces(config);
 
@@ -52,18 +45,17 @@ namespace MyGame
             {
                 CheckInputs();
                 Update();
-                //Render();
+                Render();
                 Sdl.SDL_Delay(20); // Delay para reducir el consumo de CPU
             }
 
             Sdl.SDL_Quit();
         }
 
-
         private static void CheckInputs()
         {
-            inputMouse.CheckInputs(config, sdlEvent);
-            inputKeiboard.CheckInputs(config, sdlEvent);
+            inputMouse.CheckInputs(config);
+            inputKeiboard.CheckInputs(config);
         }
 
         private static void Update()
@@ -75,18 +67,30 @@ namespace MyGame
             config.TimeCounter++;
         }
 
-
         private static void Render()
         {
             Engine.Clear();
-            _interfaceService.DrawBoard(config.GameGrid);
-            _interfaceService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
-            _interfaceService.DrawText("Next", config.PositionInterfaceX, 5, config.Font);
-            _interfaceService.DrawNextPiece(config.NextPiece, config.PositionInterfaceX, 30, config.CellSize);
-            _interfaceService.DrawText("Hold", config.PositionInterfaceX, 155, config.Font);
-            _interfaceService.DrawHeldPiece(config.HeldPiece, config.PositionInterfaceX, 180, config.CellSize);
-            _interfaceService.DrawText("Score", config.PositionInterfaceX, 305, config.Font);
-            _interfaceService.DrawText(config.Score.ToString(), config.PositionInterfaceX, 340, config.Font);
+
+            switch (gameManager.currentState)
+            {
+                case EGameState.InMenu:
+                    config.Menu = MenuFactory.CreateMainMenu();
+                    config.Menu.Display(config.Screen, config.SelectedButtonInterface);
+                    break;
+                case EGameState.InGame:
+                    _interfaceService.DrawBoard(config.GameGrid);
+                    _interfaceService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
+                    _interfaceService.DrawText("Next", config.PositionInterfaceX, 5, config.Font);
+                    _interfaceService.DrawNextPiece(config.NextPiece, config.PositionInterfaceX, 30, config.CellSize);
+                    _interfaceService.DrawText("Hold", config.PositionInterfaceX, 155, config.Font);
+                    _interfaceService.DrawHeldPiece(config.HeldPiece, config.PositionInterfaceX, 180, config.CellSize);
+                    _interfaceService.DrawText("Score", config.PositionInterfaceX, 305, config.Font);
+                    _interfaceService.DrawText(config.Score.ToString(), config.PositionInterfaceX, 340, config.Font);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             Engine.Show();
         }
     }

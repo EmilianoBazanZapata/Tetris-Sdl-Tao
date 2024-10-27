@@ -6,29 +6,32 @@ namespace MyGame.Inputs
 {
     public class MouseInputStrategy : IInputStrategy
     {
-        public void CheckInputs(GlobalGameConfiguration config, Sdl.SDL_Event sdlEvent)
+        private static Sdl.SDL_Event _sdlEvent;
+        
+        
+        public void CheckInputs(GlobalGameConfiguration config)
         {
-            HandleMouseInputs(config, sdlEvent);
+            HandleMouseInputs(config);
         }
 
-        private void HandleMouseInputs(GlobalGameConfiguration config, Sdl.SDL_Event sdlEvent)
+        private void HandleMouseInputs(GlobalGameConfiguration config)
         {
             // Procesa todos los eventos disponibles
-            while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
+            while (Sdl.SDL_PollEvent(out _sdlEvent) != 0)
             {
-                switch (sdlEvent.type)
+                switch (_sdlEvent.type)
                 {
                     case Sdl.SDL_QUIT:
                         config.Running = false;
                         break;
                     case Sdl.SDL_MOUSEBUTTONDOWN:
-                        if (sdlEvent.button.button == Sdl.SDL_BUTTON_LEFT)
+                        if (_sdlEvent.button.button == Sdl.SDL_BUTTON_LEFT)
                         {
                             ExecuteOption(config);
                         }
                         break;
                     case Sdl.SDL_MOUSEMOTION:
-                        UpdateSelection(sdlEvent.motion.x, sdlEvent.motion.y, config);
+                        UpdateSelection(_sdlEvent.motion.x, _sdlEvent.motion.y, config);
                         break;
                 }
             }
