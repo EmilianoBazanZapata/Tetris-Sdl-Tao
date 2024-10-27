@@ -7,12 +7,19 @@ namespace MyGame.Inputs
 {
     public class KeyboardInputStrategy : IInputStrategy
     {
+        private readonly GameLogicService _gameLogicService;
+
+        public KeyboardInputStrategy(GameLogicService gameLogicService)
+        {
+            _gameLogicService = gameLogicService;
+        }
+        
         public void CheckInputs(GlobalGameConfiguration config)
         {
             HandleKeyboardInputs(config);
         }
 
-        private static void HandleKeyboardInputs(GlobalGameConfiguration config)
+        private void HandleKeyboardInputs(GlobalGameConfiguration config)
         {
                         // Detectar si la tecla de rotación está siendo presionada
             if (Engine.KeyPress(Engine.KEY_R))
@@ -113,7 +120,7 @@ namespace MyGame.Inputs
             if (Engine.KeyPress(Engine.KEY_Q))
             {
                 if (config.IsHoldKeyPressed) return;
-                GameLogicService.HoldPiece(config);
+                _gameLogicService.HoldPiece();
                 config.IsHoldKeyPressed = true;
             }
             else

@@ -74,24 +74,7 @@ class Engine
         Sdl.SDL_Rect dest = new Sdl.SDL_Rect((short)x, (short)y, (short)ancho, (short)alto);
         Sdl.SDL_BlitSurface(imagen, ref origen, screen, ref dest);
     }
-
-    //public static void Draw(string tempimage, float x, float y)
-    //{
-    //    IntPtr image = LoadImage(tempimage);
-
-    //    Sdl.SDL_Rect origin = new Sdl.SDL_Rect(0, 0, (short)ancho, (short)alto);
-    //    Sdl.SDL_Rect dest = new Sdl.SDL_Rect((short)x, (short)y, (short)ancho, (short)alto);
-    //    Sdl.SDL_BlitSurface(image, ref origin, screen, ref dest);
-    //}
-
-    //public static void Draw(string tempimage, float x, float y, float width, float height)
-    //{
-    //    IntPtr image = LoadImage(tempimage);
-
-    //    Sdl.SDL_Rect origin = new Sdl.SDL_Rect(0, 0, (short)width, (short)height);
-    //    Sdl.SDL_Rect dest = new Sdl.SDL_Rect((short)x, (short)y, (short)width, (short)height);
-    //    Sdl.SDL_BlitSurface(image, ref origin, screen, ref dest);
-    //}
+    
 
     public static void Draw(IntPtr image, float x, float y, float width, float height)
     {
@@ -104,19 +87,6 @@ class Engine
     {
         Sdl.SDL_Flip(screen);
     }
-
-
-    //public static IntPtr LoadImage(string image)
-    //{
-    //    IntPtr imagen;
-    //    imagen = SdlImage.IMG_Load(image);
-    //    if (imagen == IntPtr.Zero)
-    //    {
-    //        System.Console.WriteLine("Imagen inexistente: {0}", image);
-    //        Environment.Exit(4);
-    //    }
-    //    return imagen;
-    //}
 
     public static Image LoadImage(string imagePath)
     {

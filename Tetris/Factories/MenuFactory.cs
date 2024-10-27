@@ -23,13 +23,11 @@ namespace MyGame.Factories
         
         private void StartGame()
         {
-            Console.WriteLine("Starting game...");
             _gameManager.ChangeState(EGameState.InGame);
         }
 
         private static void ExitGame()
         {
-            Console.WriteLine("Exiting game...");
             Environment.Exit(0);
         }
     }

@@ -8,7 +8,6 @@ namespace MyGame.Inputs
     {
         private static Sdl.SDL_Event _sdlEvent;
         
-        
         public void CheckInputs(GlobalGameConfiguration config)
         {
             HandleMouseInputs(config);
@@ -39,7 +38,6 @@ namespace MyGame.Inputs
 
         private void UpdateSelection(int mouseX, int mouseY, GlobalGameConfiguration config)
         {
-            int startY = 0;  // Y inicial para las opciones del menú, ajusta si es necesario
             int offsetX = 0; // X inicial para las opciones del menú, ajusta si es necesario
             int offsetY = 50;  // Espacio vertical entre las opciones del menú
             int optionHeight = 30;  // Altura de cada opción del menú
@@ -47,10 +45,10 @@ namespace MyGame.Inputs
 
             bool found = false;
 
-            for (int i = 0; i < config.Menu.items.Count; i++)
+            for (int i = 0; i < config.Menu.OptionsMenu.Count; i++)
             {
                 // Calcula los límites de cada opción del menú
-                int optionTop = startY + i * offsetY;
+                int optionTop = config.MenuStartY + i * offsetY;
                 int optionBottom = optionTop + optionHeight;
                 int optionLeft = offsetX;
                 int optionRight = optionLeft + optionWidth;
@@ -59,27 +57,21 @@ namespace MyGame.Inputs
                 if (mouseY < optionTop || mouseY > optionBottom || mouseX < optionLeft ||
                     mouseX > optionRight) continue;
                 if (config.SelectedButtonInterface != i)
-                {
                     config.SelectedButtonInterface = i;
-                    config.Menu.Display(config.Screen, config.SelectedButtonInterface);  // Redibuja si hay cambio
-                }
                 found = true;
                 break;
             }
 
             // Si no se encuentra ninguna opción bajo el cursor, deselecciona
-            if (!found && config.SelectedButtonInterface != -1)
-            {
-                config.SelectedButtonInterface = -1;
-                config.Menu.Display(config.Screen, config.SelectedButtonInterface);  // Redibuja si no hay selección
-            }
+            if (found || config.SelectedButtonInterface == -1) return;
+            config.SelectedButtonInterface = -1;
         }
 
         private void ExecuteOption(GlobalGameConfiguration config)
         {
             // Solo ejecuta si hay una opción seleccionada
-            if (config.SelectedButtonInterface < 0 || config.SelectedButtonInterface >= config.Menu.items.Count) return;
-            var selectedOption = config.Menu.items[config.SelectedButtonInterface];
+            if (config.SelectedButtonInterface < 0 || config.SelectedButtonInterface >= config.Menu.OptionsMenu.Count) return;
+            var selectedOption = config.Menu.OptionsMenu[config.SelectedButtonInterface];
             selectedOption.Action.Invoke();
         }
     }

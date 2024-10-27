@@ -5,7 +5,6 @@ using MyGame.Factories;
 using MyGame.Inputs;
 using MyGame.Interfaces;
 using MyGame.Managers;
-using MyGame.Observers;
 using MyGame.Services;
 using Tao.Sdl;
 
@@ -13,35 +12,31 @@ namespace MyGame
 {
     public static class Program
     {
-        private static GlobalGameConfiguration config;
-        private static IInputStrategy inputKeiboard = new KeyboardInputStrategy();
-        private static IInputStrategy inputMouse = new MouseInputStrategy();
+        private static GlobalGameConfiguration _config;
+        private static MenuFactory _menuFactory;
+        private static IInputStrategy _inputMouse = new MouseInputStrategy();
         private static IInterfaceService _interfaceService = new GameInterfaceService();
-        private static GameManager gameManager = new GameManager();
-        private static GameObserver consoleObserver = new GameObserver();
-        private static MenuFactory MenuFactory = new MenuFactory(gameManager);
+        private static GameManager _gameManager = new GameManager();
+        private static GameLogicService _gameLogicService;
+        private static IInputStrategy _inputKeiboard;
 
         private static void Main(string[] args)
         {
-            gameManager.Subscribe(consoleObserver);
-
-            gameManager.ChangeState(EGameState.InMenu);
-
             Engine.Initialize();
             var screen = Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
-
-            config = GlobalGameConfiguration.Instance;
-
-            config.Screen = screen;
-
-            config.GameGrid.InitializeBoard();
-
-            (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces(config);
-
-            config.GameGrid.InitializeBoard();
-            (config.CurrentPiece, config.NextPiece) = GameLogicService.GenerateRandomPieces(config);
-
-            while (config.Running)
+            
+            _config = GlobalGameConfiguration.Instance;
+            
+            _config.Screen = screen;
+            _config.GameGrid.InitializeBoard();
+            _gameManager.ChangeState(EGameState.InMenu);
+            _menuFactory = new MenuFactory(_gameManager);
+            _gameLogicService = new GameLogicService(_config);
+            _inputKeiboard = new KeyboardInputStrategy(_gameLogicService);
+            
+            (_config.CurrentPiece, _config.NextPiece) = _gameLogicService.GenerateRandomPieces();
+            
+            while (_config.Running)
             {
                 CheckInputs();
                 Update();
@@ -54,38 +49,41 @@ namespace MyGame
 
         private static void CheckInputs()
         {
-            inputMouse.CheckInputs(config);
-            inputKeiboard.CheckInputs(config);
+            _inputMouse.CheckInputs(_config);
+            _inputKeiboard.CheckInputs(_config);
         }
 
         private static void Update()
         {
-            config.TimeCounter++;
-
-            GameLogicService.MovePieceAutomatically(config);
-
-            config.TimeCounter++;
+            if (_gameManager.currentState != EGameState.InGame) return;
+            _config.TimeCounter++;
+            _gameLogicService.MovePieceAutomatically();
+            _config.TimeCounter++;
         }
 
         private static void Render()
         {
             Engine.Clear();
 
-            switch (gameManager.currentState)
+            switch (_gameManager.currentState)
             {
                 case EGameState.InMenu:
-                    config.Menu = MenuFactory.CreateMainMenu();
-                    config.Menu.Display(config.Screen, config.SelectedButtonInterface);
+                    _config.Menu = _menuFactory.CreateMainMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
                     break;
                 case EGameState.InGame:
-                    _interfaceService.DrawBoard(config.GameGrid);
-                    _interfaceService.DrawCurrentPiece(config.CurrentPiece, config.CellSize);
-                    _interfaceService.DrawText("Next", config.PositionInterfaceX, 5, config.Font);
-                    _interfaceService.DrawNextPiece(config.NextPiece, config.PositionInterfaceX, 30, config.CellSize);
-                    _interfaceService.DrawText("Hold", config.PositionInterfaceX, 155, config.Font);
-                    _interfaceService.DrawHeldPiece(config.HeldPiece, config.PositionInterfaceX, 180, config.CellSize);
-                    _interfaceService.DrawText("Score", config.PositionInterfaceX, 305, config.Font);
-                    _interfaceService.DrawText(config.Score.ToString(), config.PositionInterfaceX, 340, config.Font);
+                    _interfaceService.DrawBoard();
+                    _interfaceService.DrawCurrentPiece(_config.CurrentPiece, _config.CellSize);
+                    _interfaceService.DrawText("Next", _config.PositionInterfaceX, 5, _config.Font);
+                    _interfaceService.DrawNextPiece(_config.NextPiece, _config.PositionInterfaceX, 30,
+                        _config.CellSize);
+                    _interfaceService.DrawText("Hold", _config.PositionInterfaceX, 155, _config.Font);
+                    _interfaceService.DrawHeldPiece(_config.HeldPiece, _config.PositionInterfaceX, 180,
+                        _config.CellSize);
+                    _interfaceService.DrawText("Score", _config.PositionInterfaceX, 305, _config.Font);
+                    _interfaceService.DrawText(_config.Score.ToString(), _config.PositionInterfaceX, 340, _config.Font);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

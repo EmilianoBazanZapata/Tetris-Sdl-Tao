@@ -44,29 +44,6 @@ namespace MyGame.Entities
             }
         }
 
-        public void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
-        {
-            var rows = piece.Shape.GetLength(0);
-            var columns = piece.Shape.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (piece.Shape[i, j] == 0) continue;
-                    var x = piece.Position.x + j;
-                    var y = piece.Position.y + i;
-
-                    // Asegurar que la pieza no se fije fuera de los límites del tablero
-                    if (x >= 0 && x < totalBoardColumns && y >= 0 && y < totalBoardRows)
-                    {
-                        board[y, x] = piece.Shape[i, j]; // Marcar la celda como ocupada
-                    }
-                }
-            }
-        }
-        
-
         public void Rotate(int totalBoardColumns, int totalBoardRows)
         {
             if (!CanRotate(totalBoardColumns, totalBoardRows))
@@ -130,54 +107,6 @@ namespace MyGame.Entities
         public void MoveRight()
         {
             Position = (Position.x + 1, Position.y);
-        }
-
-
-        public void MovePieceAutomatically(GlobalGameConfiguration config)
-        {
-            // Mover la pieza hacia abajo después de cierto tiempo
-            if (config.TimeCounter < config.DropInterval) return;
-
-            // Verificar si la pieza puede moverse hacia abajo
-            if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
-            {
-                config.CurrentPiece.MoveDown();
-            }
-            else
-            {
-                // Fijar la pieza en el tablero
-                FixPieceOnBoard(config.CurrentPiece,
-                    config.Columns,
-                    config.Rows,
-                    config.Board);
-
-                // Limpiar filas completas
-                GameLogicService.ClearCompleteRows(config);
-
-                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
-                config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente
-                (config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
-            }
-
-            config.TimeCounter = 0; // Reiniciar el contador
-        }
-
-        public static (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
-        {
-            var random = new Random();
-
-            // Generar la pieza actual
-            var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
-            var currentPiece = PieceFactory.CreatePiece(currentPieceType);
-            currentPiece.Position = (10, 0); // Posicionar la nueva pieza en la parte superior del tablero
-
-            // Generar la siguiente pieza
-            var nextPieceType =
-                (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
-            var nextPiece = PieceFactory.CreatePiece(nextPieceType);
-            nextPiece.Position = (10, 0);
-
-            return (currentPiece, nextPiece); // Retornar ambas piezas
         }
     }
 }

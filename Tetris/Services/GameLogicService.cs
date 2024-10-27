@@ -6,85 +6,62 @@ using MyGame.Interfaces;
 
 namespace MyGame.Services
 {
-    public static class GameLogicService
+    public  class GameLogicService
     {
-        public static (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces(GlobalGameConfiguration config)
+        private readonly GlobalGameConfiguration _config;
+
+        public GameLogicService(GlobalGameConfiguration config)
+        {
+            _config = config;
+        }
+        public (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
         {
             var random = new Random();
 
             // Generar la pieza actual
             var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
             var currentPiece = PieceFactory.CreatePiece(currentPieceType);
-            currentPiece.Position = config.StartPosition; // Posicionar la nueva pieza en la parte superior del tablero
+            currentPiece.Position = _config.StartPosition; // Posicionar la nueva pieza en la parte superior del tablero
 
             // Generar la siguiente pieza
             var nextPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
             var nextPiece = PieceFactory.CreatePiece(nextPieceType);
-            nextPiece.Position = config.StartPosition;
+            nextPiece.Position = _config.StartPosition;
 
             return (currentPiece, nextPiece); // Retornar ambas piezas
         }
 
-        public static void HoldPiece(GlobalGameConfiguration config)
+        public void HoldPiece()
         {
-            if (config.HeldPiece == null)
+            if (_config.HeldPiece == null)
             {
-                config.HeldPiece = config.CurrentPiece;
-                config.HeldPiece.Position = config.StartPosition;
-                config.CurrentPiece = GenerateRandomPieces(config).currentPiece;
+                _config.HeldPiece = _config.CurrentPiece;
+                _config.HeldPiece.Position = _config.StartPosition;
+                _config.CurrentPiece = GenerateRandomPieces().currentPiece;
             }
             else
             {
                 // Si ya hay una pieza guardada, intercambiarla con la pieza actual
-                var temp = config.CurrentPiece;
-                config.CurrentPiece = config.HeldPiece;
-                config.CurrentPiece.Position = config.StartPosition;
-                config.HeldPiece = temp; // Intercambiar las piezas
+                var temp = _config.CurrentPiece;
+                _config.CurrentPiece = _config.HeldPiece;
+                _config.CurrentPiece.Position = _config.StartPosition;
+                _config.HeldPiece = temp; // Intercambiar las piezas
             }
         }
 
-        public static void MovePieceAutomatically(GlobalGameConfiguration config)
-        {
-            // Mover la pieza hacia abajo después de cierto tiempo
-            if (config.TimeCounter < config.DropInterval) return;
-
-            // Verificar si la pieza puede moverse hacia abajo
-            if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
-            {
-                config.CurrentPiece.MoveDown();
-            }
-            else
-            {
-                // Fijar la pieza en el tablero
-                config.CurrentPiece.FixPieceOnBoard(config.CurrentPiece,
-                    config.Columns,
-                    config.Rows,
-                    config.Board);
-
-                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
-                config.CurrentPiece = config.NextPiece; // La actual se convierte en la siguiente
-                (config.NextPiece, _) = GenerateRandomPieces(config); // Generar una nueva siguiente pieza
-            }
-
-            // Limpiar filas completas
-            ClearCompleteRows(config);
-
-            config.TimeCounter = 0; // Reiniciar el contador
-        }
-
-        public static void ClearCompleteRows(GlobalGameConfiguration config)
+        public void ClearCompleteRows()
         {
             var completedRowCount = 0;
 
             // Iterar desde la última fila hasta la primera
-            for (int i = config.Rows - 1; i >= 0; i--)
+            for (int i = _config.Rows - 1; i >= 0; i--)
             {
                 var completeRow = true;
 
                 // Verificar si la fila está completamente ocupada
-                for (int j = 0; j < config.Columns; j++)
+                for (int j = 0; j < _config.Columns; j++)
                 {
-                    if (config.Board[i, j] != 0) continue;
+                    if (_config.Board[i, j] != 0) continue;
                     completeRow = false;
                     break;
                 }
@@ -96,16 +73,16 @@ namespace MyGame.Services
                     // Mover todas las filas superiores hacia abajo
                     for (int k = i; k > 0; k--)
                     {
-                        for (int j = 0; j < config.Columns; j++)
+                        for (int j = 0; j < _config.Columns; j++)
                         {
-                            config.Board[k, j] = config.Board[k - 1, j];
+                            _config.Board[k, j] = _config.Board[k - 1, j];
                         }
                     }
 
                     // Vaciar la primera fila
-                    for (int j = 0; j < config.Columns; j++)
+                    for (int j = 0; j < _config.Columns; j++)
                     {
-                        config.Board[0, j] = 0;
+                        _config.Board[0, j] = 0;
                     }
 
                     // Ajustar el índice `i` para volver a verificar la fila actual,
@@ -115,10 +92,61 @@ namespace MyGame.Services
             }
 
             // Calcular el puntaje basado en la cantidad de filas completadas
-            config.Score += CalculateScore(completedRowCount);
+            _config.Score += CalculateScore(completedRowCount);
         }
-        
-        private static int CalculateScore(int completedRows)
+
+        public void MovePieceAutomatically()
+        {
+            // Mover la pieza hacia abajo después de cierto tiempo
+            if (_config.TimeCounter < _config.DropInterval) return;
+
+            // Verificar si la pieza puede moverse hacia abajo
+            if (_config.MovementController.CanMoveDown(_config.CurrentPiece, _config.Rows))
+            {
+                _config.CurrentPiece.MoveDown();
+            }
+            else
+            {
+                // Fijar la pieza en el tablero
+                FixPieceOnBoard(_config.CurrentPiece,
+                    _config.Columns,
+                    _config.Rows,
+                    _config.Board);
+
+                // Limpiar filas completas
+                ClearCompleteRows();
+
+                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
+                _config.CurrentPiece = _config.NextPiece; // La actual se convierte en la siguiente
+                (_config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
+            }
+
+            _config.TimeCounter = 0; // Reiniciar el contador
+        }
+
+        private void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
+        {
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (piece.Shape[i, j] == 0) continue;
+                    var x = piece.Position.x + j;
+                    var y = piece.Position.y + i;
+
+                    // Asegurar que la pieza no se fije fuera de los límites del tablero
+                    if (x >= 0 && x < totalBoardColumns && y >= 0 && y < totalBoardRows)
+                    {
+                        board[y, x] = piece.Shape[i, j]; // Marcar la celda como ocupada
+                    }
+                }
+            }
+        }
+
+        private int CalculateScore(int completedRows)
         {
             switch (completedRows)
             {

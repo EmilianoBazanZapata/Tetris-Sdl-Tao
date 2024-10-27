@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MyGame.Controllers;
 using MyGame.Interfaces;
+using Tao.Sdl;
 using static Tao.Sdl.SdlTtf;
 
 namespace MyGame.Configuration
@@ -10,7 +11,7 @@ namespace MyGame.Configuration
     {
         private static GlobalGameConfiguration _instance;
         private static readonly object _lock = new object();
-        private Image EmptyCellImage { get; set; }
+        public Image EmptyCellImage { get; set; }
         private Image PieceJImage { get; set; }
         private Image PieceIImage { get; set; }
         private Image PieceTImage { get; set; }
@@ -25,7 +26,7 @@ namespace MyGame.Configuration
         private Image PieceLIcon { get; set; }
         private Image PieceSIcon { get; set; }
         private Image PieceZIcon { get; set; }
-        private Dictionary<int, Image> PieceImages { get; set; }
+        public Dictionary<int, Image> PieceImages { get; set; }
         private Dictionary<int, Image> PieceICons { get; set; }
         public IPiece CurrentPiece { get; set; }
         public IPiece NextPiece { get; set; }
@@ -59,6 +60,13 @@ namespace MyGame.Configuration
 
         public IntPtr Screen { get; set; }
         public int SelectedButtonInterface { get; set; }
+
+
+        public Sdl.SDL_Color SelectedColor { get; set; } // Color rojo
+        public Sdl.SDL_Color NormalColor { get; set; } // Color blanco
+        public int MenuStartX { get; set; } 
+        public int MenuStartY { get; set; } 
+        public int MenuOffsetY { get; set; }  // Espacio entre las opciones
 
         private GlobalGameConfiguration()
         {
@@ -129,6 +137,12 @@ namespace MyGame.Configuration
             PositionInterfaceX = 630;
             Running = true;
             Menu = new Menu();
+
+            SelectedColor = new Sdl.SDL_Color(255, 0, 0); // Color rojo
+            NormalColor = new Sdl.SDL_Color(255, 255, 255); // Color blanco
+            MenuStartX = 0;
+            MenuStartY = 0;
+            MenuOffsetY = 50; // Espacio entre las opciones
         }
 
         public static GlobalGameConfiguration Instance

@@ -1,19 +1,22 @@
 using System.Collections.Generic;
-using MyGame.Configuration;
 
 namespace MyGame
 {
     public class Grid
     {
-        private int[,] Board { get; }
-        private int Columns { get; }
-        private int Rows { get; }
-        private int Cells { get; }
-        private Image EmptyCellImage { get; }
-        private Dictionary<int, Image> PieceImages { get; }
+        private int[,] Board { get; set; }
+        private int Columns { get; set; }
+        private int Rows { get; set; }
+        private int Cells { get; set; }
+        private Image EmptyCellImage { get; set; }
+        private Dictionary<int, Image> PieceImages { get; set; }
 
-        public Grid(int[,] board, int columns, int rows, int cells, Image emptyCellImage,
-            Dictionary<int, Image> pieceImages)
+        public Grid(int[,] board, 
+                    int columns, 
+                    int rows, 
+                    int cells, 
+                    Image emptyCellImage,
+                    Dictionary<int, Image> pieceImages)
         {
             Board = board;
             Columns = columns;
@@ -23,27 +26,17 @@ namespace MyGame
             PieceImages = pieceImages;
         }
 
+        /// <summary>
+        /// Inicializa el tablero del juego estableciendo todas las celdas en 0, 
+        /// lo que indica que están vacías.
+        /// </summary>
         public void InitializeBoard()
         {
             for (var i = 0; i < Rows; i++)
             {
                 for (var j = 0; j < Columns; j++)
                 {
-                    Board[i, j] = 0; // Celdas vacías
-                }
-            }
-        }
-
-        public void DrawBoard(GlobalGameConfiguration config)
-        {
-            for (var i = 0; i < Rows; i++)
-            {
-                for (var j = 0; j < Columns; j++)
-                {
-                    var pieceType = Board[i, j];
-
-                    Engine.Draw(pieceType == 0 ? EmptyCellImage.Pointer : PieceImages[pieceType].Pointer,
-                        j * Cells + config.OffsetX, i * Cells);
+                    Board[i, j] = 0;
                 }
             }
         }

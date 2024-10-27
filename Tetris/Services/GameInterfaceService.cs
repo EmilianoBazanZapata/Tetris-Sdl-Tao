@@ -1,14 +1,16 @@
 using MyGame.Interfaces;
 using System;
+using System.Collections.Generic;
 using MyGame.Configuration;
+using Tao.Sdl;
 
 namespace MyGame.Services
 {
     public class GameInterfaceService : IInterfaceService
     {
-        public void DrawBoard(Grid gameGrid)
+        public void DrawBoard()
         {
-            gameGrid.DrawBoard(GlobalGameConfiguration.Instance);
+            DrawBoard(GlobalGameConfiguration.Instance);
         }
 
         public void DrawCurrentPiece(IPiece currentPiece, int cellSize)
@@ -33,5 +35,57 @@ namespace MyGame.Services
 
             Engine.Draw(nextPiece.Icon.Pointer, offsetX, offsetY);
         }
+
+        public void DrawMenu(IntPtr screen, 
+                             int configSelectedButtonInterface, 
+                             List<MenuItem> optionsMenu, 
+                             Sdl.SDL_Color selectedColor,
+                             Sdl.SDL_Color normalColor,
+                             int menuStartX,
+                             int menuStartY,
+                             int menuOffsetY)
+        {
+            for (int i = 0; i < optionsMenu.Count; i++)
+            {
+                var color = (i == configSelectedButtonInterface) ? selectedColor : normalColor;
+
+                var optionText = optionsMenu[i].Text;
+
+                var surface = SdlTtf.TTF_RenderText_Solid(GlobalGameConfiguration.Instance.Font, optionText, color);
+
+                var srcRect = new Sdl.SDL_Rect { x = 0, y = 0, w = 0, h = 0 };
+
+                Sdl.SDL_GetClipRect(surface, ref srcRect);
+
+                var destRect = new Sdl.SDL_Rect
+                {
+                    x = (short)menuStartX,
+                    y = (short)(menuStartY + i * menuOffsetY),
+                    w = srcRect.w,
+                    h = srcRect.h
+                };
+
+                Sdl.SDL_BlitSurface(surface, ref srcRect, screen, ref destRect);
+
+                Sdl.SDL_FreeSurface(surface);
+            }
+
+            Sdl.SDL_UpdateRect(screen, 0, 0, 0, 0); // Actualiza la pantalla completa
+        }
+
+        private static void DrawBoard(GlobalGameConfiguration config)
+        {
+            for (var i = 0; i < config.Rows; i++)
+            {
+                for (var j = 0; j < config.Columns; j++)
+                {
+                    var pieceType = config.Board[i, j];
+
+                    Engine.Draw(pieceType == 0 ? config.EmptyCellImage.Pointer : config.PieceImages[pieceType].Pointer,
+                        j * config.CellSize + config.OffsetX, i * config.CellSize);
+                }
+            }
+        }
+        
     }
 }
