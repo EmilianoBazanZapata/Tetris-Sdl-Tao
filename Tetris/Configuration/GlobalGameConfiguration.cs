@@ -30,7 +30,7 @@ namespace MyGame.Configuration
         // Tablero y controladores
         public Grid GameGrid { get; private set; }
         public MovementController MovementController { get; private set; }
-        public int[,] Board { get; private set; }
+        public int[,] Board { get; set; }
 
         // Estado del juego
         public IPiece CurrentPiece, NextPiece, HeldPiece;
@@ -49,7 +49,7 @@ namespace MyGame.Configuration
 
         // Configuración de la interfaz
         public int Columns = 15, Rows = 24, CellSize = 30;
-        public int PositionInterfaceX = 630, OffsetX = 150, MenuStartX = 0, MenuStartY = 0, MenuOffsetY = 50;
+        public int PositionInterfaceX = 630, OffsetX = 150, MenuStartX = 325, MenuStartY = 225, MenuOffsetY = 50, OptionHeight = 30, OptionWidth = 200;
 
         public Sdl.SDL_Color SelectedColor = new Sdl.SDL_Color(255, 0, 0),
             NormalColor = new Sdl.SDL_Color(255, 255, 255);
@@ -76,14 +76,12 @@ namespace MyGame.Configuration
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null) return _instance;
+                lock (_lock)
                 {
-                    lock (_lock)
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new GlobalGameConfiguration();
-                        }
+                        _instance = new GlobalGameConfiguration();
                     }
                 }
 

@@ -38,20 +38,15 @@ namespace MyGame.Inputs
 
         private void UpdateSelection(int mouseX, int mouseY, GlobalGameConfiguration config)
         {
-            int offsetX = 0; // X inicial para las opciones del menú, ajusta si es necesario
-            int offsetY = 50;  // Espacio vertical entre las opciones del menú
-            int optionHeight = 30;  // Altura de cada opción del menú
-            int optionWidth = 200;  // Ancho de las opciones del menú
-
             bool found = false;
 
             for (int i = 0; i < config.Menu.OptionsMenu.Count; i++)
             {
                 // Calcula los límites de cada opción del menú
-                int optionTop = config.MenuStartY + i * offsetY;
-                int optionBottom = optionTop + optionHeight;
-                int optionLeft = offsetX;
-                int optionRight = optionLeft + optionWidth;
+                int optionTop = config.MenuStartY + i * config.MenuOffsetY;
+                int optionBottom = optionTop + config.OptionHeight;
+                int optionLeft = config.MenuStartX;
+                int optionRight = optionLeft + config.OptionWidth;
 
                 // Verifica si el mouse está sobre una opción
                 if (mouseY < optionTop || mouseY > optionBottom || mouseX < optionLeft ||

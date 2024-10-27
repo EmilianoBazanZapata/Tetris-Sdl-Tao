@@ -29,8 +29,8 @@ namespace MyGame.Services
             // Verificar si la posición inicial está libre
             if (!IsPositionValid(_config.StartPosition))
             {
-                // Si la posición inicial está ocupada, retornamos una señal de que es Game Over (puedes manejarlo como prefieras)
                 _gameManager.ChangeState(EGameState.InGameOver);
+                ResetGame();
             }
 
             currentPiece.Position = _config.StartPosition; // Posicionar la nueva pieza en la parte superior del tablero
@@ -136,6 +136,19 @@ namespace MyGame.Services
             _config.TimeCounter = 0; // Reiniciar el contador
         }
 
+        private void ResetGame()
+        {
+            _config.Score = 0;
+            
+            for (int i = 0; i < _config.Rows; i++)
+            {
+                for (int j = 0; j < _config.Columns; j++)
+                {
+                    _config.Board[i, j] = 0;
+                }
+            }
+        }
+        
         private void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
         {
             var rows = piece.Shape.GetLength(0);

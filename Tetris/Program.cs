@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MyGame.Configuration;
 using MyGame.Enums;
 using MyGame.Factories;
@@ -23,19 +24,25 @@ namespace MyGame
         private static void Main(string[] args)
         {
             Engine.Initialize();
-            var screen = Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
-            
+            var screen = Sdl.SDL_SetVideoMode(770, 720, 15, Sdl.SDL_SWSURFACE);
+
             _config = GlobalGameConfiguration.Instance;
-            
             _config.Screen = screen;
             _config.GameGrid.InitializeBoard();
-            _gameManager.ChangeState(EGameState.InMenu);
-            _menuFactory = new MenuFactory(_gameManager);
-            _gameLogicService = new GameLogicService(_config, _gameManager);
-            _inputKeiboard = new KeyboardInputStrategy(_gameLogicService);
             
+            _gameManager.ChangeState(EGameState.InMenu);
+            
+            _menuFactory = new MenuFactory(_gameManager);
+            
+            _gameLogicService = new GameLogicService(_config, _gameManager);
+            
+            _inputKeiboard = new KeyboardInputStrategy(_gameLogicService);
+
             (_config.CurrentPiece, _config.NextPiece) = _gameLogicService.GenerateRandomPieces();
             
+            if (_config.Menu is null)
+                _config.Menu = new Menu();
+
             while (_config.Running)
             {
                 CheckInputs();
@@ -63,24 +70,14 @@ namespace MyGame
 
         private static void Render()
         {
+            // Limpia la pantalla antes de dibujar cualquier elemento
             Engine.Clear();
-
+            
             switch (_gameManager.currentState)
             {
                 case EGameState.InMenu:
+                    // Dibujar el menú principal
                     _config.Menu = _menuFactory.CreateMainMenu();
-                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
-                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
-                    break;
-                case EGameState.InCredits:
-                    _config.Menu = _menuFactory.CreateCreditsMenu();
-                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
-                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
-                    break;
-                case EGameState.InGameOver:
-                    _config.Menu = _menuFactory.CreateGameOverMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
                         _config.MenuStartY, _config.MenuOffsetY);
@@ -97,10 +94,25 @@ namespace MyGame
                     _interfaceService.DrawText("Score", _config.PositionInterfaceX, 305, _config.Font);
                     _interfaceService.DrawText(_config.Score.ToString(), _config.PositionInterfaceX, 340, _config.Font);
                     break;
+                case EGameState.InGameOver:
+                    _config.Menu = _menuFactory.CreateGameOverMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
+                    break;
+                case EGameState.InCredits:
+                    _config.Menu = _menuFactory.CreateCreditsMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
+                    break;
+                case EGameState.InControlgames:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
+            // Mostrar los cambios en la pantalla
             Engine.Show();
         }
     }

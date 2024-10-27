@@ -17,6 +17,7 @@ namespace MyGame.Factories
         {
             var menu = new Menu();
             menu.AddItem(new MenuItem("Play", StartGame));
+            menu.AddItem(new MenuItem("Credits", CreditsGame));
             menu.AddItem(new MenuItem("Exit", ExitGame));
             return menu;
         }
@@ -49,6 +50,11 @@ namespace MyGame.Factories
         private void RetryGame()
         {
             _gameManager.ChangeState(EGameState.InGame);
+        }
+        
+        private void CreditsGame()
+        {
+            _gameManager.ChangeState(EGameState.InCredits);
         }
 
         private static void ExitGame()
