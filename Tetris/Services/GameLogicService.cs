@@ -7,7 +7,7 @@ using MyGame.Managers;
 
 namespace MyGame.Services
 {
-    public class GameLogicService
+    public class GameLogicService : IGameLogicService
     {
         private readonly GlobalGameConfiguration _config;
         private readonly GameManager _gameManager;

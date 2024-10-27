@@ -7,9 +7,9 @@ namespace MyGame.Inputs
 {
     public class KeyboardInputStrategy : IInputStrategy
     {
-        private readonly GameLogicService _gameLogicService;
+        private readonly IGameLogicService _gameLogicService;
 
-        public KeyboardInputStrategy(GameLogicService gameLogicService)
+        public KeyboardInputStrategy(IGameLogicService gameLogicService)
         {
             _gameLogicService = gameLogicService;
         }

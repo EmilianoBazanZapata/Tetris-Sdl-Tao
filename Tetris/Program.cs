@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
 using MyGame.Configuration;
 using MyGame.Enums;
 using MyGame.Factories;
 using MyGame.Inputs;
 using MyGame.Interfaces;
 using MyGame.Managers;
+using MyGame.Menues;
 using MyGame.Services;
 using Tao.Sdl;
 
@@ -18,7 +18,7 @@ namespace MyGame
         private static IInputStrategy _inputMouse = new MouseInputStrategy();
         private static IInterfaceService _interfaceService = new GameInterfaceService();
         private static GameManager _gameManager = new GameManager();
-        private static GameLogicService _gameLogicService;
+        private static IGameLogicService _gameLogicService;
         private static IInputStrategy _inputKeiboard;
 
         private static void Main(string[] args)

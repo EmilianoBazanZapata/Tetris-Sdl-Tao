@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using MyGame.Configuration;
-using Tao.Sdl;
 
-namespace MyGame
+namespace MyGame.Menues
 {
     public class Menu
     {
