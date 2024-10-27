@@ -1,7 +1,11 @@
-﻿using MyGame.Configuration;
+﻿using System;
+using MyGame.Configuration;
+using MyGame.Enums;
 using MyGame.Factories;
 using MyGame.Inputs;
 using MyGame.Interfaces;
+using MyGame.Managers;
+using MyGame.Observers;
 using MyGame.Services;
 using Tao.Sdl;
 
@@ -13,12 +17,20 @@ namespace MyGame
         private static IInputStrategy inputKeiboard = new KeyboardInputStrategy();
         private static IInputStrategy inputMouse = new MouseInputStrategy();
         private static IInterfaceService _interfaceService = new GameInterfaceService();
-        private static MenuFactory MenuFactory = new MenuFactory();
+        
+        private static GameManager gameManager = new GameManager();
+        private static GameObserver consoleObserver = new GameObserver();
+        
+        private static MenuFactory MenuFactory = new MenuFactory(gameManager);
 
         static Sdl.SDL_Event sdlEvent;
 
         private static void Main(string[] args)
         {
+            gameManager.Subscribe(consoleObserver);
+            
+            gameManager.ChangeState(EGameState.InMenu);
+            
             Engine.Initialize();
             var screen = Sdl.SDL_SetVideoMode(1280, 720, 15, Sdl.SDL_SWSURFACE);
 
