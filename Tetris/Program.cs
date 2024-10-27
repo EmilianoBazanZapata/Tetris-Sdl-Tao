@@ -31,7 +31,7 @@ namespace MyGame
             _config.GameGrid.InitializeBoard();
             _gameManager.ChangeState(EGameState.InMenu);
             _menuFactory = new MenuFactory(_gameManager);
-            _gameLogicService = new GameLogicService(_config);
+            _gameLogicService = new GameLogicService(_config, _gameManager);
             _inputKeiboard = new KeyboardInputStrategy(_gameLogicService);
             
             (_config.CurrentPiece, _config.NextPiece) = _gameLogicService.GenerateRandomPieces();
@@ -69,6 +69,18 @@ namespace MyGame
             {
                 case EGameState.InMenu:
                     _config.Menu = _menuFactory.CreateMainMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
+                    break;
+                case EGameState.InCredits:
+                    _config.Menu = _menuFactory.CreateCreditsMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
+                    break;
+                case EGameState.InGameOver:
+                    _config.Menu = _menuFactory.CreateGameOverMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
                         _config.MenuStartY, _config.MenuOffsetY);

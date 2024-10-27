@@ -21,7 +21,32 @@ namespace MyGame.Factories
             return menu;
         }
         
+        public Menu CreateCreditsMenu()
+        {
+            var menu = new Menu();
+            menu.AddItem(new MenuItem("Back", GoBackToMainMenu));
+            return menu;
+        }
+        
+        public Menu CreateGameOverMenu()
+        {
+            var menu = new Menu();
+            menu.AddItem(new MenuItem("Retry", RetryGame));
+            menu.AddItem(new MenuItem("Exit", ExitGame));
+            return menu;
+        }
+        
         private void StartGame()
+        {
+            _gameManager.ChangeState(EGameState.InGame);
+        }
+        
+        private void GoBackToMainMenu()
+        {
+            _gameManager.ChangeState(EGameState.InMenu);
+        }
+        
+        private void RetryGame()
         {
             _gameManager.ChangeState(EGameState.InGame);
         }

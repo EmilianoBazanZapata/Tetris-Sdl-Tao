@@ -3,17 +3,21 @@ using MyGame.Configuration;
 using MyGame.Enums;
 using MyGame.Factories;
 using MyGame.Interfaces;
+using MyGame.Managers;
 
 namespace MyGame.Services
 {
-    public  class GameLogicService
+    public class GameLogicService
     {
         private readonly GlobalGameConfiguration _config;
+        private readonly GameManager _gameManager;
 
-        public GameLogicService(GlobalGameConfiguration config)
+        public GameLogicService(GlobalGameConfiguration config, GameManager GameManager)
         {
             _config = config;
+            _gameManager = GameManager;
         }
+
         public (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
         {
             var random = new Random();
@@ -21,12 +25,20 @@ namespace MyGame.Services
             // Generar la pieza actual
             var currentPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la pieza actual
             var currentPiece = PieceFactory.CreatePiece(currentPieceType);
+
+            // Verificar si la posición inicial está libre
+            if (!IsPositionValid(_config.StartPosition))
+            {
+                // Si la posición inicial está ocupada, retornamos una señal de que es Game Over (puedes manejarlo como prefieras)
+                _gameManager.ChangeState(EGameState.InGameOver);
+            }
+
             currentPiece.Position = _config.StartPosition; // Posicionar la nueva pieza en la parte superior del tablero
 
             // Generar la siguiente pieza
             var nextPieceType = (TipoPieza)random.Next(1, 7); // Genera un número entre 1 y 7 para la siguiente pieza
             var nextPiece = PieceFactory.CreatePiece(nextPieceType);
-            nextPiece.Position = _config.StartPosition;
+            nextPiece.Position = _config.StartPosition; // La siguiente pieza también está en su posición inicial
 
             return (currentPiece, nextPiece); // Retornar ambas piezas
         }
@@ -156,6 +168,20 @@ namespace MyGame.Services
                 case 4: return 800; // 4 rows
                 default: return 0;
             }
+        }
+        
+        /// <summary>
+        /// Metodo para saber si al momento de crear una pieza el jugador a perdido o no
+        /// </summary>
+        /// <param name="startPosition"></param>
+        /// <returns></returns>
+        private bool IsPositionValid((int x, int y) startPosition)
+        {
+            // Verificar si las coordenadas están dentro del tablero y si la celda está vacía
+            return startPosition.x >= 0 && startPosition.x < _config.Columns && startPosition.y >= 0 && startPosition.y < _config.Rows &&
+                   _config.Board[startPosition.y, startPosition.x] == 0;
+            // Si alguna celda está ocupada o fuera de los límites, la posición no es válida
+            // Si todas las celdas están libres, la posición es válida
         }
     }
 }
