@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada a un ensamblado.
-[assembly: AssemblyTitle("Proyecto Base")]
+[assembly: AssemblyTitle("Tetris")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LG")]
-[assembly: AssemblyProduct("Proyecto Base")]
-[assembly: AssemblyCopyright("Copyright © LG 2022")]
+[assembly: AssemblyProduct("Tetris")]
+[assembly: AssemblyCopyright("Copyright © LG 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

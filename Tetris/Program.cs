@@ -24,6 +24,8 @@ namespace MyGame
         private static void Main(string[] args)
         {
             Engine.Initialize();
+            
+            Sdl.SDL_WM_SetCaption("Tetris", null);
             var screen = Sdl.SDL_SetVideoMode(770, 720, 15, Sdl.SDL_SWSURFACE);
 
             _config = GlobalGameConfiguration.Instance;
@@ -107,6 +109,10 @@ namespace MyGame
                         _config.MenuStartY, _config.MenuOffsetY);
                     break;
                 case EGameState.InControlgames:
+                    _config.Menu = _menuFactory.CreateControlsMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
+                        _config.MenuStartY, _config.MenuOffsetY);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

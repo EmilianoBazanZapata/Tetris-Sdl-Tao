@@ -19,14 +19,16 @@ namespace MyGame.Factories
             var menu = new Menu();
             menu.AddItem(new MenuItem("Play", StartGame));
             menu.AddItem(new MenuItem("Credits", CreditsGame));
+            menu.AddItem(new MenuItem("Controls", ControlsGame));
             menu.AddItem(new MenuItem("Exit", ExitGame));
             return menu;
         }
-        
+
         public Menu CreateCreditsMenu()
         {
+            var image = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Credits.png");
             var menu = new Menu();
-            menu.AddItem(new MenuItem("Back", GoBackToMainMenu));
+            menu.AddItem(new MenuItem("Back", GoBackToMainMenu, image));
             return menu;
         }
         
@@ -37,7 +39,15 @@ namespace MyGame.Factories
             menu.AddItem(new MenuItem("Exit", ExitGame));
             return menu;
         }
-        
+
+        public Menu CreateControlsMenu()
+        {
+            var image = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Controls.png");
+            var menu = new Menu();
+            menu.AddItem(new MenuItem("Back", GoBackToMainMenu, image));
+            return menu;
+        }
+
         private void StartGame()
         {
             _gameManager.ChangeState(EGameState.InGame);
@@ -58,6 +68,11 @@ namespace MyGame.Factories
             _gameManager.ChangeState(EGameState.InCredits);
         }
 
+        private void ControlsGame()
+        {
+            _gameManager.ChangeState(EGameState.InControlgames);
+        }
+        
         private static void ExitGame()
         {
             Environment.Exit(0);

@@ -38,16 +38,22 @@ namespace MyGame.Services
         }
 
         public void DrawMenu(IntPtr screen,
-            int configSelectedButtonInterface,
-            List<MenuItem> optionsMenu,
-            Sdl.SDL_Color selectedColor,
-            Sdl.SDL_Color normalColor,
-            int menuStartX,
-            int menuStartY,
-            int menuOffsetY)
+                             int configSelectedButtonInterface,
+                             List<MenuItem> optionsMenu,
+                             Sdl.SDL_Color selectedColor,
+                             Sdl.SDL_Color normalColor,
+                             int menuStartX,
+                             int menuStartY,
+                             int menuOffsetY)
         {
             for (int i = 0; i < optionsMenu.Count; i++)
             {
+                if (optionsMenu[i].Image != null)
+                {
+                    Engine.Draw(optionsMenu[i].Image, 0, 0);
+                    menuStartY += 300;
+                }
+
                 var color = (i == configSelectedButtonInterface) ? selectedColor : normalColor;
 
                 var optionText = optionsMenu[i].Text;

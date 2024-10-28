@@ -38,29 +38,41 @@ namespace MyGame.Inputs
 
         private void UpdateSelection(int mouseX, int mouseY, GlobalGameConfiguration config)
         {
-            bool found = false;
+            var found = false;
 
             for (int i = 0; i < config.Menu.OptionsMenu.Count; i++)
             {
-                // Calcula los límites de cada opción del menú
-                int optionTop = config.MenuStartY + i * config.MenuOffsetY;
-                int optionBottom = optionTop + config.OptionHeight;
-                int optionLeft = config.MenuStartX;
-                int optionRight = optionLeft + config.OptionWidth;
-
-                // Verifica si el mouse está sobre una opción
-                if (mouseY < optionTop || mouseY > optionBottom || mouseX < optionLeft ||
-                    mouseX > optionRight) continue;
-                if (config.SelectedButtonInterface != i)
-                    config.SelectedButtonInterface = i;
-                found = true;
-                break;
+                // Verifica si el mouse está sobre la opción (con o sin imagen)
+                if (IsMouseOverOption(mouseX, mouseY, config, i))
+                {
+                    if (config.SelectedButtonInterface != i)
+                    {
+                        config.SelectedButtonInterface = i; // Actualiza la opción seleccionada si es diferente
+                    }
+                    found = true;
+                    break;
+                }
             }
 
-            // Si no se encuentra ninguna opción bajo el cursor, deselecciona
-            if (found || config.SelectedButtonInterface == -1) return;
-            config.SelectedButtonInterface = -1;
+            // Si no se encontró ninguna opción bajo el cursor, deselecciona
+            if (!found && config.SelectedButtonInterface != -1)
+            {
+                config.SelectedButtonInterface = -1;
+            }
         }
+
+// Método auxiliar para verificar si el mouse está sobre una opción
+        private bool IsMouseOverOption(int mouseX, int mouseY, GlobalGameConfiguration config, int optionIndex)
+        {
+            int optionTop = config.MenuStartY + (config.Menu.OptionsMenu[optionIndex].Image != null ? 300 : 0) + optionIndex * config.MenuOffsetY;
+            int optionBottom = optionTop + config.OptionHeight;
+            int optionLeft = config.MenuStartX;
+            int optionRight = optionLeft + config.OptionWidth;
+
+            // Verifica si el mouse está dentro de los límites de la opción
+            return mouseY >= optionTop && mouseY <= optionBottom && mouseX >= optionLeft && mouseX <= optionRight;
+        }
+
 
         private void ExecuteOption(GlobalGameConfiguration config)
         {

@@ -87,7 +87,10 @@
     <Content Include="assets\Block-T.png" />
     <Content Include="assets\Block-Z.png" />
     <Content Include="assets\block.png" />
+    <Content Include="assets\Controls.png" />
+    <Content Include="assets\Credits.png" />
     <Content Include="assets\Grid.png" />
+    <Content Include="assets\items.png" />
     <Content Include="assets\TileBlue.png" />
     <Content Include="assets\TileCyan.png" />
     <Content Include="assets\TileGreen.png" />
