@@ -82,7 +82,7 @@ namespace MyGame
                     _config.Menu = _menuFactory.CreateMainMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
+                        _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
                     break;
                 case EGameState.InGame:
                     _interfaceService.DrawBoard();
@@ -100,19 +100,19 @@ namespace MyGame
                     _config.Menu = _menuFactory.CreateGameOverMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
+                        _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
                     break;
                 case EGameState.InCredits:
                     _config.Menu = _menuFactory.CreateCreditsMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
+                        _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
                     break;
                 case EGameState.InControlgames:
                     _config.Menu = _menuFactory.CreateControlsMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,
-                        _config.MenuStartY, _config.MenuOffsetY);
+                        _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

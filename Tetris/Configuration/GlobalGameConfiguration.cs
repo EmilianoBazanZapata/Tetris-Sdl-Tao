@@ -51,6 +51,7 @@ namespace MyGame.Configuration
         // Configuración de la interfaz
         public int Columns = 15, Rows = 24, CellSize = 30;
         public int PositionInterfaceX = 630, OffsetX = 150, MenuStartX = 325, MenuStartY = 225, MenuOffsetY = 50, OptionHeight = 30, OptionWidth = 200;
+        public int MenuImageOffset { get; set; } = 300;
 
         public Sdl.SDL_Color SelectedColor = new Sdl.SDL_Color(255, 0, 0),
             NormalColor = new Sdl.SDL_Color(255, 255, 255);

@@ -44,14 +44,15 @@ namespace MyGame.Services
                              Sdl.SDL_Color normalColor,
                              int menuStartX,
                              int menuStartY,
-                             int menuOffsetY)
+                             int menuOffsetY,
+                             int menuImageOffset)
         {
             for (int i = 0; i < optionsMenu.Count; i++)
             {
                 if (optionsMenu[i].Image != null)
                 {
                     Engine.Draw(optionsMenu[i].Image, 0, 0);
-                    menuStartY += 300;
+                    menuStartY += menuImageOffset;
                 }
 
                 var color = (i == configSelectedButtonInterface) ? selectedColor : normalColor;

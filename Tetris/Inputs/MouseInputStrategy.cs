@@ -64,7 +64,7 @@ namespace MyGame.Inputs
 // Método auxiliar para verificar si el mouse está sobre una opción
         private bool IsMouseOverOption(int mouseX, int mouseY, GlobalGameConfiguration config, int optionIndex)
         {
-            int optionTop = config.MenuStartY + (config.Menu.OptionsMenu[optionIndex].Image != null ? 300 : 0) + optionIndex * config.MenuOffsetY;
+            int optionTop = config.MenuStartY + (config.Menu.OptionsMenu[optionIndex].Image != null ? config.MenuImageOffset : 0) + optionIndex * config.MenuOffsetY;
             int optionBottom = optionTop + config.OptionHeight;
             int optionLeft = config.MenuStartX;
             int optionRight = optionLeft + config.OptionWidth;

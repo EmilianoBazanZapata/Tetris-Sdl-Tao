@@ -14,6 +14,6 @@ namespace MyGame.Interfaces
         void DrawHeldPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize);
 
         void DrawMenu(IntPtr screen, int configSelectedButtonInterface, List<MenuItem> optionsMenu,
-            Sdl.SDL_Color selectedColor, Sdl.SDL_Color normalColor, int menuStartX, int menuStartY, int menuOffsetY);
+            Sdl.SDL_Color selectedColor, Sdl.SDL_Color normalColor, int menuStartX, int menuStartY, int menuOffsetY, int menuImageOffset);
     }
 }
