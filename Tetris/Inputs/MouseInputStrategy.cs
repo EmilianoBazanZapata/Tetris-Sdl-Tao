@@ -1,5 +1,7 @@
 using MyGame.Configuration;
+using MyGame.Enums;
 using MyGame.Interfaces;
+using MyGame.Managers;
 using Tao.Sdl;
 
 namespace MyGame.Inputs
@@ -7,6 +9,14 @@ namespace MyGame.Inputs
     public class MouseInputStrategy : IInputStrategy
     {
         private static Sdl.SDL_Event _sdlEvent;
+        
+        private readonly GameManager _gameManager;
+
+        public MouseInputStrategy(GameManager gameManager)
+        {
+            _gameManager = gameManager;
+        }
+
         
         public void CheckInputs(GlobalGameConfiguration config)
         {
@@ -18,6 +28,17 @@ namespace MyGame.Inputs
             // Procesa todos los eventos disponibles
             while (Sdl.SDL_PollEvent(out _sdlEvent) != 0)
             {
+                // Manejar eventos de cierre de ventana
+                if (_sdlEvent.type == Sdl.SDL_QUIT)
+                {
+                    config.Running = false; // Esto hará que el loop principal del juego termine
+                    return;
+                }
+                
+                //si el juego tiene el estado ingame desactivo los controles del mouse
+                if (_gameManager.currentState == EGameState.InGame)
+                    continue;
+                
                 switch (_sdlEvent.type)
                 {
                     case Sdl.SDL_QUIT:

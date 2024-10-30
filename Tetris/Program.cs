@@ -15,7 +15,7 @@ namespace MyGame
     {
         private static GlobalGameConfiguration _config;
         private static MenuFactory _menuFactory;
-        private static IInputStrategy _inputMouse = new MouseInputStrategy();
+        private static IInputStrategy _inputMouse;
         private static IInterfaceService _interfaceService = new GameInterfaceService();
         private static GameManager _gameManager = new GameManager();
         private static IGameLogicService _gameLogicService;
@@ -39,6 +39,8 @@ namespace MyGame
             _gameLogicService = new GameLogicService(_config, _gameManager);
             
             _inputKeiboard = new KeyboardInputStrategy(_gameLogicService);
+            
+            _inputMouse = new MouseInputStrategy(_gameManager);
 
             (_config.CurrentPiece, _config.NextPiece) = _gameLogicService.GenerateRandomPieces();
             
@@ -94,7 +96,7 @@ namespace MyGame
                     _interfaceService.DrawHeldPiece(_config.HeldPiece, _config.PositionInterfaceX, 180,
                         _config.CellSize);
                     _interfaceService.DrawText("Score", _config.PositionInterfaceX, 305, _config.Font);
-                    _interfaceService.DrawText(_config.Score.ToString(), _config.PositionInterfaceX, 340, _config.Font);
+                    _interfaceService.DrawText(_config.Score.ToString(), 615 , 340, _config.Font);
                     break;
                 case EGameState.InGameOver:
                     _config.Menu = _menuFactory.CreateGameOverMenu();

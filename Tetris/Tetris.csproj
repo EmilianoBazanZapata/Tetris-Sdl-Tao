@@ -90,6 +90,7 @@
     <Content Include="assets\Controls.png" />
     <Content Include="assets\Credits.png" />
     <Content Include="assets\Grid.png" />
+    <Content Include="assets\LoseGame.png" />
     <Content Include="assets\TileBlue.png" />
     <Content Include="assets\TileCyan.png" />
     <Content Include="assets\TileGreen.png" />

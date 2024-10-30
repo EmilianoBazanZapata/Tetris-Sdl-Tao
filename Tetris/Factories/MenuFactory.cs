@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using MyGame.Enums;
 using MyGame.Managers;
 using MyGame.Menues;
@@ -8,12 +9,16 @@ namespace MyGame.Factories
     public class MenuFactory
     {
         private GameManager _gameManager;
-        
+        private readonly string _assetsPath;
+
         public MenuFactory(GameManager gameManager)
         {
             _gameManager = gameManager;
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+            _assetsPath = Path.Combine(projectDirectory, "assets");
         }
-        
+
         public Menu CreateMainMenu()
         {
             var menu = new Menu();
@@ -26,23 +31,27 @@ namespace MyGame.Factories
 
         public Menu CreateCreditsMenu()
         {
-            var image = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Credits.png");
+            var imagePath = Path.Combine(_assetsPath, "Credits.png");
+            var image = Engine.LoadImage(imagePath);
             var menu = new Menu();
             menu.AddItem(new MenuItem("Back", GoBackToMainMenu, image));
             return menu;
         }
-        
+
         public Menu CreateGameOverMenu()
         {
+            var imagePath = Path.Combine(_assetsPath, "LoseGame.png");
+            var image = Engine.LoadImage(imagePath);
+
             var menu = new Menu();
-            menu.AddItem(new MenuItem("Retry", RetryGame));
-            menu.AddItem(new MenuItem("Exit", ExitGame));
+            menu.AddItem(new MenuItem("Retry", RetryGame, image));
             return menu;
         }
 
         public Menu CreateControlsMenu()
         {
-            var image = Engine.LoadImage("D:\\Utn\\Programacion\\Tetris-Tsl-Tao\\Tetris\\assets\\Controls.png");
+            var imagePath = Path.Combine(_assetsPath, "Controls.png");
+            var image = Engine.LoadImage(imagePath);
             var menu = new Menu();
             menu.AddItem(new MenuItem("Back", GoBackToMainMenu, image));
             return menu;
@@ -52,17 +61,17 @@ namespace MyGame.Factories
         {
             _gameManager.ChangeState(EGameState.InGame);
         }
-        
+
         private void GoBackToMainMenu()
         {
             _gameManager.ChangeState(EGameState.InMenu);
         }
-        
+
         private void RetryGame()
         {
             _gameManager.ChangeState(EGameState.InGame);
         }
-        
+
         private void CreditsGame()
         {
             _gameManager.ChangeState(EGameState.InCredits);
@@ -72,7 +81,7 @@ namespace MyGame.Factories
         {
             _gameManager.ChangeState(EGameState.InControlgames);
         }
-        
+
         private static void ExitGame()
         {
             Environment.Exit(0);

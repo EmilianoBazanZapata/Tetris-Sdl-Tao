@@ -8,6 +8,8 @@ namespace MyGame.Menues
         public Action Action { get; }
         public Image Image { get; set; }
         
+        public bool IsInteractive => Action != null;
+        
         public MenuItem(string text, Action action, Image image = null)
         {
             Text = text;
