@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using MyGame.Configuration;
 using MyGame.Enums;
 using MyGame.Factories;
@@ -26,8 +27,9 @@ namespace MyGame
             Engine.Initialize();
             
             Sdl.SDL_WM_SetCaption("Tetris", null);
+            
             var screen = Sdl.SDL_SetVideoMode(770, 720, 15, Sdl.SDL_SWSURFACE);
-
+            
             _config = GlobalGameConfiguration.Instance;
             _config.Screen = screen;
             _config.GameGrid.InitializeBoard();
@@ -46,7 +48,7 @@ namespace MyGame
             
             if (_config.Menu is null)
                 _config.Menu = new Menu();
-
+            
             while (_config.Running)
             {
                 CheckInputs();

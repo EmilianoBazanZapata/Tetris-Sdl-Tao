@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MyGame
+namespace Tetris.Entities
 {
     public class Grid
     {

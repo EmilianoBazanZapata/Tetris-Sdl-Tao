@@ -8,25 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/Grid.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/Image.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grilla.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Grilla.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pieza.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pieza.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration/GlobalGameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration/GlobalGameConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Grid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetris.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-Empty.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileBlue.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileBlue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileCyan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileCyan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileEmpty.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileGreen.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileGreen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileOrange.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileOrange.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TilePurple.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TilePurple.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileRed.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileRed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileYellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TileYellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fondo.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +23,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Engine/Image.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Grilla.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Grilla.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Pieza.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Pieza.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/972d5c5bca2f41cfb37254230540a96a11000/86/35841d75/Sdl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b9f607e27b8644e0bf609b59dfb1c8525735b0/00/bbc3f580/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Configuration/GlobalGameConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -52,28 +40,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Tetris.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20241006_0002",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Tetris.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20241006_0002&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tetris" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/MyGame.exe" />
@@ -109,7 +97,35 @@
       <workItem from="1728339422703" duration="9429000" />
       <workItem from="1728649825883" duration="12030000" />
       <workItem from="1728738176825" duration="13046000" />
-      <workItem from="1728786964005" duration="3314000" />
+      <workItem from="1728786964005" duration="3394000" />
+      <workItem from="1728861400002" duration="1477000" />
+      <workItem from="1729299032044" duration="10472000" />
+      <workItem from="1729342936413" duration="2352000" />
+      <workItem from="1729345866122" duration="9233000" />
+      <workItem from="1729378508909" duration="5683000" />
+      <workItem from="1729386449614" duration="11536000" />
+      <workItem from="1729427829075" duration="2640000" />
+      <workItem from="1729462124355" duration="10000000" />
+      <workItem from="1729480309348" duration="2101000" />
+      <workItem from="1729505934145" duration="3641000" />
+      <workItem from="1729509841485" duration="1403000" />
+      <workItem from="1729956545160" duration="17460000" />
+      <workItem from="1729989354615" duration="14470000" />
+      <workItem from="1730004105288" duration="970000" />
+      <workItem from="1730005097019" duration="884000" />
+      <workItem from="1730006005927" duration="515000" />
+      <workItem from="1730006535677" duration="179000" />
+      <workItem from="1730006727429" duration="793000" />
+      <workItem from="1730007545139" duration="118000" />
+      <workItem from="1730007675640" duration="722000" />
+      <workItem from="1730008413613" duration="137000" />
+      <workItem from="1730008560748" duration="596000" />
+      <workItem from="1730038760749" duration="446000" />
+      <workItem from="1730039226172" duration="4589000" />
+      <workItem from="1730070985680" duration="6011000" />
+      <workItem from="1730250862212" duration="6306000" />
+      <workItem from="1730258066045" duration="645000" />
+      <workItem from="1730330091257" duration="1129000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -191,7 +207,199 @@
       <option name="project" value="LOCAL" />
       <updated>1728743176425</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Optimized drawing logic and implemented image-based rendering&#10;&#10;- Replaced pixel-by-pixel drawing with image-based rendering for Tetris pieces. This enhances visual clarity and performance.&#10;- Streamlined the piece drawing method by integrating predefined images for each Tetris piece type, avoiding repetitive pixel drawing and reducing computational overhead.&#10;- Adjusted the piece creation logic to associate each type with a specific image, simplifying the rendering process and making the code easier to maintain and extend.&#10;- Updated documentation and comments to reflect changes in rendering approach and logic optimization.">
+      <option name="closed" value="true" />
+      <created>1728790326232</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1728790326232</updated>
+    </task>
+    <task id="LOCAL-00012" summary="&#10;* **Modified Tiles:** The colors red, yellow, blue, cyan, green, orange, and purple were modified.&#10;* **New Blocks:** Two new files, &quot;block.png&quot; and &quot;block original (1).png&quot;, were added.">
+      <option name="closed" value="true" />
+      <created>1729351061229</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729351061229</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Refactor game structure to implement Singleton for global game configuration&#10;&#10;- Created `GlobalGameConfiguration` as a Singleton to manage all global game settings and states, including piece images, the game board, and game parameters.&#10;- Updated the `Program` class to access global configuration through a static variable, improving code readability and reducing redundancy.&#10;- Refactored the `CheckInputs` method to utilize the Singleton instance for handling user inputs, such as piece rotation and movement.&#10;- Modified the `Update` and `MoverPiezaAutomnaticamente` methods to use `GlobalGameConfiguration.Instance` for time tracking and automatic piece movement.&#10;- Updated the `Render` method to draw the game board and pieces using properties from the Singleton, ensuring consistency in game state management.">
+      <option name="closed" value="true" />
+      <created>1729356761810</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729356761810</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refactor game structure to implement Singleton for global game configuration&#10;&#10;- Created `GlobalGameConfiguration` as a Singleton to manage all global game settings and states, including piece images, the game board, and game parameters.&#10;- Updated the `Program` class to access global configuration through a static variable, improving code readability and reducing redundancy.&#10;- Refactored the `CheckInputs` method to utilize the Singleton instance for handling user inputs, such as piece rotation and movement.&#10;- Modified the `Update` and `MoverPiezaAutomnaticamente` methods to use `GlobalGameConfiguration.Instance` for time tracking and automatic piece movement.&#10;- Updated the `Render` method to draw the game board and pieces using properties from the Singleton, ensuring consistency in game state management.">
+      <option name="closed" value="true" />
+      <created>1729356779777</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729356779777</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor variable and method names from Spanish to English in Grid class&#10;&#10;- Renamed properties and methods in the `Grid` class to follow English naming conventions for better consistency and readability.&#10;- Updated method names: &#10;  - `InicializarTablero` to `InitializeBoard`&#10;  - `DibujarTablero` to `DrawBoard`&#10;  - `LimpiarFilasCompletas` to `ClearCompleteRows`&#10;  - `EliminarFila` to `RemoveRow`&#10;- Changed property names:&#10;  - `Tablero` to `Board`&#10;  - `Columnas` to `Columns`&#10;  - `Filas` to `Rows`&#10;  - `Celdas` to `Cells`&#10;  - `ImagenCeldaEnBlanco` to `EmptyCellImage`&#10;  - `ImagenesPiezas` to `PieceImages`&#10;- Comments were retained in Spanish to maintain the original context.">
+      <option name="closed" value="true" />
+      <created>1729357524048</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729357524048</updated>
+    </task>
+    <task id="LOCAL-00016" summary="1. **File Rename and Move:**&#10;   - The file `GlobalGameConfiguration.cs` is renamed from `Tetris/Managers/GlobalGameConfiguration.cs` to `Tetris/Configuration/GlobalGameConfiguration.cs`.&#10;&#10;2. **Namespace Change:**&#10;   - The namespace of the `GlobalGameConfiguration.cs` file is changed from `MyGame.Managers` to `MyGame.Configuration`.&#10;&#10;3. **Reference Update:**&#10;   - In `Tetris/Program.cs`, the using statement is updated from `using MyGame.Managers;` to `using MyGame.Configuration;`.&#10;&#10;4. **Project File Update:**&#10;   - In `Tetris/Tetris.csproj`, the reference to `GlobalGameConfiguration.cs` is updated to reflect the new location.">
+      <option name="closed" value="true" />
+      <created>1729378927011</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729378927011</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refactor piece generation in the Program class&#10;&#10;- Moved the GenerateRandomPieces method from the IPiece interface to the Program class to avoid static context issues.&#10;- Updated the method to return a tuple of IPiece for both current and next pieces, enhancing type consistency.&#10;- Adjusted the Main method to call the GenerateRandomPieces method directly, ensuring correct instantiation of game pieces.&#10;- This refactor improves the organization of piece generation logic and resolves the error regarding non-static method access.">
+      <option name="closed" value="true" />
+      <created>1729382676776</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729382676776</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Implement Strategy Pattern for Input Handling and Refactor Game Logic&#10;&#10;- Created IInputStrategy interface to define input handling methods.&#10;- Implemented KeyboardInputStrategy and JoystickInputStrategy classes to handle keyboard and joystick inputs respectively.&#10;- Refactored CheckInputs method in Program class to utilize the input strategy for cleaner input handling.&#10;- Introduced GameLogicService class to encapsulate game-related logic, including random piece generation and automatic piece movement.&#10;- Updated the Main method to call GameLogicService methods for generating and managing pieces, enhancing code organization and maintainability.&#10;- Improved separation of concerns by decoupling input handling and game logic from the Program class.">
+      <option name="closed" value="true" />
+      <created>1729387140911</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729387140911</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Refactor Game Logic and Input Handling&#10;&#10;- Updated `GlobalGameConfiguration` to include lateral and down movement counters for smoother piece movement control.&#10;- Refactored `KeyboardInputStrategy` to handle both immediate and continuous movement for left, right, and down keys.&#10;- Improved `CanMoveRight` method to dynamically check against the current number of columns in the game board instead of using a hard-coded value, preventing exceptions when changing grid size.&#10;- Enhanced the logic for checking key presses to ensure proper input detection and reduce unexpected movements.&#10;- Ensured consistency in variable names and improved overall code readability.">
+      <option name="closed" value="true" />
+      <created>1729397857639</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729397857639</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added GameVisualService to handle piece icons instead of images&#10;&#10;- Implemented IGameVisualService interface for drawing the game board and pieces.&#10;- Created GameVisualService class to manage the display of current and next pieces using icons.&#10;- Added method SetPieceIcons to set icons for each piece type.&#10;- Updated DrawCurrentPiece and DrawNextPiece methods to use piece icons.&#10;- Integrated the visual service with GlobalGameConfiguration to load piece icons.">
+      <option name="closed" value="true" />
+      <created>1729430485180</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1729430485180</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implement Hold Piece Functionality&#10;&#10;- Added logic to allow players to hold a Tetris piece for later use.&#10;- Ensured that the hold action is only executed once per key press to prevent multiple triggers.&#10;- Updated input handling for the 'Q' key to manage piece holding.&#10;- Integrated the hold functionality with existing piece generation logic.">
+      <option name="closed" value="true" />
+      <created>1729509490447</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729509490447</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Refactored global configuration management&#10;&#10;- Moved reusable variables to GlobalGameConfiguration class to centralize configuration&#10;- Improved score calculation logic when clearing multiple rows at once&#10;- Optimized code for better maintainability and readability&#10;- Fixed bugs related to score calculation for multiple completed rows">
+      <option name="closed" value="true" />
+      <created>1729961388962</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1729961388962</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat(menu): Implement mouse input and Factory pattern for menu interface&#10;&#10;- Added mouse input handling to allow selection of menu options using mouse movement and clicks.&#10;- Updated menu display logic to highlight the selected option by changing text color from white to red.&#10;- Implemented Factory pattern for creating menu interfaces, enabling flexibility in menu item creation.&#10;- Optimized rendering by redrawing the menu only when the selected option changes.&#10;- Improved input strategy to handle mouse events and execute menu actions based on user selection.">
+      <option name="closed" value="true" />
+      <created>1729991363811</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1729991363811</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(game-manager): Implement Game Manager with EventObserver for game states&#10;&#10;- Added GameManager to handle game state transitions between 'InMenu' and 'InGame'.&#10;- Implemented EventObserver pattern to notify observers (e.g., ConsoleObserver) when game state changes.&#10;- Modified MenuFactory to integrate with GameManager, allowing state change to 'InGame' when 'Play' is selected.&#10;- Updated main game loop to check current game state and execute corresponding logic for 'InMenu' and 'InGame'.&#10;- Added console messages to display state changes and provide feedback when transitioning between game states.">
+      <option name="closed" value="true" />
+      <created>1729992224215</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1729992224215</updated>
+    </task>
+    <task id="LOCAL-00025" summary="refactor(game-flow): Implement game state-based rendering and clean up console logs&#10;&#10;- Removed unnecessary Console.WriteLine statements to clean up the code.&#10;- Updated the Render method to handle state transitions between 'InMenu' and 'InGame'.&#10;- Menu now displays only when the game state is 'InMenu', and the game is rendered when the state is 'InGame'.&#10;- Refined the main game loop to properly check inputs, update game state, and render based on the current game state.">
+      <option name="closed" value="true" />
+      <created>1729993211229</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1729993211229</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor: Refactor and reorganize code for improved structure and readability&#10;&#10;- Cleaned up and refactored various parts of the code to enhance organization.&#10;- Improved overall code structure for better maintainability.&#10;- Grouped related functionalities for easier navigation and understanding.">
+      <option name="closed" value="true" />
+      <created>1730001409685</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1730001409685</updated>
+    </task>
+    <task id="LOCAL-00027" summary="refactor: Replace absolute paths with relative paths in PieceFactory&#10;&#10;- Refactored PieceFactory to load images using relative paths instead of hardcoded absolute paths.&#10;- Introduced dynamic project directory resolution to ensure portability across different environments.&#10;- All image loading for game pieces now uses relative paths from the 'assets' folder.&#10;- Improved code maintainability and portability by centralizing the path generation for assets.">
+      <option name="closed" value="true" />
+      <created>1730002485762</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1730002485762</updated>
+    </task>
+    <task id="LOCAL-00028" summary="refactor(GlobalGameConfiguration): Organize and improve structure for better clarity and maintainability&#10;&#10;- Grouped related properties (graphics, game state, UI settings) for improved organization.&#10;- Encapsulated some fields and separated resource loading and grid initialization into dedicated methods.&#10;- Enhanced code readability and modularity by separating concerns and clarifying variable names.&#10;- Improved maintainability and scalability for future development.">
+      <option name="closed" value="true" />
+      <created>1730003806019</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1730003806019</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat(game-state): Add GameOver state and loss condition logic&#10;&#10;- Implemented new GameOver state to handle game loss scenarios.&#10;- Added logic in GenerateRandomPieces to check if the initial position for a new piece is occupied.&#10;- If the starting position is occupied, the game transitions to the GameOver state and prevents further piece generation.&#10;- Enhanced game flow to properly handle game over conditions and display appropriate menus.">
+      <option name="closed" value="true" />
+      <created>1730006271726</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1730006271726</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat(game-reset): Implement game reset functionality on game over&#10;&#10;- Added ResetGame method to reset score and clear the game grid when the player loses.&#10;- Reset game state when transitioning to GameOver state.&#10;- Integrated game reset logic into the &quot;Retry&quot; option in the GameOver menu.&#10;- Ensured game state is properly managed within the render and update methods.">
+      <option name="closed" value="true" />
+      <created>1730040581640</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1730040581640</updated>
+    </task>
+    <task id="LOCAL-00031" summary="refactor(game-logic): Introduce IGameLogicService interface and encapsulate game logic&#10;&#10;- Created IGameLogicService interface to expose necessary game logic methods.&#10;- Refactored GameLogicService to implement the interface and hide internal logic.&#10;- Added new directory 'Menues' to organize menu-related code.&#10;- Improved code modularity by separating game logic from external access points and organizing menu structure.">
+      <option name="closed" value="true" />
+      <created>1730041199375</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1730041199375</updated>
+    </task>
+    <task id="LOCAL-00032" summary="feat(game-assets): Added images and refactored MouseInputStrategy&#10;&#10;- Integrated new images into the project for various game elements.&#10;- Refactored the UpdateSelection method in MouseInputStrategy to improve code readability and logic.">
+      <option name="closed" value="true" />
+      <created>1730075765668</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1730075765668</updated>
+    </task>
+    <task id="LOCAL-00033" summary="refactor(menu-logic): Introduce MenuImageOffset in GlobalGameConfiguration&#10;&#10;- Added MenuImageOffset variable in GlobalGameConfiguration to replace the hardcoded value '300' in menu logic.&#10;- Refactored IsMouseOverOption method to use the new MenuImageOffset variable for better flexibility and maintainability.">
+      <option name="closed" value="true" />
+      <created>1730076107085</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1730076107085</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added game over screen and adjusted asset loading to use relative paths in MenuFactory.">
+      <option name="closed" value="true" />
+      <created>1730256772616</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1730256772616</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,48 +420,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0." />
-    <MESSAGE value="This diff removes the default `Class1.cs` and `Tetris.csproj` files and replaces them with a new project structure for a Tetris game using Tao framework.&#10;&#10;Here's a breakdown of the changes:&#10;&#10;**Deleted Files:**&#10;&#10;* `Tetris/Tetris/Class1.cs`: The default class file is removed.&#10;* `Tetris/Tetris/Tetris.csproj`: The default project file is removed.&#10;&#10;**New Files:**&#10;&#10;* `Tetris/.idea/.idea.MyGame/.idea/.gitignore`: A gitignore file for Rider IDE, specifying files and folders to be ignored by Git.&#10;* `Tetris/.idea/.idea.MyGame/.idea/.name`: A file containing the project name &quot;MyGame&quot; for Rider IDE.&#10;* `Tetris/App.config`: A configuration file for the application, specifying the supported runtime version.&#10;* `Tetris/Properties/AssemblyInfo.cs`: Assembly information for the project, including title, description, company, copyright, etc.&#10;* `Tetris/Engine/Engine.cs`: A class containing the core game engine functionality, including initialization, drawing, input handling, and error handling.&#10;* `Tetris/Engine/Font.cs`: A class for loading and managing fonts.&#10;* `Tetris/Engine/Image.cs`: A class for loading and managing images.&#10;* `Tetris/.idea/.idea.MyGame/.idea/indexLayout.xml`: An index layout file for Rider IDE.&#10;* `Tetris/Program.cs`: The main program file containing the game loop and logic.&#10;* `Tetris/Engine/Sound.cs`: A class for loading and managing sounds.&#10;* `Tetris/Tetris.csproj`: A new project file for the Tetris game, referencing Tao.Sdl and other necessary libraries.&#10;* `Tetris/Tetris.sln`: A Visual Studio solution file for the Tetris project.&#10;* `Tetris/assets/fondo.png`: An image file (likely a background image) added to the project's assets folder.&#10;&#10;**Changes:**&#10;&#10;* The `Tetris.sln` file is updated to reflect the new project structure and GUID.&#10;&#10;**Overall, this diff sets up the basic structure for a Tetris game using the Tao framework in C#. It includes classes for handling graphics, input, sound, and the main game loop.**" />
-    <MESSAGE value="Add a first unoptimized version to draw the matrix I'm going to use" />
-    <MESSAGE value="This C# code defines a `Pieza` class which represents a Tetris piece. Here's a breakdown:&#10;&#10;**Class Definition:**&#10;&#10;- `namespace MyGame`:  Indicates that the `Pieza` class belongs to the `MyGame` namespace.&#10;- `public class Pieza`: Defines a public class named `Pieza`.&#10;&#10;**Properties:**&#10;&#10;- `public int[,] Forma { get; private set; }`: A 2D integer array representing the shape of the Tetris piece. It's publicly accessible for reading but can only be set within the class.&#10;- `public (int x, int y) Posicion { get; set; }`: A tuple representing the (x, y) coordinates of the piece's position on the game board. It's publicly accessible for both reading and writing.&#10;&#10;**Constructors:**&#10;&#10;- `public Pieza(int[,] forma)`: Constructor that takes a 2D integer array (`forma`) to initialize the `Forma` property. It also sets the initial position to (0, 0).&#10;- `public Pieza()`: Default constructor that doesn't initialize the `Forma` property. This might be used if you plan to set the shape later.&#10;&#10;**Methods:**&#10;&#10;- `public bool PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`: &#10;    - Takes the total number of columns and rows of the game board as input.&#10;    - Checks if the piece can be rotated 90 degrees clockwise without going out of bounds or colliding with anything.&#10;    - Returns `true` if rotation is possible, `false` otherwise.&#10;- `public void Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:&#10;    - Attempts to rotate the piece 90 degrees clockwise.&#10;    - Calls `PuedeRotar` to check if rotation is valid.&#10;    - If valid, updates the `Forma` property with the rotated shape.&#10;    - Prints messages to the console indicating success or failure.&#10;- `public void MoverAbajo()`, `public void MoverIzquierda()`, `public void MoverDerecha()`:&#10;    - These methods move the piece one unit down, left, or right, respectively, by updating the `Posicion` property.&#10;&#10;**Nested Class: `PiezasClasicas`**&#10;&#10;- `public static class PiezasClasicas`: A nested static class that provides methods to create instances of the classic Tetris pieces (I, O, T, L, J, S, Z).&#10;- Each method (`CrearPiezaI`, `CrearPiezaO`, etc.) returns a new `Pieza` object with the appropriate shape defined as a 2D array.&#10;&#10;**Example Usage:**&#10;&#10;```csharp&#10;// Create an 'L' shaped piece&#10;Pieza piezaL = Pieza.PiezasClasicas.CrearPiezaL();&#10;&#10;// Move the piece down&#10;piezaL.MoverAbajo();&#10;&#10;// Attempt to rotate the piece&#10;piezaL.Rotar(10, 20); // Assuming a 10x20 game board&#10;```&#10;&#10;**Key Points:**&#10;&#10;- The code provides a basic structure for representing and manipulating Tetris pieces.&#10;- It includes methods for movement and rotation, taking into account boundary checks.&#10;- The `PiezasClasicas` nested class makes it easy to create instances of the standard Tetris shapes.&#10;- You would typically use this `Pieza` class within a larger game loop that handles user input, collision detection, and game logic." />
-    <MESSAGE value="The code defines a `Pieza` class representing a Tetris piece and includes logic for rotating and moving the piece. Here's a breakdown:&#10;&#10;**1. Enums/TipoPieza.cs:**&#10;&#10;- Defines an enum `TipoPieza` with values representing the seven standard Tetris pieces (I, O, T, L, J, S, Z).&#10;&#10;**2. Pieza.cs:**&#10;&#10;- **Class Definition:**&#10;    - `Forma`: A 2D integer array representing the shape of the piece (1 for occupied, 0 for empty).&#10;    - `Posicion`: A tuple `(x, y)` representing the piece's position on the game board.&#10;&#10;- **Constructors:**&#10;    - `Pieza(int[,] forma)`: Initializes a new piece with the given shape and position (0, 0).&#10;    - `Pieza()`: Default constructor, likely for initialization later.&#10;&#10;- **`CrearPieza(TipoPieza tipo)`:**&#10;    - A static factory method that creates a `Pieza` instance of the specified `TipoPieza`.&#10;    - Uses a `switch` statement to create the appropriate piece shape based on the `tipo`.&#10;&#10;- **`Rotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Rotates the piece 90 degrees clockwise if the rotation is valid within the game board boundaries.&#10;    - Calls `PuedeRotar` to check for validity before rotating.&#10;&#10;- **`PuedeRotar(int columnasTotalesTablero, int filasTotalesTablero)`:**&#10;    - Checks if the piece can be rotated without going out of bounds.&#10;    - Iterates through the piece's shape and calculates the new positions of occupied cells after rotation.&#10;    - Returns `false` if any new position is outside the board boundaries, otherwise `true`.&#10;&#10;- **`MoverAbajo()`, `MoverIzquierda()`, `MoverDerecha()`:**&#10;    - Methods to move the piece one unit down, left, or right, respectively.&#10;    - These methods directly modify the `Posicion` of the piece.&#10;&#10;- **Private Static Methods for Piece Creation:**&#10;    - `CrearPiezaI()`, `CrearPiezaO()`, `CrearPiezaT()`, `CrearPiezaL()`, `CrearPiezaJ()`, `CrearPiezaS()`, `CrearPiezaZ()`:&#10;    - Each method defines the shape of a specific Tetris piece as a 2D integer array and returns a new `Pieza` instance with that shape.&#10;&#10;**Overall, the code provides a well-structured representation of Tetris pieces and includes essential functionality for manipulating them within a Tetris game.**" />
-    <MESSAGE value="The code you provided defines a method `FijarPiezaEnTablero` within the `Pieza` class (presumably representing a Tetris piece). This method takes the following arguments:&#10;&#10;* `pieza`: The `Pieza` object to be fixed on the game board.&#10;* `columnasTotalesTablero`: The total number of columns in the game board.&#10;* `filasTotalesTablero`: The total number of rows in the game board.&#10;* `tablero`: A 2D array representing the game board, where 1 indicates a filled cell and 0 an empty one.&#10;&#10;The method iterates through the `Forma` property of the `pieza` object, which likely represents the shape of the Tetris piece as a 2D array of 1s and 0s. For each cell in the `Forma` array that contains a 1 (indicating a block of the piece), the method calculates its corresponding position on the game board based on the piece's current position (`pieza.Posicion`).&#10;&#10;Before marking the cell on the game board as occupied, the method checks if the calculated position is within the bounds of the game board. This prevents the piece from being fixed outside the playable area. If the position is valid, the corresponding cell in the `tablero` array is set to 1, effectively &quot;fixing&quot; the piece in its current location on the game board.&#10;&#10;In essence, this method handles the logic of transferring the Tetris piece's shape onto the game board when it lands and becomes part of the static blocks." />
-    <MESSAGE value="Add Grilla class for game grid handling&#10;&#10;- Implemented the `Grilla` class to manage a game grid.&#10;- Added functionality to initialize the grid (`InicializarTablero`), rendering the grid (`DibujarTablero`), and cleaning completed rows (`LimpiarFilasCompletas`).&#10;- `DibujarTablero` uses SDL to visually represent the grid, with empty cells in blue and occupied cells in red.&#10;- Rows are automatically removed when full, with rows above shifted downwards (`EliminarFila`).&#10;- The `DrawRect` function was added to draw grid cells and borders using SDL's `SDL_FillRect` function.&#10;- Utility method `MapRgb` was added to convert RGB values to the SDL-compatible color format." />
-    <MESSAGE value="The code defines a `Pieza` class which seems to represent a Tetris piece. &#10;&#10;Here's a breakdown of the changes:&#10;&#10;- **Constructor made private:** The constructor `Pieza(int[,] forma)` is changed from `public` to `private`. This suggests that the class might be moving towards a factory pattern or a similar approach where instances are created through static methods instead of directly.&#10;&#10;- **New `DibujarPieza` method:** This method is added to handle drawing the piece on the screen. It takes the following arguments:&#10;    - `imagenPiezaI`: An `Image` object representing the visual of the piece.&#10;    - `celda`: Likely an integer representing the size of a grid cell in pixels.&#10;&#10;    The method iterates through the `Forma` array, which defines the shape of the piece. For each cell marked with '1', it draws the provided `imagenPiezaI` at the calculated position on the screen.&#10;&#10;- **Other parts of the code:**&#10;    - The `ObtenerPieza` method seems to be a factory method that returns a `Pieza` instance based on the provided `tipo`.&#10;    - The `FijarPiezaEnTablero` method likely handles the logic for merging the piece with the game board when it lands.&#10;&#10;**Overall, the changes suggest improvements in how Tetris pieces are created, managed, and rendered within the game.**" />
     <MESSAGE value="Add MovementController class for piece movement validation&#10;&#10;- Implemented the `MovementController` class to handle piece movement logic within the game grid.&#10;- Added methods to verify if a piece can move:&#10;  - `PuedeMoverAbajo` checks if the piece can move downwards, detecting collision with the bottom of the grid or other pieces below.&#10;  - `PuedeMoverIzquierda` validates if the piece can move left, checking for grid boundaries and other pieces on the left.&#10;  - `PuedeMoverDerecha` validates if the piece can move right, ensuring no collision with other pieces or the right boundary.&#10;- Each method evaluates the piece's current position and its shape (`Forma`) in relation to the grid (`Tablero`)." />
     <MESSAGE value="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Pieza.cs</url>
-          <line>82</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Pieza.cs" containingFunctionPresentation="Method 'FijarPiezaEnTablero'">
-            <startOffsets>
-              <option value="2613" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2647" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Grilla.cs</url>
-          <line>50</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Grilla.cs" containingFunctionPresentation="Method 'DibujarTablero'">
-            <startOffsets>
-              <option value="1535" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1606" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Optimized drawing logic and implemented image-based rendering&#10;&#10;- Replaced pixel-by-pixel drawing with image-based rendering for Tetris pieces. This enhances visual clarity and performance.&#10;- Streamlined the piece drawing method by integrating predefined images for each Tetris piece type, avoiding repetitive pixel drawing and reducing computational overhead.&#10;- Adjusted the piece creation logic to associate each type with a specific image, simplifying the rendering process and making the code easier to maintain and extend.&#10;- Updated documentation and comments to reflect changes in rendering approach and logic optimization." />
+    <MESSAGE value="&#10;* **Modified Tiles:** The colors red, yellow, blue, cyan, green, orange, and purple were modified.&#10;* **New Blocks:** Two new files, &quot;block.png&quot; and &quot;block original (1).png&quot;, were added." />
+    <MESSAGE value="Refactor game structure to implement Singleton for global game configuration&#10;&#10;- Created `GlobalGameConfiguration` as a Singleton to manage all global game settings and states, including piece images, the game board, and game parameters.&#10;- Updated the `Program` class to access global configuration through a static variable, improving code readability and reducing redundancy.&#10;- Refactored the `CheckInputs` method to utilize the Singleton instance for handling user inputs, such as piece rotation and movement.&#10;- Modified the `Update` and `MoverPiezaAutomnaticamente` methods to use `GlobalGameConfiguration.Instance` for time tracking and automatic piece movement.&#10;- Updated the `Render` method to draw the game board and pieces using properties from the Singleton, ensuring consistency in game state management." />
+    <MESSAGE value="Refactor variable and method names from Spanish to English in Grid class&#10;&#10;- Renamed properties and methods in the `Grid` class to follow English naming conventions for better consistency and readability.&#10;- Updated method names: &#10;  - `InicializarTablero` to `InitializeBoard`&#10;  - `DibujarTablero` to `DrawBoard`&#10;  - `LimpiarFilasCompletas` to `ClearCompleteRows`&#10;  - `EliminarFila` to `RemoveRow`&#10;- Changed property names:&#10;  - `Tablero` to `Board`&#10;  - `Columnas` to `Columns`&#10;  - `Filas` to `Rows`&#10;  - `Celdas` to `Cells`&#10;  - `ImagenCeldaEnBlanco` to `EmptyCellImage`&#10;  - `ImagenesPiezas` to `PieceImages`&#10;- Comments were retained in Spanish to maintain the original context." />
+    <MESSAGE value="1. **File Rename and Move:**&#10;   - The file `GlobalGameConfiguration.cs` is renamed from `Tetris/Managers/GlobalGameConfiguration.cs` to `Tetris/Configuration/GlobalGameConfiguration.cs`.&#10;&#10;2. **Namespace Change:**&#10;   - The namespace of the `GlobalGameConfiguration.cs` file is changed from `MyGame.Managers` to `MyGame.Configuration`.&#10;&#10;3. **Reference Update:**&#10;   - In `Tetris/Program.cs`, the using statement is updated from `using MyGame.Managers;` to `using MyGame.Configuration;`.&#10;&#10;4. **Project File Update:**&#10;   - In `Tetris/Tetris.csproj`, the reference to `GlobalGameConfiguration.cs` is updated to reflect the new location." />
+    <MESSAGE value="Refactor piece generation in the Program class&#10;&#10;- Moved the GenerateRandomPieces method from the IPiece interface to the Program class to avoid static context issues.&#10;- Updated the method to return a tuple of IPiece for both current and next pieces, enhancing type consistency.&#10;- Adjusted the Main method to call the GenerateRandomPieces method directly, ensuring correct instantiation of game pieces.&#10;- This refactor improves the organization of piece generation logic and resolves the error regarding non-static method access." />
+    <MESSAGE value="Implement Strategy Pattern for Input Handling and Refactor Game Logic&#10;&#10;- Created IInputStrategy interface to define input handling methods.&#10;- Implemented KeyboardInputStrategy and JoystickInputStrategy classes to handle keyboard and joystick inputs respectively.&#10;- Refactored CheckInputs method in Program class to utilize the input strategy for cleaner input handling.&#10;- Introduced GameLogicService class to encapsulate game-related logic, including random piece generation and automatic piece movement.&#10;- Updated the Main method to call GameLogicService methods for generating and managing pieces, enhancing code organization and maintainability.&#10;- Improved separation of concerns by decoupling input handling and game logic from the Program class." />
+    <MESSAGE value="Refactor Game Logic and Input Handling&#10;&#10;- Updated `GlobalGameConfiguration` to include lateral and down movement counters for smoother piece movement control.&#10;- Refactored `KeyboardInputStrategy` to handle both immediate and continuous movement for left, right, and down keys.&#10;- Improved `CanMoveRight` method to dynamically check against the current number of columns in the game board instead of using a hard-coded value, preventing exceptions when changing grid size.&#10;- Enhanced the logic for checking key presses to ensure proper input detection and reduce unexpected movements.&#10;- Ensured consistency in variable names and improved overall code readability." />
+    <MESSAGE value="Added GameVisualService to handle piece icons instead of images&#10;&#10;- Implemented IGameVisualService interface for drawing the game board and pieces.&#10;- Created GameVisualService class to manage the display of current and next pieces using icons.&#10;- Added method SetPieceIcons to set icons for each piece type.&#10;- Updated DrawCurrentPiece and DrawNextPiece methods to use piece icons.&#10;- Integrated the visual service with GlobalGameConfiguration to load piece icons." />
+    <MESSAGE value="Implement Hold Piece Functionality&#10;&#10;- Added logic to allow players to hold a Tetris piece for later use.&#10;- Ensured that the hold action is only executed once per key press to prevent multiple triggers.&#10;- Updated input handling for the 'Q' key to manage piece holding.&#10;- Integrated the hold functionality with existing piece generation logic." />
+    <MESSAGE value="Refactored global configuration management&#10;&#10;- Moved reusable variables to GlobalGameConfiguration class to centralize configuration&#10;- Improved score calculation logic when clearing multiple rows at once&#10;- Optimized code for better maintainability and readability&#10;- Fixed bugs related to score calculation for multiple completed rows" />
+    <MESSAGE value="feat(menu): Implement mouse input and Factory pattern for menu interface&#10;&#10;- Added mouse input handling to allow selection of menu options using mouse movement and clicks.&#10;- Updated menu display logic to highlight the selected option by changing text color from white to red.&#10;- Implemented Factory pattern for creating menu interfaces, enabling flexibility in menu item creation.&#10;- Optimized rendering by redrawing the menu only when the selected option changes.&#10;- Improved input strategy to handle mouse events and execute menu actions based on user selection." />
+    <MESSAGE value="feat(game-manager): Implement Game Manager with EventObserver for game states&#10;&#10;- Added GameManager to handle game state transitions between 'InMenu' and 'InGame'.&#10;- Implemented EventObserver pattern to notify observers (e.g., ConsoleObserver) when game state changes.&#10;- Modified MenuFactory to integrate with GameManager, allowing state change to 'InGame' when 'Play' is selected.&#10;- Updated main game loop to check current game state and execute corresponding logic for 'InMenu' and 'InGame'.&#10;- Added console messages to display state changes and provide feedback when transitioning between game states." />
+    <MESSAGE value="refactor(game-flow): Implement game state-based rendering and clean up console logs&#10;&#10;- Removed unnecessary Console.WriteLine statements to clean up the code.&#10;- Updated the Render method to handle state transitions between 'InMenu' and 'InGame'.&#10;- Menu now displays only when the game state is 'InMenu', and the game is rendered when the state is 'InGame'.&#10;- Refined the main game loop to properly check inputs, update game state, and render based on the current game state." />
+    <MESSAGE value="refactor: Refactor and reorganize code for improved structure and readability&#10;&#10;- Cleaned up and refactored various parts of the code to enhance organization.&#10;- Improved overall code structure for better maintainability.&#10;- Grouped related functionalities for easier navigation and understanding." />
+    <MESSAGE value="refactor: Replace absolute paths with relative paths in PieceFactory&#10;&#10;- Refactored PieceFactory to load images using relative paths instead of hardcoded absolute paths.&#10;- Introduced dynamic project directory resolution to ensure portability across different environments.&#10;- All image loading for game pieces now uses relative paths from the 'assets' folder.&#10;- Improved code maintainability and portability by centralizing the path generation for assets." />
+    <MESSAGE value="refactor(GlobalGameConfiguration): Organize and improve structure for better clarity and maintainability&#10;&#10;- Grouped related properties (graphics, game state, UI settings) for improved organization.&#10;- Encapsulated some fields and separated resource loading and grid initialization into dedicated methods.&#10;- Enhanced code readability and modularity by separating concerns and clarifying variable names.&#10;- Improved maintainability and scalability for future development." />
+    <MESSAGE value="feat(game-state): Add GameOver state and loss condition logic&#10;&#10;- Implemented new GameOver state to handle game loss scenarios.&#10;- Added logic in GenerateRandomPieces to check if the initial position for a new piece is occupied.&#10;- If the starting position is occupied, the game transitions to the GameOver state and prevents further piece generation.&#10;- Enhanced game flow to properly handle game over conditions and display appropriate menus." />
+    <MESSAGE value="feat(game-reset): Implement game reset functionality on game over&#10;&#10;- Added ResetGame method to reset score and clear the game grid when the player loses.&#10;- Reset game state when transitioning to GameOver state.&#10;- Integrated game reset logic into the &quot;Retry&quot; option in the GameOver menu.&#10;- Ensured game state is properly managed within the render and update methods." />
+    <MESSAGE value="refactor(game-logic): Introduce IGameLogicService interface and encapsulate game logic&#10;&#10;- Created IGameLogicService interface to expose necessary game logic methods.&#10;- Refactored GameLogicService to implement the interface and hide internal logic.&#10;- Added new directory 'Menues' to organize menu-related code.&#10;- Improved code modularity by separating game logic from external access points and organizing menu structure." />
+    <MESSAGE value="feat(game-assets): Added images and refactored MouseInputStrategy&#10;&#10;- Integrated new images into the project for various game elements.&#10;- Refactored the UpdateSelection method in MouseInputStrategy to improve code readability and logic." />
+    <MESSAGE value="refactor(menu-logic): Introduce MenuImageOffset in GlobalGameConfiguration&#10;&#10;- Added MenuImageOffset variable in GlobalGameConfiguration to replace the hardcoded value '300' in menu logic.&#10;- Refactored IsMouseOverOption method to use the new MenuImageOffset variable for better flexibility and maintainability." />
+    <MESSAGE value="Added game over screen and adjusted asset loading to use relative paths in MenuFactory." />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

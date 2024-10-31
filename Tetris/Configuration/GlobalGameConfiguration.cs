@@ -5,6 +5,7 @@ using MyGame.Controllers;
 using MyGame.Interfaces;
 using MyGame.Menues;
 using Tao.Sdl;
+using Tetris.Entities;
 using static Tao.Sdl.SdlTtf;
 
 namespace MyGame.Configuration
