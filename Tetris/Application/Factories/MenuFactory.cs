@@ -58,6 +58,15 @@ namespace Application.Factories
             return menu;
         }
 
+        public Menu CreateWinGameMenu()
+        {
+            var imagePath = Path.Combine(_assetsPath, "WinGame.png");
+            var image = Engine.LoadImage(imagePath);
+            var menu = new Menu();
+            menu.AddItem(new MenuItem("Back to Menu", GoBackToMainMenu, image));
+            return menu;
+        }
+
         private void StartGame()
         {
             _gameManager.ChangeState(EGameState.InGame);

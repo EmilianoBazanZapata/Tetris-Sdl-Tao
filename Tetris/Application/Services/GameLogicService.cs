@@ -111,6 +111,9 @@ namespace Application.Services
 
             // Calcular el puntaje basado en la cantidad de filas completadas
             _config.Score += CalculateScore(completedRowCount);
+            
+            if(_config.Score >= _config.ConditionCoreGame)
+                _gameManager.ChangeState(EGameState.WinGame);
         }
 
         public void MovePieceAutomatically()
@@ -181,7 +184,7 @@ namespace Application.Services
         {
             switch (completedRows)
             {
-                case 1: return 100; // 1 row
+                case 1: return 1000000; // 1 row
                 case 2: return 300; // 2 rows
                 case 3: return 500; // 3 rows
                 case 4: return 800; // 4 rows

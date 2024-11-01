@@ -28,6 +28,7 @@ namespace Application.Configurations
         public bool IsHoldKeyPressed, RotationPerformed, LeftMovementPerformed, RightMovementPerformed, DownMovementPerformed, RotationKeyPressed;
         public int LateralLeftMovementCounter, LateralRightMovementCounter, DownMovementCounter, TimeCounter, Score;
         public int LateralMovementInterval = 7, DownMovementInterval = 7, DropInterval = 20;
+        public int ConditionCoreGame = 999999;
         #endregion
 
         #region Configuración de la interfaz

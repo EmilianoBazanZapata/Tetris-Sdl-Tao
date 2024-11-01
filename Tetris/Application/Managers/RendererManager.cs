@@ -21,10 +21,10 @@ namespace Application.Managers
         private EGameState _currentState;
 
         // Constructor privado para evitar la creación de múltiples instancias
-        private RenderManager(GameManager gameManager, 
-                              GlobalGameConfiguration config, 
-                              MenuFactory menuFactory, 
-                              IInterfaceService interfaceService)
+        private RenderManager(GameManager gameManager,
+            GlobalGameConfiguration config,
+            MenuFactory menuFactory,
+            IInterfaceService interfaceService)
         {
             _config = config;
             _menuFactory = menuFactory;
@@ -35,10 +35,10 @@ namespace Application.Managers
         }
 
         // Propiedad para acceder a la instancia única del singleton
-        public static RenderManager GetInstance(GameManager gameManager, 
-                                                GlobalGameConfiguration config, 
-                                                MenuFactory menuFactory, 
-                                                IInterfaceService interfaceService)
+        public static RenderManager GetInstance(GameManager gameManager,
+            GlobalGameConfiguration config,
+            MenuFactory menuFactory,
+            IInterfaceService interfaceService)
         {
             lock (_lock)
             {
@@ -47,6 +47,7 @@ namespace Application.Managers
                     _instance = new RenderManager(gameManager, config, menuFactory, interfaceService);
                 }
             }
+
             return _instance;
         }
 
@@ -75,9 +76,11 @@ namespace Application.Managers
                     _interfaceService.DrawBoard();
                     _interfaceService.DrawCurrentPiece(_config.CurrentPiece, _config.CellSize, _config.OffsetX);
                     _interfaceService.DrawText("Next", _config.PositionInterfaceX, 5, _config.FontGame);
-                    _interfaceService.DrawNextPiece(_config.NextPiece, _config.PositionInterfaceX, 30, _config.CellSize);
+                    _interfaceService.DrawNextPiece(_config.NextPiece, _config.PositionInterfaceX, 30,
+                        _config.CellSize);
                     _interfaceService.DrawText("Hold", _config.PositionInterfaceX, 155, _config.FontGame);
-                    _interfaceService.DrawHeldPiece(_config.HeldPiece, _config.PositionInterfaceX, 180, _config.CellSize);
+                    _interfaceService.DrawHeldPiece(_config.HeldPiece, _config.PositionInterfaceX, 180,
+                        _config.CellSize);
                     _interfaceService.DrawText("Score", _config.PositionInterfaceX, 305, _config.FontGame);
                     _interfaceService.DrawText(_config.Score.ToString(), 615, 340, _config.FontGame);
                     break;
@@ -103,6 +106,12 @@ namespace Application.Managers
                         _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
                     break;
 
+                case EGameState.WinGame:
+                    _config.Menu = _menuFactory.CreateWinGameMenu();
+                    _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
+                        _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX - 100,
+                        _config.MenuStartY, _config.MenuOffsetY, _config.MenuImageOffset);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
