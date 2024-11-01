@@ -60,6 +60,10 @@
     <Content Include="Assets\Images\TilePurple.png" />
     <Content Include="Assets\Images\TileRed.png" />
     <Content Include="Assets\Images\TileYellow.png" />
+    <Content Include="Assets\Sounds\GameOvertheme.mp3" />
+    <Content Include="Assets\Sounds\GameTheme.mp3" />
+    <Content Include="Assets\Sounds\MenuTheme.mp3" />
+    <Content Include="Assets\Sounds\WinGame.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inputs\KeyboardInputStrategy.cs" />

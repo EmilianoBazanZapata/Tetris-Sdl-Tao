@@ -37,6 +37,7 @@
     <Compile Include="Factories\PieceFactory.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\MovementManager.cs" />
+    <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Services\GameInterfaceService.cs" />
     <Compile Include="Services\GameLogicService.cs" />
     <Compile Include="Strategies\IInputStrategy.cs" />

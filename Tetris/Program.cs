@@ -1,6 +1,7 @@
 ﻿using System;
 using Application.Configurations;
 using Application.Factories;
+using Application.Managers;
 using Application.Services;
 using Application.Strategies;
 using Domain.Core;
@@ -19,10 +20,11 @@ namespace Tetris
         private static GlobalGameConfiguration _config;
         private static MenuFactory _menuFactory;
         private static IInputStrategy _inputMouse;
-        private static IInterfaceService _interfaceService = new GameInterfaceService();
         private static IGameLogicService _gameLogicService;
         private static IInputStrategy _inputKeiboard;
+        private static SoundManager _soundManager;
         private static GameManager _gameManager = new GameManager();
+        private static IInterfaceService _interfaceService = new GameInterfaceService();
 
         private static void Main(string[] args)
         {
@@ -32,20 +34,17 @@ namespace Tetris
 
             var screen = Sdl.SDL_SetVideoMode(770, 720, 15, Sdl.SDL_SWSURFACE);
 
-            try
-            {
-                _config = GlobalGameConfiguration.Instance;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
-            _config.Screen = screen;
-            _config.GameGrid.InitializeBoard();
-
+            _config = GlobalGameConfiguration.Instance;
+            
             _gameManager.ChangeState(EGameState.InMenu);
+            
+            _config.Screen = screen;
+            
+            _config.GameGrid.InitializeBoard();
+            
+            _soundManager = SoundManager.Instance;
+            
+            _gameManager.Subscribe(_soundManager);
 
             _menuFactory = new MenuFactory(_gameManager);
 

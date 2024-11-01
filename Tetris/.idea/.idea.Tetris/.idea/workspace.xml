@@ -7,62 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Domain/Core/Engine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Core/Font.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Core/Image.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Core/Sound.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Enums/EPieceType.cs" afterDir="false" />
+    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="refactor: reorganize project structure to align with Clean Architecture&#10;&#10;- Split project into four main layers: Application, Domain, Infrastructure, and Presentation&#10;- Moved core game logic and entities to Domain layer&#10;- Placed UI-related components and SDL setup in Presentation layer&#10;- Added Application layer for use case handling and game flow management&#10;- Integrated Infrastructure layer for external dependencies, assets, and resource management&#10;- Updated file paths and references to align with new folder structure&#10;- Applied Singleton pattern for global configuration management in Domain layer&#10;- Cleaned up and modularized code to improve maintainability and separation of concerns">
+      <change afterPath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameOvertheme.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameTheme.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/MenuTheme.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/WinGame.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration/GlobalGameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/MovementController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/Engine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/Font.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/Image.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/Sound.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Piece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enums/EGameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Enums/EGameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enums/TipoPieza.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Factories/MenuFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Factories/PieceFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/PressStart2P-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Fonts/PressStart2P-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inputs/KeyboardInputStrategy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inputs/MouseInputStrategy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/IGameLogicService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Interfaces/IGameLogicService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/IGameStateObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Interfaces/IGameStateObserver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/IInputStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Strategies/IInputStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/IInterfaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Strategies/IInterfaceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/IPiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Interfaces/IPiece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menues/Menu.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menues/MenuItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Core/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Sound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Enums/Prueba.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/GameInterfaceService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/GameLogicService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetris.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-I.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-I.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-J.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-J.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-L.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-L.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-O.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-O.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-S.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-S.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-T.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-T.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Block-Z.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-Z.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Controls.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Controls.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Credits.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Credits.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Grid.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Grid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/LoseGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/LoseGame.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileBlue.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileBlue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileCyan.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileCyan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileGreen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileGreen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileOrange.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileOrange.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TilePurple.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TilePurple.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileRed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileRed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/TileYellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileYellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/block original (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/block original (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/block.png" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/block.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +34,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/972d5c5bca2f41cfb37254230540a96a11000/86/35841d75/Sdl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b9f607e27b8644e0bf609b59dfb1c8525735b0/00/bbc3f580/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ae/22a64f8d/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Configuration/GlobalGameConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Engine/Engine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -102,7 +59,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -187,7 +144,7 @@
       <workItem from="1730416857559" duration="1807000" />
       <workItem from="1730418697732" duration="252000" />
       <workItem from="1730422540954" duration="519000" />
-      <workItem from="1730423108831" duration="24000" />
+      <workItem from="1730423108831" duration="7148000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -469,7 +426,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730333690894</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="refactor: reorganize project structure to align with Clean Architecture&#10;&#10;- Split project into four main layers: Application, Domain, Infrastructure, and Presentation&#10;- Moved core game logic and entities to Domain layer&#10;- Placed UI-related components and SDL setup in Presentation layer&#10;- Added Application layer for use case handling and game flow management&#10;- Integrated Infrastructure layer for external dependencies, assets, and resource management&#10;- Updated file paths and references to align with new folder structure&#10;- Applied Singleton pattern for global configuration management in Domain layer&#10;- Cleaned up and modularized code to improve maintainability and separation of concerns">
+      <option name="closed" value="true" />
+      <created>1730423198739</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1730423198739</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +455,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add game loop and input handling for Tetris game&#10;&#10;- Implemented the main game loop in the `Program` class, utilizing SDL for rendering and input handling.&#10;- Added functionality to handle keyboard inputs for rotating (`KEY_R`), moving left (`KEY_A`), right (`KEY_D`), and down (`KEY_S`) through the `CheckInputs` method.&#10;  - Implemented checks to ensure the piece can move before allowing any rotation or lateral movement.&#10;  - Added timers for smooth continuous movement while keys are held down.&#10;- Implemented automatic piece movement downwards (`MoverPiezaAutomnaticamente`) based on a timer.&#10;- Integrated the `Grilla` class for rendering the grid and clearing completed rows.&#10;- Implemented logic for generating random pieces (`GenerarPiezaAleatoria`) and resetting the game board when a piece is fixed at the bottom.&#10;- Added basic collision detection using the `MovementController` to ensure pieces respect boundaries and other pieces on the grid.&#10;- Rendered both the game grid and active piece using SDL in the `Render` method." />
     <MESSAGE value="Optimized drawing logic and implemented image-based rendering&#10;&#10;- Replaced pixel-by-pixel drawing with image-based rendering for Tetris pieces. This enhances visual clarity and performance.&#10;- Streamlined the piece drawing method by integrating predefined images for each Tetris piece type, avoiding repetitive pixel drawing and reducing computational overhead.&#10;- Adjusted the piece creation logic to associate each type with a specific image, simplifying the rendering process and making the code easier to maintain and extend.&#10;- Updated documentation and comments to reflect changes in rendering approach and logic optimization." />
     <MESSAGE value="&#10;* **Modified Tiles:** The colors red, yellow, blue, cyan, green, orange, and purple were modified.&#10;* **New Blocks:** Two new files, &quot;block.png&quot; and &quot;block original (1).png&quot;, were added." />
     <MESSAGE value="Refactor game structure to implement Singleton for global game configuration&#10;&#10;- Created `GlobalGameConfiguration` as a Singleton to manage all global game settings and states, including piece images, the game board, and game parameters.&#10;- Updated the `Program` class to access global configuration through a static variable, improving code readability and reducing redundancy.&#10;- Refactored the `CheckInputs` method to utilize the Singleton instance for handling user inputs, such as piece rotation and movement.&#10;- Modified the `Update` and `MoverPiezaAutomnaticamente` methods to use `GlobalGameConfiguration.Instance` for time tracking and automatic piece movement.&#10;- Updated the `Render` method to draw the game board and pieces using properties from the Singleton, ensuring consistency in game state management." />
@@ -515,38 +479,7 @@
     <MESSAGE value="refactor(menu-logic): Introduce MenuImageOffset in GlobalGameConfiguration&#10;&#10;- Added MenuImageOffset variable in GlobalGameConfiguration to replace the hardcoded value '300' in menu logic.&#10;- Refactored IsMouseOverOption method to use the new MenuImageOffset variable for better flexibility and maintainability." />
     <MESSAGE value="Added game over screen and adjusted asset loading to use relative paths in MenuFactory." />
     <MESSAGE value="Final touches completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final touches completed" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Domain/Core/Engine.cs</url>
-          <line>119</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Domain\Core\Engine.cs" containingFunctionPresentation="Method 'LoadFont'">
-            <startOffsets>
-              <option value="3711" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3757" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Program.cs</url>
-          <line>27</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Program.cs" containingFunctionPresentation="Method 'Main'">
-            <startOffsets>
-              <option value="857" />
-            </startOffsets>
-            <endOffsets>
-              <option value="858" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="refactor: reorganize project structure to align with Clean Architecture&#10;&#10;- Split project into four main layers: Application, Domain, Infrastructure, and Presentation&#10;- Moved core game logic and entities to Domain layer&#10;- Placed UI-related components and SDL setup in Presentation layer&#10;- Added Application layer for use case handling and game flow management&#10;- Integrated Infrastructure layer for external dependencies, assets, and resource management&#10;- Updated file paths and references to align with new folder structure&#10;- Applied Singleton pattern for global configuration management in Domain layer&#10;- Cleaned up and modularized code to improve maintainability and separation of concerns" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: reorganize project structure to align with Clean Architecture&#10;&#10;- Split project into four main layers: Application, Domain, Infrastructure, and Presentation&#10;- Moved core game logic and entities to Domain layer&#10;- Placed UI-related components and SDL setup in Presentation layer&#10;- Added Application layer for use case handling and game flow management&#10;- Integrated Infrastructure layer for external dependencies, assets, and resource management&#10;- Updated file paths and references to align with new folder structure&#10;- Applied Singleton pattern for global configuration management in Domain layer&#10;- Cleaned up and modularized code to improve maintainability and separation of concerns" />
   </component>
 </project>

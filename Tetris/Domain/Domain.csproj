@@ -42,7 +42,6 @@
     <Compile Include="Entities\Piece.cs" />
     <Compile Include="Enums\EGameState.cs" />
     <Compile Include="Enums\EPieceType.cs" />
-    <Compile Include="Enums\Prueba.cs" />
     <Compile Include="Interfaces\IGameLogicService.cs" />
     <Compile Include="Interfaces\IGameStateObserver.cs" />
     <Compile Include="Interfaces\IPiece.cs" />
