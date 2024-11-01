@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Application.Configurations;
 using Application.Factories;
 using Application.Managers;
@@ -13,7 +15,7 @@ using Tao.Sdl;
 
 namespace Infrastructure.Initializers
 {
-public class GameInitializer
+    public class GameInitializer
     {
         public GlobalGameConfiguration Config { get; private set; }
         public MenuFactory MenuFactory { get; private set; }
@@ -29,7 +31,9 @@ public class GameInitializer
         {
             // Inicializar SDL y pantalla
             Engine.Initialize();
-            Sdl.SDL_WM_SetCaption("Tetris", null);
+
+            LoadIcon();
+
             var screen = Sdl.SDL_SetVideoMode(770, 720, 15, Sdl.SDL_SWSURFACE);
 
             // Inicialización de configuraciones y dependencias
@@ -61,6 +65,23 @@ public class GameInitializer
 
             // Establecer el estado inicial del juego
             GameManager.ChangeState(EGameState.InMenu);
+        }
+
+        private void LoadIcon()
+        {
+            // Ruta relativa al ícono BMP en la carpeta assets
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            
+            var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+
+            var iconPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Images", "Icon.bmp");
+            
+            // Cargar el archivo BMP
+            var icon = Sdl.SDL_LoadBMP(iconPath);
+
+            Sdl.SDL_WM_SetIcon(icon, null);
+
+            Sdl.SDL_WM_SetCaption("Tetris", null);
         }
     }
 }

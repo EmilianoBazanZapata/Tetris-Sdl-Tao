@@ -7,15 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="refactor: reorganize code and improve structure&#10;&#10;- Moved game initialization logic to GameInitializer class in Infrastructure&#10;- Cleaned up main Program class by delegating initialization responsibilities to GameInitializer&#10;- Refactored code for improved readability and separation of concerns&#10;- Reorganized file structure for better maintainability">
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/WinGame.png" afterDir="false" />
+    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state">
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Icons/Icon.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Managers/RendererManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/RendererManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Enums/EGameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Enums/EGameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +29,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ae/22a64f8d/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Domain/Enums/EGameState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Domain/Enums/EGameState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -140,7 +139,7 @@
       <workItem from="1730418697732" duration="252000" />
       <workItem from="1730422540954" duration="519000" />
       <workItem from="1730423108831" duration="11638000" />
-      <workItem from="1730472458701" duration="4032000" />
+      <workItem from="1730472458701" duration="6785000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -446,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730434401308</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state">
+      <option name="closed" value="true" />
+      <created>1730479327083</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1730479327083</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor game structure to implement Singleton for global game configuration&#10;&#10;- Created `GlobalGameConfiguration` as a Singleton to manage all global game settings and states, including piece images, the game board, and game parameters.&#10;- Updated the `Program` class to access global configuration through a static variable, improving code readability and reducing redundancy.&#10;- Refactored the `CheckInputs` method to utilize the Singleton instance for handling user inputs, such as piece rotation and movement.&#10;- Modified the `Update` and `MoverPiezaAutomnaticamente` methods to use `GlobalGameConfiguration.Instance` for time tracking and automatic piece movement.&#10;- Updated the `Render` method to draw the game board and pieces using properties from the Singleton, ensuring consistency in game state management." />
     <MESSAGE value="Refactor variable and method names from Spanish to English in Grid class&#10;&#10;- Renamed properties and methods in the `Grid` class to follow English naming conventions for better consistency and readability.&#10;- Updated method names: &#10;  - `InicializarTablero` to `InitializeBoard`&#10;  - `DibujarTablero` to `DrawBoard`&#10;  - `LimpiarFilasCompletas` to `ClearCompleteRows`&#10;  - `EliminarFila` to `RemoveRow`&#10;- Changed property names:&#10;  - `Tablero` to `Board`&#10;  - `Columnas` to `Columns`&#10;  - `Filas` to `Rows`&#10;  - `Celdas` to `Cells`&#10;  - `ImagenCeldaEnBlanco` to `EmptyCellImage`&#10;  - `ImagenesPiezas` to `PieceImages`&#10;- Comments were retained in Spanish to maintain the original context." />
     <MESSAGE value="1. **File Rename and Move:**&#10;   - The file `GlobalGameConfiguration.cs` is renamed from `Tetris/Managers/GlobalGameConfiguration.cs` to `Tetris/Configuration/GlobalGameConfiguration.cs`.&#10;&#10;2. **Namespace Change:**&#10;   - The namespace of the `GlobalGameConfiguration.cs` file is changed from `MyGame.Managers` to `MyGame.Configuration`.&#10;&#10;3. **Reference Update:**&#10;   - In `Tetris/Program.cs`, the using statement is updated from `using MyGame.Managers;` to `using MyGame.Configuration;`.&#10;&#10;4. **Project File Update:**&#10;   - In `Tetris/Tetris.csproj`, the reference to `GlobalGameConfiguration.cs` is updated to reflect the new location." />
     <MESSAGE value="Refactor piece generation in the Program class&#10;&#10;- Moved the GenerateRandomPieces method from the IPiece interface to the Program class to avoid static context issues.&#10;- Updated the method to return a tuple of IPiece for both current and next pieces, enhancing type consistency.&#10;- Adjusted the Main method to call the GenerateRandomPieces method directly, ensuring correct instantiation of game pieces.&#10;- This refactor improves the organization of piece generation logic and resolves the error regarding non-static method access." />
@@ -492,6 +498,7 @@
     <MESSAGE value="refactor: reorganize project structure to align with Clean Architecture&#10;&#10;- Split project into four main layers: Application, Domain, Infrastructure, and Presentation&#10;- Moved core game logic and entities to Domain layer&#10;- Placed UI-related components and SDL setup in Presentation layer&#10;- Added Application layer for use case handling and game flow management&#10;- Integrated Infrastructure layer for external dependencies, assets, and resource management&#10;- Updated file paths and references to align with new folder structure&#10;- Applied Singleton pattern for global configuration management in Domain layer&#10;- Cleaned up and modularized code to improve maintainability and separation of concerns" />
     <MESSAGE value="feat: Integrated SoundManager with GameManager state observer&#10;&#10;- Implemented SoundManager as an observer of GameManager using IGameStateObserver.&#10;- Added specific background music tracks for each game state (menu, gameplay, and game over).&#10;- Subscribed SoundManager to GameManager to automatically play appropriate music based on game state changes.&#10;- Updated GameManager to notify SoundManager when switching states, allowing seamless background music transitions." />
     <MESSAGE value="refactor: reorganize code and improve structure&#10;&#10;- Moved game initialization logic to GameInitializer class in Infrastructure&#10;- Cleaned up main Program class by delegating initialization responsibilities to GameInitializer&#10;- Refactored code for improved readability and separation of concerns&#10;- Reorganized file structure for better maintainability" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: reorganize code and improve structure&#10;&#10;- Moved game initialization logic to GameInitializer class in Infrastructure&#10;- Cleaned up main Program class by delegating initialization responsibilities to GameInitializer&#10;- Refactored code for improved readability and separation of concerns&#10;- Reorganized file structure for better maintainability" />
+    <MESSAGE value="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state" />
   </component>
 </project>

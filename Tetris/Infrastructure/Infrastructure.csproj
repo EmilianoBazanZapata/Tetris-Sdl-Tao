@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Fonts\PressStart2P-Regular.ttf" />
+    <Content Include="Assets\Icons\Icon.bmp" />
     <Content Include="Assets\Images\block original (1).png" />
     <Content Include="Assets\Images\Block-I.png" />
     <Content Include="Assets\Images\Block-J.png" />
