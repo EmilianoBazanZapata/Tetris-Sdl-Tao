@@ -66,6 +66,7 @@
     <Content Include="Assets\Sounds\WinGame.mp3" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Initializers\GameInitializer.cs" />
     <Compile Include="Inputs\KeyboardInputStrategy.cs" />
     <Compile Include="Inputs\MouseInputStrategy.cs" />
   </ItemGroup>

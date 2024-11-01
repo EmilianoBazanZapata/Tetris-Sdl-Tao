@@ -1,9 +1,7 @@
-using Application.Configurations;
-
-namespace Domain.Interfaces
+namespace Application.Strategies
 {
     public interface IInputStrategy
     {
-        void CheckInputs(GlobalGameConfiguration config);
+        void CheckInputs();
     }
 }

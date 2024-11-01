@@ -4,7 +4,6 @@ using Application.Configurations;
 using Application.Strategies;
 using Domain.Core;
 using Domain.Entities;
-using Domain.Interfaces;
 using Tao.Sdl;
 
 namespace Application.Services
@@ -13,15 +12,15 @@ namespace Application.Services
     {
         public void DrawBoard()
         {
-            DrawBoard(GlobalGameConfiguration.Instance);
+            DrawBoard(GlobalGameConfiguration.GetInstance);
         }
 
-        public void DrawCurrentPiece(IPiece currentPiece, int cellSize, int offsetX)
+        public void DrawCurrentPiece(Piece currentPiece, int cellSize, int offsetX)
         {
             DrawPiece(currentPiece, cellSize, offsetX);
         }
 
-        public void DrawNextPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize)
+        public void DrawNextPiece(Piece nextPiece, int offsetX, int offsetY, int cellSize)
         {
             Engine.Draw(nextPiece.Icon.Pointer, offsetX, offsetY);
         }
@@ -31,7 +30,7 @@ namespace Application.Services
             Engine.DrawText(text, positionX, positionY, 255, 255, 255, font);
         }
 
-        public void DrawHeldPiece(IPiece nextPiece, int offsetX, int offsetY, int cellSize)
+        public void DrawHeldPiece(Piece nextPiece, int offsetX, int offsetY, int cellSize)
         {
             if (nextPiece is null)
                 return;
@@ -40,14 +39,14 @@ namespace Application.Services
         }
 
         public void DrawMenu(IntPtr screen,
-            int configSelectedButtonInterface,
-            List<MenuItem> optionsMenu,
-            Sdl.SDL_Color selectedColor,
-            Sdl.SDL_Color normalColor,
-            int menuStartX,
-            int menuStartY,
-            int menuOffsetY,
-            int menuImageOffset)
+                             int configSelectedButtonInterface,
+                             List<MenuItem> optionsMenu,
+                             Sdl.SDL_Color selectedColor,
+                             Sdl.SDL_Color normalColor,
+                             int menuStartX,
+                             int menuStartY,
+                             int menuOffsetY,
+                             int menuImageOffset)
         {
             for (int i = 0; i < optionsMenu.Count; i++)
             {
@@ -62,11 +61,11 @@ namespace Application.Services
                 var optionText = optionsMenu[i].Text;
 
                 Engine.DrawText(optionText, menuStartX, (short)(menuStartY + i * menuOffsetY), color.r, color.b,
-                    color.g, GlobalGameConfiguration.Instance.FontGame);
+                    color.g, GlobalGameConfiguration.GetInstance.FontGame);
             }
         }
 
-        private void DrawPiece(IPiece currentPiece, int cell, int offsetX)
+        private void DrawPiece(Piece currentPiece, int cell, int offsetX)
         {
             var rows = currentPiece.Shape.GetLength(0);
             var columns = currentPiece.Shape.GetLength(1);

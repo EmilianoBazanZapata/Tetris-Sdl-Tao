@@ -7,15 +7,13 @@ namespace Domain.Core
     {
         // Atributos
         private IntPtr _pointer;
-        private bool _isMusic;
 
         // Operaciones
 
         // Constructor a partir de un nombre de fichero
-        public Sound(string nombreFichero, bool isMusic )
+        public Sound(string nombreFichero)
         {
             _pointer = SdlMixer.Mix_LoadMUS(nombreFichero);
-            _isMusic = isMusic;
         }
 
         // Reproducir una vez
@@ -28,24 +26,6 @@ namespace Domain.Core
         public void Play()
         {
             SdlMixer.Mix_PlayMusic(_pointer, -1);
-        }
-
-        // Interrumpir toda la reproducción de sonido
-        public void Stop()
-        {
-            SdlMixer.Mix_HaltMusic();
-        }
-
-        public void Dispose()
-        {
-            if (_isMusic)
-            {
-                SdlMixer.Mix_FreeMusic(_pointer);
-            }
-            else
-            {
-                SdlMixer.Mix_FreeChunk(_pointer);
-            }
         }
     }
 }

@@ -1,10 +1,10 @@
-using Domain.Interfaces;
+using Domain.Entities;
 
-namespace MyGame.Interfaces
+namespace Domain.Interfaces
 {
     public interface IGameLogicService
     {
-        (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces();
+        (Piece currentPiece, Piece nextPiece) GenerateRandomPieces();
         void HoldPiece();
         void ClearCompleteRows();
         void MovePieceAutomatically();

@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using Domain.Core;
 using Domain.Entities;
-using Domain.Interfaces;
 using MyGame.Enums;
 
 namespace Application.Factories
@@ -13,7 +12,7 @@ namespace Application.Factories
         private static readonly string ProjectDirectory = Directory.GetParent(BaseDirectory).Parent.Parent.FullName;
         private static readonly string AssetsPath = Path.Combine(ProjectDirectory, "Infrastructure", "Assets", "Images");
 
-        public static IPiece CreatePiece(EPieceType tipo)
+        public static Piece CreatePiece(EPieceType tipo)
         {
             switch (tipo)
             {
@@ -36,7 +35,7 @@ namespace Application.Factories
             }
         }
 
-        private static IPiece CreatePieceI()
+        private static Piece CreatePieceI()
         {
             return new Piece(
                 new int[,] { { 1, 1, 1, 1 } },
@@ -44,7 +43,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-I.png")));
         }
 
-        private static IPiece CreatePieceO()
+        private static Piece CreatePieceO()
         {
             return new Piece(
                 new int[,] { { 2, 2 }, { 2, 2 } },
@@ -52,7 +51,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-O.png")));
         }
 
-        private static IPiece CreatePieceT()
+        private static Piece CreatePieceT()
         {
             return new Piece(
                 new int[,] { { 0, 3, 0 }, { 3, 3, 3 } },
@@ -60,7 +59,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-T.png")));
         }
 
-        private static IPiece CreatePieceL()
+        private static Piece CreatePieceL()
         {
             return new Piece(
                 new int[,] { { 4, 0, 0 }, { 4, 4, 4 } },
@@ -68,7 +67,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-L.png")));
         }
 
-        private static IPiece CreatePieceJ()
+        private static Piece CreatePieceJ()
         {
             return new Piece(
                 new int[,] { { 0, 0, 5 }, { 5, 5, 5 } },
@@ -76,7 +75,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-J.png")));
         }
 
-        private static IPiece CreatePieceS()
+        private static Piece CreatePieceS()
         {
             return new Piece(
                 new int[,] { { 0, 6, 6 }, { 6, 6, 0 } },
@@ -84,7 +83,7 @@ namespace Application.Factories
                 Engine.LoadImage(Path.Combine(AssetsPath, "Block-S.png")));
         }
 
-        private static IPiece CreatePieceZ()
+        private static Piece CreatePieceZ()
         {
             return new Piece(
                 new int[,] { { 7, 7, 0 }, { 0, 7, 7 } },

@@ -1,92 +1,160 @@
 using Application.Configurations;
-using Domain.Interfaces;
+using Domain.Entities;
+using System;
 
-namespace Domain.Managers
+namespace Application.Managers
 {
     public class MovementManager
     {
-        private int[,] Board { get; set; }
+        private static MovementManager _instance;
+        
+        private static readonly object _lock = new object();
 
-        public MovementManager(int[,] board)
+        private int[,] Board { get; set; }
+        
+        private MovementManager(int[,] board)
         {
             Board = board;
+        }
+        
+        public static MovementManager GetInstance(int[,] board)
+        {
+            lock (_lock)
+            {
+                if (_instance == null)
+                {
+                    _instance = new MovementManager(board);
+                }
+            }
+            return _instance;
         }
 
         #region Verificar Movimiento
 
-        public bool CanMoveDown(IPiece piece, int boardRows)
+        public bool CanMoveDown(Piece piece, int boardRows)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
-            // Verificar si la pieza ha alcanzado el fondo del tablero
             if (piece.Position.y + rows >= boardRows)
-                return false; // La pieza ha alcanzado el límite inferior del tablero
+                return false;
 
-            // Verificar si hay una pieza abajo
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
-                    // Verificar si la celda debajo está ocupada
-                    if (Board[(piece.Position.y + i) + 1, (piece.Position.x + j)] != 0) // +1 en y para mirar la celda de abajo
-                        return false; // Hay una colisión con otra pieza
+                    if (piece.Shape[i, j] == 0) continue;
+                    if (Board[(piece.Position.y + i) + 1, (piece.Position.x + j)] != 0)
+                        return false;
                 }
             }
 
-            return true; // Si no hay colisión y no alcanzó el límite, la pieza puede moverse
+            return true;
         }
 
-        // Verificar si la pieza puede moverse a la izquierda
-        public bool CanMoveLeft(IPiece piece)
+        public bool CanMoveLeft(Piece piece)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
-            // Verificar los límites del tablero
             if (piece.Position.x <= 0)
-                return false; // La pieza está en el borde izquierdo
+                return false;
 
-            // Verificar si hay una pieza a la izquierda
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
-
-                    // Verificar si la celda a la izquierda está ocupada
+                    if (piece.Shape[i, j] == 0) continue;
                     if (Board[(piece.Position.y + i), (piece.Position.x + j) - 1] != 0)
-                        return false; // Hay una pieza a la izquierda
+                        return false;
                 }
             }
 
-            return true; // Puede moverse a la izquierda
+            return true;
         }
 
-        // Verificar si la pieza puede moverse a la derecha
-        public bool CanMoveRight(IPiece piece, GlobalGameConfiguration config)
+        public bool CanMoveRight(Piece piece, GlobalGameConfiguration config)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
-            // Verificar los límites del tablero
             if (piece.Position.x + columns >= config.Columns)
-                return false; // La pieza está en el borde derecho
+                return false;
 
-            // Verificar si hay una pieza a la derecha
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    if (piece.Shape[i, j] == 0) continue; // Solo chequeamos las celdas ocupadas por la pieza
-                    // Verificar si la celda a la derecha está ocupada
+                    if (piece.Shape[i, j] == 0) continue;
                     if (Board[(piece.Position.y + i), (piece.Position.x + j) + 1] != 0)
-                        return false; // Hay una pieza a la derecha
+                        return false;
                 }
             }
 
-            return true; // Puede moverse a la derecha
+            return true;
+        }
+
+        #endregion
+
+        #region Realizar Movimiento
+
+        public void Rotate(Piece piece, int totalBoardColumns, int totalBoardRows)
+        {
+            if (!CanRotate(piece, totalBoardColumns, totalBoardRows))
+                return;
+
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
+
+            var newShape = new int[columns, rows];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    newShape[j, rows - i - 1] = piece.Shape[i, j];
+                }
+            }
+
+            piece.Shape = newShape;
+        }
+
+        public bool CanRotate(Piece piece, int totalBoardColumns, int totalBoardRows)
+        {
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (piece.Shape[i, j] != 1) continue;
+                    var newX = piece.Position.x + (rows - i - 1);
+                    var newY = piece.Position.y + j;
+
+                    if (newX < 0 || newX >= totalBoardColumns || newY < 0 || newY >= totalBoardRows)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+        
+        // Método para mover la pieza hacia abajo
+        public void MoveDown(Piece piece)
+        {
+            piece.Position = (piece.Position.x, piece.Position.y + 1);
+        }
+        
+        // Método para mover la pieza a la izquierda
+        public void MoveLeft(Piece piece)
+        {
+            piece.Position = (piece.Position.x - 1, piece.Position.y);
+        }
+        
+        // Método para mover la pieza a la derecha
+        public void MoveRight(Piece piece)
+        {
+            piece.Position = (piece.Position.x + 1, piece.Position.y);
         }
 
         #endregion

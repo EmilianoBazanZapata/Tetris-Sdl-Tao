@@ -1,131 +1,140 @@
 using Application.Configurations;
+using Application.Managers;
+using Application.Strategies;
 using Domain.Core;
 using Domain.Interfaces;
-using MyGame.Interfaces;
 
 namespace Infrastructure.Inputs
 {
     public class KeyboardInputStrategy : IInputStrategy
     {
         private readonly IGameLogicService _gameLogicService;
+        private readonly GlobalGameConfiguration _config;
+        private readonly MovementManager _movementManager;
+        
 
-        public KeyboardInputStrategy(IGameLogicService gameLogicService)
+        public KeyboardInputStrategy(IGameLogicService gameLogicService,
+                                     GlobalGameConfiguration config)
         {
             _gameLogicService = gameLogicService;
+            _config = config;
+            _movementManager = MovementManager.GetInstance(_config.Board);
         }
 
-        public void CheckInputs(GlobalGameConfiguration config)
+        public void CheckInputs()
         {
-            HandleKeyboardInputs(config);
+            HandleKeyboardInputs();
         }
 
-        private void HandleKeyboardInputs(GlobalGameConfiguration config)
+        private void HandleKeyboardInputs()
         {
             // Detectar si la tecla de rotación está siendo presionada
             if (Engine.KeyPress(Engine.KEY_R))
             {
-                if (!config.RotationPerformed &&
-                    config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
+                if (!_config.RotationPerformed &&
+                    _movementManager.CanMoveDown(_config.CurrentPiece, _config.Rows))
                 {
-                    config.CurrentPiece.Rotate(config.Columns, config.Rows);
-                    config.RotationPerformed = true;
+                    _movementManager.Rotate(_config.CurrentPiece,_config.Columns, _config.Rows);
+                    _config.RotationPerformed = true;
                 }
 
-                config.RotationKeyPressed = true;
+                _config.RotationKeyPressed = true;
             }
             else
             {
-                config.RotationKeyPressed = false;
-                config.RotationPerformed = false;
+                _config.RotationKeyPressed = false;
+                _config.RotationPerformed = false;
             }
 
             // Movimiento a la izquierda con "A"
             if (Engine.KeyPress(Engine.KEY_A))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!config.LeftMovementPerformed && config.MovementController.CanMoveLeft(config.CurrentPiece))
+                if (!_config.LeftMovementPerformed && _movementManager.CanMoveLeft(_config.CurrentPiece))
                 {
-                    config.CurrentPiece.MoveLeft();
-                    config.LeftMovementPerformed = true;
-                    config.LateralLeftMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
+
+                    _movementManager.MoveLeft(_config.CurrentPiece);
+
+                    _config.LeftMovementPerformed = true;
+                    _config.LateralLeftMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
-                config.LateralLeftMovementCounter++;
+                _config.LateralLeftMovementCounter++;
 
-                if ((config.LateralLeftMovementCounter >= config.LateralMovementInterval) &&
-                    config.MovementController.CanMoveLeft(config.CurrentPiece))
+                if ((_config.LateralLeftMovementCounter >= _config.LateralMovementInterval) &&
+                    _movementManager.CanMoveLeft(_config.CurrentPiece))
                 {
-                    config.CurrentPiece.MoveLeft();
-                    config.LateralLeftMovementCounter = 0;
+                    _movementManager.MoveLeft(_config.CurrentPiece);
+                    _config.LateralLeftMovementCounter = 0;
                 }
             }
             else
             {
-                config.LeftMovementPerformed = false;
+                _config.LeftMovementPerformed = false;
             }
 
             // Movimiento a la derecha con "D"
             if (Engine.KeyPress(Engine.KEY_D))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!config.RightMovementPerformed &&
-                    config.MovementController.CanMoveRight(config.CurrentPiece, config))
+                if (!_config.RightMovementPerformed &&
+                    _movementManager.CanMoveRight(_config.CurrentPiece, _config))
                 {
-                    config.CurrentPiece.MoveRight();
-                    config.RightMovementPerformed = true;
-                    config.LateralRightMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
+                    _movementManager.MoveRight(_config.CurrentPiece);
+                    _config.RightMovementPerformed = true;
+                    _config.LateralRightMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
-                config.LateralRightMovementCounter++;
+                _config.LateralRightMovementCounter++;
 
-                if ((config.LateralRightMovementCounter >= config.LateralMovementInterval) &&
-                    config.MovementController.CanMoveRight(config.CurrentPiece, config))
+                if ((_config.LateralRightMovementCounter >= _config.LateralMovementInterval) &&
+                    _movementManager.CanMoveRight(_config.CurrentPiece, _config))
                 {
-                    config.CurrentPiece.MoveRight();
-                    config.LateralRightMovementCounter = 0;
+                    _movementManager.MoveRight(_config.CurrentPiece);
+                    _config.LateralRightMovementCounter = 0;
                 }
             }
             else
             {
-                config.RightMovementPerformed = false;
+                _config.RightMovementPerformed = false;
             }
 
             // Movimiento hacia abajo con "S"
             if (Engine.KeyPress(Engine.KEY_S))
             {
                 // Mover inmediatamente si se presiona una vez
-                if (!config.DownMovementPerformed &&
-                    config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
+                if (!_config.DownMovementPerformed &&
+                    _movementManager.CanMoveDown(_config.CurrentPiece, _config.Rows))
                 {
-                    config.CurrentPiece.MoveDown();
-                    config.DownMovementPerformed = true;
-                    config.LateralRightMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
+                    _movementManager.MoveDown(_config.CurrentPiece);
+                    _config.DownMovementPerformed = true;
+                    _config.LateralRightMovementCounter = 0; // Reiniciar el contador al mover inmediatamente
                 }
 
-                config.DownMovementCounter++;
+                _config.DownMovementCounter++;
 
-                if (config.DownMovementCounter < config.DownMovementInterval) return;
+                if (_config.DownMovementCounter < _config.DownMovementInterval) return;
 
-                if (config.MovementController.CanMoveDown(config.CurrentPiece, config.Rows))
-                    config.CurrentPiece.MoveDown();
-
-                config.DownMovementCounter = 0;
+                if (_movementManager.CanMoveDown(_config.CurrentPiece, _config.Rows))
+                    _movementManager.MoveDown(_config.CurrentPiece);
+                
+                _config.DownMovementCounter = 0;
             }
             else
             {
-                config.DownMovementPerformed = false;
+                _config.DownMovementPerformed = false;
             }
 
             // Almacenar Pieza
             if (Engine.KeyPress(Engine.KEY_Q))
             {
-                if (config.IsHoldKeyPressed) return;
+                if (_config.IsHoldKeyPressed) return;
                 _gameLogicService.HoldPiece();
-                config.IsHoldKeyPressed = true;
+                _config.IsHoldKeyPressed = true;
             }
             else
             {
-                config.IsHoldKeyPressed = false;
+                _config.IsHoldKeyPressed = false;
             }
         }
     }

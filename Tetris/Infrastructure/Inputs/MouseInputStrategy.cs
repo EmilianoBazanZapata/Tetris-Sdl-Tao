@@ -1,4 +1,5 @@
 using Application.Configurations;
+using Application.Strategies;
 using Domain.Enums;
 using Domain.Interfaces;
 using Domain.Managers;
@@ -11,19 +12,21 @@ namespace Infrastructure.Inputs
         private static Sdl.SDL_Event _sdlEvent;
         
         private readonly GameManager _gameManager;
+        private readonly GlobalGameConfiguration _config;
 
-        public MouseInputStrategy(GameManager gameManager)
+        public MouseInputStrategy(GameManager gameManager,
+                                  GlobalGameConfiguration config)
         {
             _gameManager = gameManager;
+            _config = config;
         }
-
         
-        public void CheckInputs(GlobalGameConfiguration config)
+        public void CheckInputs()
         {
-            HandleMouseInputs(config);
+            HandleMouseInputs();
         }
 
-        private void HandleMouseInputs(GlobalGameConfiguration config)
+        private void HandleMouseInputs()
         {
             // Procesa todos los eventos disponibles
             while (Sdl.SDL_PollEvent(out _sdlEvent) != 0)
@@ -31,7 +34,7 @@ namespace Infrastructure.Inputs
                 // Manejar eventos de cierre de ventana
                 if (_sdlEvent.type == Sdl.SDL_QUIT)
                 {
-                    config.Running = false; // Esto hará que el loop principal del juego termine
+                    _config.Running = false; // Esto hará que el loop principal del juego termine
                     return;
                 }
                 
@@ -42,53 +45,51 @@ namespace Infrastructure.Inputs
                 switch (_sdlEvent.type)
                 {
                     case Sdl.SDL_QUIT:
-                        config.Running = false;
+                        _config.Running = false;
                         break;
                     case Sdl.SDL_MOUSEBUTTONDOWN:
                         if (_sdlEvent.button.button == Sdl.SDL_BUTTON_LEFT)
                         {
-                            ExecuteOption(config);
+                            ExecuteOption(_config);
                         }
                         break;
                     case Sdl.SDL_MOUSEMOTION:
-                        UpdateSelection(_sdlEvent.motion.x, _sdlEvent.motion.y, config);
+                        UpdateSelection(_sdlEvent.motion.x, _sdlEvent.motion.y);
                         break;
                 }
             }
         }
 
-        private void UpdateSelection(int mouseX, int mouseY, GlobalGameConfiguration config)
+        private void UpdateSelection(int mouseX, int mouseY)
         {
             var found = false;
 
-            for (int i = 0; i < config.Menu.OptionsMenu.Count; i++)
+            for (int i = 0; i < _config.Menu.OptionsMenu.Count; i++)
             {
                 // Verifica si el mouse está sobre la opción (con o sin imagen)
-                if (IsMouseOverOption(mouseX, mouseY, config, i))
-                {
-                    if (config.SelectedButtonInterface != i)
-                    {
-                        config.SelectedButtonInterface = i; // Actualiza la opción seleccionada si es diferente
-                    }
-                    found = true;
-                    break;
-                }
+                if (!IsMouseOverOption(mouseX, mouseY, i)) continue;
+                
+                if (_config.SelectedButtonInterface != i)
+                    _config.SelectedButtonInterface = i; // Actualiza la opción seleccionada si es diferente
+                
+                found = true;
+                break;
             }
 
             // Si no se encontró ninguna opción bajo el cursor, deselecciona
-            if (!found && config.SelectedButtonInterface != -1)
+            if (!found && _config.SelectedButtonInterface != -1)
             {
-                config.SelectedButtonInterface = -1;
+                _config.SelectedButtonInterface = -1;
             }
         }
 
 // Método auxiliar para verificar si el mouse está sobre una opción
-        private bool IsMouseOverOption(int mouseX, int mouseY, GlobalGameConfiguration config, int optionIndex)
+        private bool IsMouseOverOption(int mouseX, int mouseY, int optionIndex)
         {
-            int optionTop = config.MenuStartY + (config.Menu.OptionsMenu[optionIndex].Image != null ? config.MenuImageOffset : 0) + optionIndex * config.MenuOffsetY;
-            int optionBottom = optionTop + config.OptionHeight;
-            int optionLeft = config.MenuStartX;
-            int optionRight = optionLeft + config.OptionWidth;
+            int optionTop = _config.MenuStartY + (_config.Menu.OptionsMenu[optionIndex].Image != null ? _config.MenuImageOffset : 0) + optionIndex * _config.MenuOffsetY;
+            int optionBottom = optionTop + _config.OptionHeight;
+            int optionLeft = _config.MenuStartX;
+            int optionRight = optionLeft + _config.OptionWidth;
 
             // Verifica si el mouse está dentro de los límites de la opción
             return mouseY >= optionTop && mouseY <= optionBottom && mouseX >= optionLeft && mouseX <= optionRight;

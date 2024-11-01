@@ -1,11 +1,12 @@
 using System;
 using Application.Configurations;
 using Application.Factories;
+using Application.Managers;
+using Domain.Entities;
 using Domain.Enums;
 using Domain.Interfaces;
 using Domain.Managers;
 using MyGame.Enums;
-using MyGame.Interfaces;
 
 namespace Application.Services
 {
@@ -13,14 +14,17 @@ namespace Application.Services
     {
         private readonly GlobalGameConfiguration _config;
         private readonly GameManager _gameManager;
+        private readonly MovementManager _movementManager;
 
-        public GameLogicService(GlobalGameConfiguration config, GameManager GameManager)
+        public GameLogicService(GlobalGameConfiguration config, 
+                                GameManager gameManager)
         {
             _config = config;
-            _gameManager = GameManager;
+            _gameManager = gameManager;
+            _movementManager = MovementManager.GetInstance(_config.Board);
         }
 
-        public (IPiece currentPiece, IPiece nextPiece) GenerateRandomPieces()
+        public (Piece currentPiece, Piece nextPiece) GenerateRandomPieces()
         {
             var random = new Random();
 
@@ -115,9 +119,9 @@ namespace Application.Services
             if (_config.TimeCounter < _config.DropInterval) return;
 
             // Verificar si la pieza puede moverse hacia abajo
-            if (_config.MovementController.CanMoveDown(_config.CurrentPiece, _config.Rows))
+            if (_movementManager.CanMoveDown(_config.CurrentPiece, _config.Rows))
             {
-                _config.CurrentPiece.MoveDown();
+                _movementManager.MoveDown(_config.CurrentPiece);
             }
             else
             {
@@ -151,7 +155,7 @@ namespace Application.Services
             }
         }
         
-        private void FixPieceOnBoard(IPiece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
+        private void FixPieceOnBoard(Piece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);

@@ -44,7 +44,6 @@
     <Compile Include="Enums\EPieceType.cs" />
     <Compile Include="Interfaces\IGameLogicService.cs" />
     <Compile Include="Interfaces\IGameStateObserver.cs" />
-    <Compile Include="Interfaces\IPiece.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Tao.Sdl">

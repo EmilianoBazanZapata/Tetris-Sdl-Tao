@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Domain.Core;
 
-namespace Tetris.Entities
+namespace Domain.Entities
 {
     public class Grid
     {

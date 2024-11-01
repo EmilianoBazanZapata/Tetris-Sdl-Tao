@@ -20,7 +20,7 @@ namespace Application.Managers
             InitializeAudio();
         }
 
-        public static SoundManager Instance
+        public static SoundManager GetInstance
         {
             get
             {
@@ -89,7 +89,7 @@ namespace Application.Managers
         // Cargar música
         private void LoadMusic(string name, string path)
         {
-            var sound = new Sound(path, isMusic: false);
+            var sound = new Sound(path);
             _musicTracks[name] = sound;
         }
         
