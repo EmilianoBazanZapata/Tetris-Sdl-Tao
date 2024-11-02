@@ -7,13 +7,17 @@ namespace Domain.Entities
     {
         public string Text { get; }
         public Action Action { get; }
-        public Image Image { get; set; }
+        public int PosX { get; }
+        public int PosY { get; }
         
-        public MenuItem(string text, Action action, Image image = null)
+        public bool HasAction => Action != null;
+        
+        public MenuItem(string text, Action action, int posX, int posY)
         {
             Text = text;
             Action = action;
-            Image = image;
+            PosX = posX;
+            PosY = posY;
         }
     }
 }

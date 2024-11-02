@@ -5,7 +5,6 @@ using Application.Strategies;
 using Domain.Core;
 using Domain.Enums;
 using Domain.Interfaces;
-using Domain.Managers;
 
 namespace Application.Managers
 {
@@ -19,6 +18,7 @@ namespace Application.Managers
         private readonly MenuFactory _menuFactory;
         private readonly IInterfaceService _interfaceService;
         private EGameState _currentState;
+        private EGameState _lastRenderedState = EGameState.None;
 
         // Constructor privado para evitar la creación de múltiples instancias
         private RenderManager(GameManager gameManager,
@@ -62,7 +62,7 @@ namespace Application.Managers
         {
             // Limpia la pantalla antes de dibujar cualquier elemento
             Engine.Clear();
-
+            
             switch (_currentState)
             {
                 case EGameState.InMenu:
@@ -100,6 +100,7 @@ namespace Application.Managers
                     break;
 
                 case EGameState.InControlgames:
+                    _lastRenderedState = EGameState.InControlgames;
                     _config.Menu = _menuFactory.CreateControlsMenu();
                     _interfaceService.DrawMenu(_config.Screen, _config.SelectedButtonInterface,
                         _config.Menu.OptionsMenu, _config.SelectedColor, _config.NormalColor, _config.MenuStartX,

@@ -7,6 +7,7 @@ namespace Domain.Enums
         InCredits,
         InGameOver,
         InControlgames,
-        WinGame
+        WinGame,
+        None
     }
 }

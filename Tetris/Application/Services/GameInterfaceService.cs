@@ -50,21 +50,28 @@ namespace Application.Services
         {
             for (int i = 0; i < optionsMenu.Count; i++)
             {
-                if (optionsMenu[i].Image != null)
+                if (!optionsMenu[i].HasAction)
                 {
-                    Engine.Draw(optionsMenu[i].Image, 0, 0);
                     menuStartY += menuImageOffset;
+                    
+                    var color2 = normalColor;
+
+                    var optionText2 = optionsMenu[i].Text;
+
+                    Engine.DrawText(optionText2, optionsMenu[i].PosX, optionsMenu[i].PosY, color2.r, color2.b,
+                        color2.g, GlobalGameConfiguration.GetInstance.FontGame);
+                    continue;
                 }
 
                 var color = (i == configSelectedButtonInterface) ? selectedColor : normalColor;
 
                 var optionText = optionsMenu[i].Text;
 
-                Engine.DrawText(optionText, menuStartX, (short)(menuStartY + i * menuOffsetY), color.r, color.b,
+                Engine.DrawText(optionText, optionsMenu[i].PosX, optionsMenu[i].PosY, color.r, color.b,
                     color.g, GlobalGameConfiguration.GetInstance.FontGame);
             }
         }
-
+        
         private void DrawPiece(Piece currentPiece, int cell, int offsetX)
         {
             var rows = currentPiece.Shape.GetLength(0);

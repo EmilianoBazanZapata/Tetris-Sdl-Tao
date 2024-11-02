@@ -78,7 +78,7 @@ namespace Application.Configurations
             var assetsPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Images");
             var fontPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Fonts");
 
-            EmptyCellImage = Engine.LoadImage(Path.Combine(assetsPath, "block original (1).png"));
+            EmptyCellImage = Engine.LoadImage(Path.Combine(assetsPath, "EmptyBlock.png"));
             PieceJImage = Engine.LoadImage(Path.Combine(assetsPath, "TileBlue.png"));
             PieceIImage = Engine.LoadImage(Path.Combine(assetsPath, "TileCyan.png"));
             PieceTImage = Engine.LoadImage(Path.Combine(assetsPath, "TilePurple.png"));

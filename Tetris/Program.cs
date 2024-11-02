@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Domain.Enums;
+﻿using Domain.Enums;
 using Infrastructure.Initializers;
 using Tao.Sdl;
 
@@ -34,7 +32,7 @@ namespace Tetris
 
         private static void Update()
         {
-            if (_initializer.GameManager.currentState != EGameState.InGame) return;
+            if (_initializer.GameManager._currentState != EGameState.InGame) return;
             _initializer.Config.TimeCounter++;
             _initializer.GameLogicService.MovePieceAutomatically();
             _initializer.Config.TimeCounter++;

@@ -9,7 +9,6 @@ using Domain.Core;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Interfaces;
-using Domain.Managers;
 using Infrastructure.Inputs;
 using Tao.Sdl;
 
@@ -74,7 +73,7 @@ namespace Infrastructure.Initializers
             
             var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
 
-            var iconPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Images", "Icon.bmp");
+            var iconPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Icons", "Icon.bmp");
             
             // Cargar el archivo BMP
             var icon = Sdl.SDL_LoadBMP(iconPath);

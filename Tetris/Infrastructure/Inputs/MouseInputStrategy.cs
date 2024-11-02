@@ -1,8 +1,8 @@
 using Application.Configurations;
+using Application.Managers;
 using Application.Strategies;
 using Domain.Enums;
 using Domain.Interfaces;
-using Domain.Managers;
 using Tao.Sdl;
 
 namespace Infrastructure.Inputs
@@ -10,17 +10,17 @@ namespace Infrastructure.Inputs
     public class MouseInputStrategy : IInputStrategy
     {
         private static Sdl.SDL_Event _sdlEvent;
-        
+
         private readonly GameManager _gameManager;
         private readonly GlobalGameConfiguration _config;
 
         public MouseInputStrategy(GameManager gameManager,
-                                  GlobalGameConfiguration config)
+            GlobalGameConfiguration config)
         {
             _gameManager = gameManager;
             _config = config;
         }
-        
+
         public void CheckInputs()
         {
             HandleMouseInputs();
@@ -37,11 +37,11 @@ namespace Infrastructure.Inputs
                     _config.Running = false; // Esto hará que el loop principal del juego termine
                     return;
                 }
-                
+
                 //si el juego tiene el estado ingame desactivo los controles del mouse
-                if (_gameManager.currentState == EGameState.InGame)
+                if (_gameManager._currentState == EGameState.InGame)
                     continue;
-                
+
                 switch (_sdlEvent.type)
                 {
                     case Sdl.SDL_QUIT:
@@ -52,6 +52,7 @@ namespace Infrastructure.Inputs
                         {
                             ExecuteOption(_config);
                         }
+
                         break;
                     case Sdl.SDL_MOUSEMOTION:
                         UpdateSelection(_sdlEvent.motion.x, _sdlEvent.motion.y);
@@ -68,10 +69,10 @@ namespace Infrastructure.Inputs
             {
                 // Verifica si el mouse está sobre la opción (con o sin imagen)
                 if (!IsMouseOverOption(mouseX, mouseY, i)) continue;
-                
+
                 if (_config.SelectedButtonInterface != i)
                     _config.SelectedButtonInterface = i; // Actualiza la opción seleccionada si es diferente
-                
+
                 found = true;
                 break;
             }
@@ -86,9 +87,13 @@ namespace Infrastructure.Inputs
 // Método auxiliar para verificar si el mouse está sobre una opción
         private bool IsMouseOverOption(int mouseX, int mouseY, int optionIndex)
         {
-            int optionTop = _config.MenuStartY + (_config.Menu.OptionsMenu[optionIndex].Image != null ? _config.MenuImageOffset : 0) + optionIndex * _config.MenuOffsetY;
+            // Obtén el MenuItem específico
+            var menuItem = _config.Menu.OptionsMenu[optionIndex];
+
+            // Define los límites de la opción utilizando PosX y PosY del MenuItem
+            int optionTop = menuItem.PosY;
             int optionBottom = optionTop + _config.OptionHeight;
-            int optionLeft = _config.MenuStartX;
+            int optionLeft = menuItem.PosX;
             int optionRight = optionLeft + _config.OptionWidth;
 
             // Verifica si el mouse está dentro de los límites de la opción
@@ -99,7 +104,8 @@ namespace Infrastructure.Inputs
         private void ExecuteOption(GlobalGameConfiguration config)
         {
             // Solo ejecuta si hay una opción seleccionada
-            if (config.SelectedButtonInterface < 0 || config.SelectedButtonInterface >= config.Menu.OptionsMenu.Count) return;
+            if (config.SelectedButtonInterface < 0 ||
+                config.SelectedButtonInterface >= config.Menu.OptionsMenu.Count) return;
             var selectedOption = config.Menu.OptionsMenu[config.SelectedButtonInterface];
             selectedOption.Action.Invoke();
         }

@@ -1,6 +1,5 @@
 using Application.Configurations;
 using Domain.Entities;
-using System;
 
 namespace Application.Managers
 {
@@ -93,6 +92,26 @@ namespace Application.Managers
 
             return true;
         }
+        
+        public bool CanRotate(Piece piece, int totalBoardColumns, int totalBoardRows)
+        {
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    var newX = piece.Position.x + (rows - i - 1);
+                    var newY = piece.Position.y + j;
+
+                    if (newX < 0 || newX >= totalBoardColumns || newY < 0 || newY >= totalBoardRows)
+                        return false;
+                }
+            }
+
+            return true;
+        }
 
         #endregion
 
@@ -117,27 +136,6 @@ namespace Application.Managers
 
             piece.Shape = newShape;
         }
-
-        public bool CanRotate(Piece piece, int totalBoardColumns, int totalBoardRows)
-        {
-            var rows = piece.Shape.GetLength(0);
-            var columns = piece.Shape.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (piece.Shape[i, j] != 1) continue;
-                    var newX = piece.Position.x + (rows - i - 1);
-                    var newY = piece.Position.y + j;
-
-                    if (newX < 0 || newX >= totalBoardColumns || newY < 0 || newY >= totalBoardRows)
-                        return false;
-                }
-            }
-
-            return true;
-        }
         
         // Método para mover la pieza hacia abajo
         public void MoveDown(Piece piece)
@@ -158,5 +156,40 @@ namespace Application.Managers
         }
 
         #endregion
+        
+        
+        public bool IsValidMove(Piece piece, int deltaX, int deltaY)
+        {
+            var rows = piece.Shape.GetLength(0);
+            var columns = piece.Shape.GetLength(1);
+            int boardRows = Board.GetLength(0);
+            int boardColumns = Board.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (piece.Shape[i, j] == 0) continue;
+
+                    int newX = piece.Position.x + j + deltaX;
+                    int newY = piece.Position.y + i + deltaY;
+
+                    // Verificar si está fuera de los límites
+                    if (newX < 0 || newX >= boardColumns || newY < 0 || newY >= boardRows)
+                    {
+                        return false;
+                    }
+
+                    // Verificar colisión con otra pieza
+                    if (Board[newY, newX] != 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
     }
 }

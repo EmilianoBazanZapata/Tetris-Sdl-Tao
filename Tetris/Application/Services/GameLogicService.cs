@@ -5,7 +5,6 @@ using Application.Managers;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Interfaces;
-using Domain.Managers;
 using MyGame.Enums;
 
 namespace Application.Services

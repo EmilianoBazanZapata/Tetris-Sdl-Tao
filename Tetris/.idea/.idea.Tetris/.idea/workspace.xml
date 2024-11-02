@@ -8,11 +8,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state">
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Icons/Icon.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameOverTheme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameTheme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/MenuTheme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/WinGame.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/RendererManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/RendererManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/GameInterfaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GameInterfaceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Core/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Sound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/MenuItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/MenuItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Enums/EGameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Enums/EGameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Icons/Icon.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Assets/Icons/Icon.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Controls.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Credits.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/LoseGame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameOvertheme.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameTheme.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/MenuTheme.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/WinGame.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Inputs/MouseInputStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Inputs/MouseInputStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +52,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ae/22a64f8d/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Services/GameInterfaceService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Domain/Enums/EGameState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Domain/Enums/EGameState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Infrastructure/Inputs/MouseInputStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -44,10 +68,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.Tetris.executor": "Run",
+    ".NET Project.Tetris.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.google.cloudcode.ide_session_index": "20241006_0002",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -140,6 +165,9 @@
       <workItem from="1730422540954" duration="519000" />
       <workItem from="1730423108831" duration="11638000" />
       <workItem from="1730472458701" duration="6785000" />
+      <workItem from="1730508927050" duration="14179000" />
+      <workItem from="1730555184838" duration="5846000" />
+      <workItem from="1730564951178" duration="454000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -500,5 +528,24 @@
     <MESSAGE value="refactor: reorganize code and improve structure&#10;&#10;- Moved game initialization logic to GameInitializer class in Infrastructure&#10;- Cleaned up main Program class by delegating initialization responsibilities to GameInitializer&#10;- Refactored code for improved readability and separation of concerns&#10;- Reorganized file structure for better maintainability" />
     <MESSAGE value="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Managers/MovementManager.cs</url>
+          <line>100</line>
+          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Application\Managers\MovementManager.cs" containingFunctionPresentation="Method 'CanRotate'">
+            <startOffsets>
+              <option value="2865" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2895" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
