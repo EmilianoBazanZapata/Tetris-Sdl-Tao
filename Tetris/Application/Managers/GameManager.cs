@@ -6,12 +6,35 @@ namespace Application.Managers
 {
     public class GameManager
     {
+        // Instancia Singleton
+        private static GameManager _instance;
+        private static readonly object _lock = new object();
+
+        // Estado actual del juego y lista de observadores
         public EGameState _currentState;
         private List<IGameStateObserver> _observers = new List<IGameStateObserver>();
 
-        public GameManager()
+        // Constructor privado para evitar instancias múltiples
+        private GameManager()
         {
-            _currentState = EGameState.InMenu;  // Estado inicial
+            _currentState = EGameState.None;
+        }
+
+        // Propiedad para acceder a la instancia única de GameManager
+        public static GameManager GetInstance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new GameManager();
+                    }
+                }
+
+                return _instance;
+            }
         }
 
         // Método para suscribir observadores

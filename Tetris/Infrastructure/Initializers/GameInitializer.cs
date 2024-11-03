@@ -41,16 +41,20 @@ namespace Infrastructure.Initializers
             Config.GameGrid.InitializeBoard();
 
             // Inicializar administradores y servicios
-            GameManager = new GameManager();
+            GameManager = GameManager.GetInstance;
             SoundManager = SoundManager.GetInstance;
+            
+            // Suscribir SoundManager a los cambios de estado
+            GameManager.Subscribe(SoundManager);
+            
+            // Establecer el estado inicial del juego
+            GameManager.ChangeState(EGameState.InMenu);
+            
             MenuFactory = new MenuFactory(GameManager);
             GameLogicService = new GameLogicService(Config, GameManager);
             InputKeyboard = new KeyboardInputStrategy(GameLogicService, Config);
             InputMouse = new MouseInputStrategy(GameManager, Config);
             InterfaceService = new GameInterfaceService();
-
-            // Suscribir SoundManager a los cambios de estado
-            GameManager.Subscribe(SoundManager);
 
             // Generar las piezas iniciales
             (Config.CurrentPiece, Config.NextPiece) = GameLogicService.GenerateRandomPieces();
@@ -61,9 +65,6 @@ namespace Infrastructure.Initializers
             // Inicializar el menú si es nulo
             if (Config.Menu is null)
                 Config.Menu = new Menu();
-
-            // Establecer el estado inicial del juego
-            GameManager.ChangeState(EGameState.InMenu);
         }
 
         private void LoadIcon()

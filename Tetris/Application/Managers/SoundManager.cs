@@ -14,6 +14,7 @@ namespace Application.Managers
         private static readonly object _lock = new object();
         private Dictionary<string, Sound> _musicTracks;
         private bool _isDisposed = false;
+        private string _currentTheme;
 
         private SoundManager()
         {
@@ -38,28 +39,33 @@ namespace Application.Managers
 
         public void OnGameStateChanged(EGameState state)
         {
-            // switch (state)
-            // {
-            //     case EGameState.InMenu:
-            //         StopMusic();
-            //         PlayMusic("MenuTheme", loop: true);
-            //         break;
-            //     case EGameState.InGame:
-            //         StopMusic();
-            //         PlayMusic("GameTheme", loop: true);
-            //         break;
-            //     case EGameState.InGameOver:
-            //         StopMusic();
-            //         PlayMusic("GameOverTheme", loop: true);
-            //         break;
-            //     case EGameState.InCredits:
-            //         StopMusic();
-            //         PlayMusic("MenuTheme", loop: true);
-            //         break;
-            //     default:
-            //         StopMusic();
-            //         break;
-            // }
+            switch (state)
+            {
+                case EGameState.InMenu:
+                case EGameState.InCredits:
+                case EGameState.InControlgames:
+                    // Solo inicia "MenuTheme" si no está ya reproduciéndose
+                    if (_currentTheme != "MenuTheme")
+                    {
+                        PlayMusic("MenuTheme", loop: true);
+                        _currentTheme = "MenuTheme"; // Actualiza el tema actual
+                    }
+                    break;
+                case EGameState.InGame:
+                    StopMusic();
+                    PlayMusic("GameTheme", loop: true);
+                    _currentTheme = "GameTheme";
+                    break;
+                case EGameState.InGameOver:
+                    StopMusic();
+                    PlayMusic("GameOverTheme", loop: true);
+                    _currentTheme = "GameOverTheme";
+                    break;
+                default:
+                    StopMusic();
+                    _currentTheme = null;
+                    break;
+            }
         }
         
         private void InitializeAudio()
