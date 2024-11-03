@@ -7,7 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="fix: continue playing menu theme across InMenu, InCredits, and InControlgames states&#10;&#10;- Modified OnGameStateChanged to avoid restarting the &quot;MenuTheme&quot; when transitioning between InMenu, InCredits, and InControlgames.&#10;- Added `_currentTheme` to track the currently playing theme and ensure &quot;MenuTheme&quot; only starts if it's not already playing.&#10;- Ensured that &quot;MenuTheme&quot; seamlessly continues when moving from InMenu to InCredits or InControlgames, enhancing the audio experience by preventing unnecessary restarts.&#10;&#10;This update allows the menu background music to persist across related states without interruption." />
+    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Factories/MenuFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Inputs/MouseInputStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Inputs/MouseInputStrategy.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,9 +32,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ae/22a64f8d/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Managers/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Managers/SoundManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Infrastructure/Initializers/GameInitializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Configurations/GlobalGameConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Factories/MenuFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Factories/MenuFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Managers/MovementManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -36,29 +47,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Tetris.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20241006_0002",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Tetris.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20241006_0002&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tetris" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/App.exe" />
@@ -138,7 +149,11 @@
       <workItem from="1730508927050" duration="14179000" />
       <workItem from="1730555184838" duration="5846000" />
       <workItem from="1730564951178" duration="1711000" />
-      <workItem from="1730596321532" duration="1256000" />
+      <workItem from="1730596321532" duration="2480000" />
+      <workItem from="1730600502321" duration="2745000" />
+      <workItem from="1730603756427" duration="145000" />
+      <workItem from="1730643967761" duration="3508000" />
+      <workItem from="1730674714066" duration="1413000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -468,7 +483,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730597594402</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Game Finished">
+      <option name="closed" value="true" />
+      <created>1730597657314</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1730597657314</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +512,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor piece generation in the Program class&#10;&#10;- Moved the GenerateRandomPieces method from the IPiece interface to the Program class to avoid static context issues.&#10;- Updated the method to return a tuple of IPiece for both current and next pieces, enhancing type consistency.&#10;- Adjusted the Main method to call the GenerateRandomPieces method directly, ensuring correct instantiation of game pieces.&#10;- This refactor improves the organization of piece generation logic and resolves the error regarding non-static method access." />
     <MESSAGE value="Implement Strategy Pattern for Input Handling and Refactor Game Logic&#10;&#10;- Created IInputStrategy interface to define input handling methods.&#10;- Implemented KeyboardInputStrategy and JoystickInputStrategy classes to handle keyboard and joystick inputs respectively.&#10;- Refactored CheckInputs method in Program class to utilize the input strategy for cleaner input handling.&#10;- Introduced GameLogicService class to encapsulate game-related logic, including random piece generation and automatic piece movement.&#10;- Updated the Main method to call GameLogicService methods for generating and managing pieces, enhancing code organization and maintainability.&#10;- Improved separation of concerns by decoupling input handling and game logic from the Program class." />
     <MESSAGE value="Refactor Game Logic and Input Handling&#10;&#10;- Updated `GlobalGameConfiguration` to include lateral and down movement counters for smoother piece movement control.&#10;- Refactored `KeyboardInputStrategy` to handle both immediate and continuous movement for left, right, and down keys.&#10;- Improved `CanMoveRight` method to dynamically check against the current number of columns in the game board instead of using a hard-coded value, preventing exceptions when changing grid size.&#10;- Enhanced the logic for checking key presses to ensure proper input detection and reduce unexpected movements.&#10;- Ensured consistency in variable names and improved overall code readability." />
     <MESSAGE value="Added GameVisualService to handle piece icons instead of images&#10;&#10;- Implemented IGameVisualService interface for drawing the game board and pieces.&#10;- Created GameVisualService class to manage the display of current and next pieces using icons.&#10;- Added method SetPieceIcons to set icons for each piece type.&#10;- Updated DrawCurrentPiece and DrawNextPiece methods to use piece icons.&#10;- Integrated the visual service with GlobalGameConfiguration to load piece icons." />
@@ -514,37 +536,12 @@
     <MESSAGE value="feat: add win condition at score 999999 and display victory screen&#10;&#10;- Added new game state EGameState.Win for victory condition&#10;- Updated Update method to check if score reaches 999999 and trigger win state&#10;- Enhanced RenderManager to display a victory screen with &quot;You Win!&quot; message and final score when in Win state" />
     <MESSAGE value="fix: resolve rotation bug and optimize code with text-based interfaces&#10;&#10;- Fixed a bug in piece rotation logic that allowed pieces to go out of bounds or overlap unexpectedly, ensuring rotation stays within board boundaries.&#10;- Implemented text-based interfaces for menu options instead of image-based ones, optimizing memory usage and reducing resource load.&#10;- Simplified and optimized the code by removing unnecessary image dependencies in interfaces, leading to smoother performance.&#10;&#10;These changes improve the game's stability and performance, particularly in rotation handling and interface rendering." />
     <MESSAGE value="fix: continue playing menu theme across InMenu, InCredits, and InControlgames states&#10;&#10;- Modified OnGameStateChanged to avoid restarting the &quot;MenuTheme&quot; when transitioning between InMenu, InCredits, and InControlgames.&#10;- Added `_currentTheme` to track the currently playing theme and ensure &quot;MenuTheme&quot; only starts if it's not already playing.&#10;- Ensured that &quot;MenuTheme&quot; seamlessly continues when moving from InMenu to InCredits or InControlgames, enhancing the audio experience by preventing unnecessary restarts.&#10;&#10;This update allows the menu background music to persist across related states without interruption." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: continue playing menu theme across InMenu, InCredits, and InControlgames states&#10;&#10;- Modified OnGameStateChanged to avoid restarting the &quot;MenuTheme&quot; when transitioning between InMenu, InCredits, and InControlgames.&#10;- Added `_currentTheme` to track the currently playing theme and ensure &quot;MenuTheme&quot; only starts if it's not already playing.&#10;- Ensured that &quot;MenuTheme&quot; seamlessly continues when moving from InMenu to InCredits or InControlgames, enhancing the audio experience by preventing unnecessary restarts.&#10;&#10;This update allows the menu background music to persist across related states without interruption." />
+    <MESSAGE value="Game Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game Finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Managers/MovementManager.cs</url>
-          <line>100</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Application\Managers\MovementManager.cs" containingFunctionPresentation="Method 'CanRotate'">
-            <startOffsets>
-              <option value="2865" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2895" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Managers/MovementManager.cs</url>
-          <line>112</line>
-          <properties documentPath="D:\Utn\Programacion\Tetris-Tsl-Tao\Tetris\Application\Managers\MovementManager.cs" containingFunctionPresentation="Method 'CanRotate'">
-            <startOffsets>
-              <option value="3282" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3294" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs</url>
           <line>44</line>

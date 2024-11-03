@@ -91,10 +91,10 @@ namespace Infrastructure.Inputs
             var menuItem = _config.Menu.OptionsMenu[optionIndex];
 
             // Define los límites de la opción utilizando PosX y PosY del MenuItem
-            int optionTop = menuItem.PosY;
-            int optionBottom = optionTop + _config.OptionHeight;
-            int optionLeft = menuItem.PosX;
-            int optionRight = optionLeft + _config.OptionWidth;
+            var optionTop = menuItem.PosY;
+            var optionBottom = optionTop + _config.OptionHeight;
+            var optionLeft = menuItem.PosX;
+            var optionRight = optionLeft + _config.OptionWidth;
 
             // Verifica si el mouse está dentro de los límites de la opción
             return mouseY >= optionTop && mouseY <= optionBottom && mouseX >= optionLeft && mouseX <= optionRight;

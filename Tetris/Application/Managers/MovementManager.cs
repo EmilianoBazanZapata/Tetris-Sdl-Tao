@@ -1,21 +1,25 @@
 using Application.Configurations;
 using Domain.Entities;
+using Domain.Enums;
+using Domain.Interfaces;
 
 namespace Application.Managers
 {
-    public class MovementManager
+    public class MovementManager : IGameStateObserver
     {
         private static MovementManager _instance;
-        
+
         private static readonly object _lock = new object();
 
+        private EGameState _currentState;
+
         private int[,] Board { get; set; }
-        
+
         private MovementManager(int[,] board)
         {
             Board = board;
         }
-        
+
         public static MovementManager GetInstance(int[,] board)
         {
             lock (_lock)
@@ -25,6 +29,7 @@ namespace Application.Managers
                     _instance = new MovementManager(board);
                 }
             }
+
             return _instance;
         }
 
@@ -32,6 +37,8 @@ namespace Application.Managers
 
         public bool CanMoveDown(Piece piece, int boardRows)
         {
+            if (_currentState != EGameState.InMenu) return false;
+            
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -53,6 +60,8 @@ namespace Application.Managers
 
         public bool CanMoveLeft(Piece piece)
         {
+            if (_currentState != EGameState.InMenu) return false;
+            
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -74,6 +83,8 @@ namespace Application.Managers
 
         public bool CanMoveRight(Piece piece, GlobalGameConfiguration config)
         {
+            if (_currentState != EGameState.InMenu) return false;
+            
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -92,9 +103,11 @@ namespace Application.Managers
 
             return true;
         }
-        
+
         public bool CanRotate(Piece piece, int totalBoardColumns, int totalBoardRows)
         {
+            if (_currentState != EGameState.InMenu) return false;
+            
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -119,6 +132,8 @@ namespace Application.Managers
 
         public void Rotate(Piece piece, int totalBoardColumns, int totalBoardRows)
         {
+            if (_currentState != EGameState.InMenu) return;
+            
             if (!CanRotate(piece, totalBoardColumns, totalBoardRows))
                 return;
 
@@ -136,19 +151,19 @@ namespace Application.Managers
 
             piece.Shape = newShape;
         }
-        
+
         // Método para mover la pieza hacia abajo
         public void MoveDown(Piece piece)
         {
             piece.Position = (piece.Position.x, piece.Position.y + 1);
         }
-        
+
         // Método para mover la pieza a la izquierda
         public void MoveLeft(Piece piece)
         {
             piece.Position = (piece.Position.x - 1, piece.Position.y);
         }
-        
+
         // Método para mover la pieza a la derecha
         public void MoveRight(Piece piece)
         {
@@ -156,40 +171,10 @@ namespace Application.Managers
         }
 
         #endregion
-        
-        
-        public bool IsValidMove(Piece piece, int deltaX, int deltaY)
+
+        public void OnGameStateChanged(EGameState state)
         {
-            var rows = piece.Shape.GetLength(0);
-            var columns = piece.Shape.GetLength(1);
-            int boardRows = Board.GetLength(0);
-            int boardColumns = Board.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (piece.Shape[i, j] == 0) continue;
-
-                    int newX = piece.Position.x + j + deltaX;
-                    int newY = piece.Position.y + i + deltaY;
-
-                    // Verificar si está fuera de los límites
-                    if (newX < 0 || newX >= boardColumns || newY < 0 || newY >= boardRows)
-                    {
-                        return false;
-                    }
-
-                    // Verificar colisión con otra pieza
-                    if (Board[newY, newX] != 0)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
+            _currentState = state;
         }
-
     }
 }

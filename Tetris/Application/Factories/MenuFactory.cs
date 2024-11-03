@@ -45,7 +45,7 @@ namespace Application.Factories
         {
             var menu = new Menu();
             
-            menu.AddItem(new MenuItem("  > Press the A key to", null, 0, 50));
+            menu.AddItem(new MenuItem("  > Press the A key to ", null, 0, 50));
             menu.AddItem(new MenuItem("move the piece to the left", null, 95, 100));
             
             menu.AddItem(new MenuItem("  > Press the D key to", null, 0, 150));

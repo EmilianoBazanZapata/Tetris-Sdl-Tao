@@ -58,9 +58,13 @@ namespace Infrastructure.Initializers
 
             // Generar las piezas iniciales
             (Config.CurrentPiece, Config.NextPiece) = GameLogicService.GenerateRandomPieces();
-
+            
+            
             // Configurar el RenderManager como singleton
             RenderManager = RenderManager.GetInstance(GameManager, Config, MenuFactory, InterfaceService);
+            
+            // Suscribir RenderManager a los cambios de estado
+            GameManager.Subscribe(RenderManager);
 
             // Inicializar el menú si es nulo
             if (Config.Menu is null)
