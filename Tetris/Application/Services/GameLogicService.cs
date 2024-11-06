@@ -13,14 +13,12 @@ namespace Application.Services
     {
         private readonly GlobalGameConfiguration _config;
         private readonly GameManager _gameManager;
-        private readonly MovementManager _movementManager;
 
         public GameLogicService(GlobalGameConfiguration config, 
                                 GameManager gameManager)
         {
             _config = config;
             _gameManager = gameManager;
-            _movementManager = MovementManager.GetInstance(_config.Board);
         }
 
         public (Piece currentPiece, Piece nextPiece) GenerateRandomPieces()
@@ -115,37 +113,9 @@ namespace Application.Services
                 _gameManager.ChangeState(EGameState.WinGame);
         }
 
-        public void MovePieceAutomatically()
-        {
-            // Mover la pieza hacia abajo después de cierto tiempo
-            if (_config.TimeCounter < _config.DropInterval) return;
-
-            // Verificar si la pieza puede moverse hacia abajo
-            if (_movementManager.CanMoveDown(_config.CurrentPiece, _config.Rows))
-            {
-                _movementManager.MoveDown(_config.CurrentPiece);
-            }
-            else
-            {
-                // Fijar la pieza en el tablero
-                FixPieceOnBoard(_config.CurrentPiece,
-                    _config.Columns,
-                    _config.Rows,
-                    _config.Board);
-
-                // Limpiar filas completas
-                ClearCompleteRows();
-
-                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
-                _config.CurrentPiece = _config.NextPiece; // La actual se convierte en la siguiente
-                (_config.NextPiece, _) = GenerateRandomPieces(); // Generar una nueva siguiente pieza
-            }
-
-            _config.TimeCounter = 0; // Reiniciar el contador
-        }
-
         private void ResetGame()
         {
+            _config.Score = 0;
             _config.Score = 0;
             
             for (int i = 0; i < _config.Rows; i++)
@@ -157,7 +127,7 @@ namespace Application.Services
             }
         }
         
-        private void FixPieceOnBoard(Piece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
+        public void FixPieceOnBoard(Piece piece, int totalBoardColumns, int totalBoardRows, int[,] board)
         {
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);

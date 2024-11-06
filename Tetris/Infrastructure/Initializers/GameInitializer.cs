@@ -23,6 +23,7 @@ namespace Infrastructure.Initializers
         public IInputStrategy InputKeyboard { get; private set; }
         public SoundManager SoundManager { get; private set; }
         public GameManager GameManager { get; private set; }
+        public MovementManager MovementManager { get; private set; }
         public IInterfaceService InterfaceService { get; private set; }
         public RenderManager RenderManager { get; private set; }
 
@@ -59,6 +60,7 @@ namespace Infrastructure.Initializers
             // Generar las piezas iniciales
             (Config.CurrentPiece, Config.NextPiece) = GameLogicService.GenerateRandomPieces();
             
+            MovementManager = MovementManager.GetInstance(Config.Board, GameLogicService);
             
             // Configurar el RenderManager como singleton
             RenderManager = RenderManager.GetInstance(GameManager, Config, MenuFactory, InterfaceService);

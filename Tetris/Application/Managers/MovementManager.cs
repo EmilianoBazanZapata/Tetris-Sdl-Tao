@@ -8,11 +8,11 @@ namespace Application.Managers
     public class MovementManager : IGameStateObserver
     {
         private static MovementManager _instance;
-
+        private readonly GlobalGameConfiguration _config = GlobalGameConfiguration.GetInstance;
         private static readonly object _lock = new object();
-
         private EGameState _currentState;
-
+        private IGameLogicService _gameLogicService;
+        
         private int[,] Board { get; set; }
 
         private MovementManager(int[,] board)
@@ -20,13 +20,14 @@ namespace Application.Managers
             Board = board;
         }
 
-        public static MovementManager GetInstance(int[,] board)
+        public static MovementManager GetInstance(int[,] board, IGameLogicService gameLogicService)
         {
             lock (_lock)
             {
                 if (_instance == null)
                 {
                     _instance = new MovementManager(board);
+                    _instance._gameLogicService = gameLogicService;
                 }
             }
 
@@ -82,9 +83,7 @@ namespace Application.Managers
         }
 
         public bool CanMoveRight(Piece piece, GlobalGameConfiguration config)
-        {
-            if (_currentState != EGameState.InMenu) return false;
-            
+        { 
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -105,9 +104,7 @@ namespace Application.Managers
         }
 
         public bool CanRotate(Piece piece, int totalBoardColumns, int totalBoardRows)
-        {
-            if (_currentState != EGameState.InMenu) return false;
-            
+        { 
             var rows = piece.Shape.GetLength(0);
             var columns = piece.Shape.GetLength(1);
 
@@ -130,10 +127,37 @@ namespace Application.Managers
 
         #region Realizar Movimiento
 
-        public void Rotate(Piece piece, int totalBoardColumns, int totalBoardRows)
+        public void MovePieceAutomatically()
         {
-            if (_currentState != EGameState.InMenu) return;
-            
+            // Mover la pieza hacia abajo después de cierto tiempo
+            if (_config.TimeCounter < _config.DropInterval) return;
+
+            // Verificar si la pieza puede moverse hacia abajo
+            if (CanMoveDown(_config.CurrentPiece, _config.Rows))
+            {
+                MoveDown(_config.CurrentPiece);
+            }
+            else
+            {
+                // Fijar la pieza en el tablero
+                _gameLogicService.FixPieceOnBoard(_config.CurrentPiece,
+                    _config.Columns,
+                    _config.Rows,
+                    _config.Board);
+
+                // Limpiar filas completas
+                _gameLogicService.ClearCompleteRows();
+
+                // Generar una nueva pieza (actualizar piezaActual y piezaSiguiente)
+                _config.CurrentPiece = _config.NextPiece; // La actual se convierte en la siguiente
+                (_config.NextPiece, _) = _gameLogicService.GenerateRandomPieces(); // Generar una nueva siguiente pieza
+            }
+
+            _config.TimeCounter = 0; // Reiniciar el contador
+        }
+        
+        public void Rotate(Piece piece, int totalBoardColumns, int totalBoardRows)
+        { 
             if (!CanRotate(piece, totalBoardColumns, totalBoardRows))
                 return;
 

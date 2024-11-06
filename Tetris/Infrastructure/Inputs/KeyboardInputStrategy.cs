@@ -18,7 +18,7 @@ namespace Infrastructure.Inputs
         {
             _gameLogicService = gameLogicService;
             _config = config;
-            _movementManager = MovementManager.GetInstance(_config.Board);
+            _movementManager = MovementManager.GetInstance(_config.Board, _gameLogicService);
         }
 
         public void CheckInputs()

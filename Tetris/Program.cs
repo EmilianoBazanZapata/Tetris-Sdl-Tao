@@ -27,6 +27,8 @@ namespace Tetris
         private static void CheckInputs()
         {
             _initializer.InputMouse.CheckInputs();
+            
+            if (_initializer.GameManager._currentState != EGameState.InGame) return;
             _initializer.InputKeyboard.CheckInputs();
         }
 
@@ -34,7 +36,7 @@ namespace Tetris
         {
             if (_initializer.GameManager._currentState != EGameState.InGame) return;
             _initializer.Config.TimeCounter++;
-            _initializer.GameLogicService.MovePieceAutomatically();
+            _initializer.MovementManager.MovePieceAutomatically();
             _initializer.Config.TimeCounter++;
         }
 

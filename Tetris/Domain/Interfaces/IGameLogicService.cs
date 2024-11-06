@@ -7,6 +7,6 @@ namespace Domain.Interfaces
         (Piece currentPiece, Piece nextPiece) GenerateRandomPieces();
         void HoldPiece();
         void ClearCompleteRows();
-        void MovePieceAutomatically();
+        void FixPieceOnBoard(Piece piece, int totalBoardColumns, int totalBoardRows, int[,] board);
     }
 }
