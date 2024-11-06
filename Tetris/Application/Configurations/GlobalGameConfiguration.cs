@@ -27,7 +27,7 @@ namespace Application.Configurations
         #region Controles de movimiento y estado del juego
         public bool IsHoldKeyPressed, RotationPerformed, LeftMovementPerformed, RightMovementPerformed, DownMovementPerformed, RotationKeyPressed;
         public int LateralLeftMovementCounter, LateralRightMovementCounter, DownMovementCounter, TimeCounter, Score;
-        public int LateralMovementInterval = 7, DownMovementInterval = 7, DropInterval = 10;
+        public int LateralMovementInterval = 7, DownMovementInterval = 7, DropInterval = 15;
         public int ConditionCoreGame = 999999;
         #endregion
 

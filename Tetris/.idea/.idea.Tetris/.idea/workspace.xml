@@ -7,14 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="">
+    <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="Refactor Movement and Game Logic Responsibilities&#10;&#10;- Moved all piece movement logic from GameLogicService to MovementManager.&#10;- Restructured GameLogicService to focus solely on scoring and game state management, such as checking win/loss conditions.&#10;&#10;This refactor improves the separation of concerns by centralizing movement handling in MovementManager and focusing GameLogicService on game rules and scoring.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/MovementManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GameLogicService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Interfaces/IGameLogicService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Interfaces/IGameLogicService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Inputs/KeyboardInputStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Inputs/KeyboardInputStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +25,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ad/327f6cf2/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ae/22a64f8d/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc4775c0ef484419a5c5e4041814e6dd5317b8/ed/8f99197a/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Configurations/GlobalGameConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Factories/MenuFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Factories/MenuFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Managers/MovementManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Application/Managers/SoundManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Utn/Programacion/Tetris-Tsl-Tao/Tetris/Infrastructure/Initializers/GameInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovementController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -48,7 +39,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.Tetris.executor": "Debug",
+    ".NET Project.Tetris.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.google.cloudcode.ide_session_index": "20241006_0002",
     "git-widget-placeholder": "main",
@@ -153,7 +144,7 @@
       <workItem from="1730603756427" duration="145000" />
       <workItem from="1730643967761" duration="3508000" />
       <workItem from="1730674714066" duration="1657000" />
-      <workItem from="1730852464307" duration="1531000" />
+      <workItem from="1730852464307" duration="2279000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
@@ -499,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730676261823</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Refactor Movement and Game Logic Responsibilities&#10;&#10;- Moved all piece movement logic from GameLogicService to MovementManager.&#10;- Restructured GameLogicService to focus solely on scoring and game state management, such as checking win/loss conditions.&#10;&#10;This refactor improves the separation of concerns by centralizing movement handling in MovementManager and focusing GameLogicService on game rules and scoring.">
+      <option name="closed" value="true" />
+      <created>1730854387527</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1730854387527</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor Game Logic and Input Handling&#10;&#10;- Updated `GlobalGameConfiguration` to include lateral and down movement counters for smoother piece movement control.&#10;- Refactored `KeyboardInputStrategy` to handle both immediate and continuous movement for left, right, and down keys.&#10;- Improved `CanMoveRight` method to dynamically check against the current number of columns in the game board instead of using a hard-coded value, preventing exceptions when changing grid size.&#10;- Enhanced the logic for checking key presses to ensure proper input detection and reduce unexpected movements.&#10;- Ensured consistency in variable names and improved overall code readability." />
     <MESSAGE value="Added GameVisualService to handle piece icons instead of images&#10;&#10;- Implemented IGameVisualService interface for drawing the game board and pieces.&#10;- Created GameVisualService class to manage the display of current and next pieces using icons.&#10;- Added method SetPieceIcons to set icons for each piece type.&#10;- Updated DrawCurrentPiece and DrawNextPiece methods to use piece icons.&#10;- Integrated the visual service with GlobalGameConfiguration to load piece icons." />
     <MESSAGE value="Implement Hold Piece Functionality&#10;&#10;- Added logic to allow players to hold a Tetris piece for later use.&#10;- Ensured that the hold action is only executed once per key press to prevent multiple triggers.&#10;- Updated input handling for the 'Q' key to manage piece holding.&#10;- Integrated the hold functionality with existing piece generation logic." />
     <MESSAGE value="Refactored global configuration management&#10;&#10;- Moved reusable variables to GlobalGameConfiguration class to centralize configuration&#10;- Improved score calculation logic when clearing multiple rows at once&#10;- Optimized code for better maintainability and readability&#10;- Fixed bugs related to score calculation for multiple completed rows" />
@@ -545,7 +543,8 @@
     <MESSAGE value="fix: continue playing menu theme across InMenu, InCredits, and InControlgames states&#10;&#10;- Modified OnGameStateChanged to avoid restarting the &quot;MenuTheme&quot; when transitioning between InMenu, InCredits, and InControlgames.&#10;- Added `_currentTheme` to track the currently playing theme and ensure &quot;MenuTheme&quot; only starts if it's not already playing.&#10;- Ensured that &quot;MenuTheme&quot; seamlessly continues when moving from InMenu to InCredits or InControlgames, enhancing the audio experience by preventing unnecessary restarts.&#10;&#10;This update allows the menu background music to persist across related states without interruption." />
     <MESSAGE value="Game Finished" />
     <MESSAGE value="final adjustments" />
-    <option name="LAST_COMMIT_MESSAGE" value="final adjustments" />
+    <MESSAGE value="Refactor Movement and Game Logic Responsibilities&#10;&#10;- Moved all piece movement logic from GameLogicService to MovementManager.&#10;- Restructured GameLogicService to focus solely on scoring and game state management, such as checking win/loss conditions.&#10;&#10;This refactor improves the separation of concerns by centralizing movement handling in MovementManager and focusing GameLogicService on game rules and scoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Movement and Game Logic Responsibilities&#10;&#10;- Moved all piece movement logic from GameLogicService to MovementManager.&#10;- Restructured GameLogicService to focus solely on scoring and game state management, such as checking win/loss conditions.&#10;&#10;This refactor improves the separation of concerns by centralizing movement handling in MovementManager and focusing GameLogicService on game rules and scoring." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
