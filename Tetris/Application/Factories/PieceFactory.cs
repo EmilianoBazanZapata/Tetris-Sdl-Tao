@@ -10,7 +10,7 @@ namespace Application.Factories
     {
         private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private static readonly string ProjectDirectory = Directory.GetParent(BaseDirectory).Parent.Parent.FullName;
-        private static readonly string AssetsPath = Path.Combine(ProjectDirectory, "Infrastructure", "Assets", "Images");
+        private static readonly string AssetsPath = Path.Combine(ProjectDirectory, "Application", "Assets", "Images");
 
         public static Piece CreatePiece(EPieceType tipo)
         {

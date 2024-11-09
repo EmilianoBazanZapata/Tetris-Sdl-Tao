@@ -80,7 +80,7 @@ namespace Infrastructure.Initializers
             
             var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
 
-            var iconPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Icons", "Icon.bmp");
+            var iconPath = Path.Combine(projectDirectory, "Application", "Assets", "Icons", "Icon.bmp");
             
             // Cargar el archivo BMP
             var icon = Sdl.SDL_LoadBMP(iconPath);

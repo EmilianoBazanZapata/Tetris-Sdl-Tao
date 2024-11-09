@@ -84,7 +84,7 @@ namespace Application.Managers
             string[] themes = {"GameOverTheme", "GameTheme", "MenuTheme", "WinGame"};
             foreach (var theme in themes)
             {
-                LoadMusic(theme, Path.Combine(projectDirectory, "Infrastructure", "Assets", "Sounds", $"{theme}.wav"));
+                LoadMusic(theme, Path.Combine(projectDirectory, "Application", "Assets", "Sounds", $"{theme}.wav"));
             }
         }
 

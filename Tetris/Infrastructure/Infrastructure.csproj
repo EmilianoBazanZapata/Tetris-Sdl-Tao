@@ -37,32 +37,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Fonts\PressStart2P-Regular.ttf" />
-    <Content Include="Assets\Icons\Icon.bmp" />
-    <Content Include="Assets\Images\EmptyBlock.png" />
-    <Content Include="Assets\Images\Block-I.png" />
-    <Content Include="Assets\Images\Block-J.png" />
-    <Content Include="Assets\Images\Block-L.png" />
-    <Content Include="Assets\Images\Block-O.png" />
-    <Content Include="Assets\Images\Block-S.png" />
-    <Content Include="Assets\Images\Block-T.png" />
-    <Content Include="Assets\Images\Block-Z.png" />
-    <Content Include="Assets\Images\block.png" />
-    <Content Include="Assets\Images\Grid.png" />
-    <Content Include="Assets\Images\TileBlue.png" />
-    <Content Include="Assets\Images\TileCyan.png" />
-    <Content Include="Assets\Images\TileGreen.png" />
-    <Content Include="Assets\Images\TileOrange.png" />
-    <Content Include="Assets\Images\TilePurple.png" />
-    <Content Include="Assets\Images\TileRed.png" />
-    <Content Include="Assets\Images\TileYellow.png" />
-    <Content Include="Assets\Images\WinGame.png" />
-    <Content Include="Assets\Sounds\GameOverTheme.wav" />
-    <Content Include="Assets\Sounds\GameTheme.wav" />
-    <Content Include="Assets\Sounds\MenuTheme.wav" />
-    <Content Include="Assets\Sounds\WinGame.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Initializers\GameInitializer.cs" />
     <Compile Include="Inputs\KeyboardInputStrategy.cs" />
     <Compile Include="Inputs\MouseInputStrategy.cs" />

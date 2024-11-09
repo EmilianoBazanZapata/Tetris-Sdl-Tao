@@ -75,8 +75,8 @@ namespace Application.Configurations
         {
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
-            var assetsPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Images");
-            var fontPath = Path.Combine(projectDirectory, "Infrastructure", "Assets", "Fonts");
+            var assetsPath = Path.Combine(projectDirectory, "Application", "Assets", "Images");
+            var fontPath = Path.Combine(projectDirectory, "Application", "Assets", "Fonts");
 
             EmptyCellImage = Engine.LoadImage(Path.Combine(assetsPath, "EmptyBlock.png"));
             PieceJImage = Engine.LoadImage(Path.Combine(assetsPath, "TileBlue.png"));

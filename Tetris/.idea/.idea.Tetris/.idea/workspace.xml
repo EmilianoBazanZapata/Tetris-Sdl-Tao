@@ -9,7 +9,36 @@
   <component name="ChangeListManager">
     <list default="true" id="436bb85c-4e6b-4c09-b044-3ebab49616d6" name="Changes" comment="Refactor Movement and Game Logic Responsibilities&#10;&#10;- Moved all piece movement logic from GameLogicService to MovementManager.&#10;- Restructured GameLogicService to focus solely on scoring and game state management, such as checking win/loss conditions.&#10;&#10;This refactor improves the separation of concerns by centralizing movement handling in MovementManager and focusing GameLogicService on game rules and scoring.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tetris/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Configurations/GlobalGameConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Factories/PieceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Factories/PieceFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Fonts/PressStart2P-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Fonts/PressStart2P-Regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Icons/Icon.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Icons/Icon.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-I.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-I.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-J.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-J.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-L.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-L.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-O.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-O.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-S.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-S.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-T.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-T.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Block-Z.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Block-Z.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/EmptyBlock.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/EmptyBlock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/Grid.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/Grid.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileBlue.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileBlue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileCyan.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileCyan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileGreen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileGreen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileOrange.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileOrange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TilePurple.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TilePurple.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileRed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileRed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/TileYellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/TileYellow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/WinGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/WinGame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Images/block.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Images/block.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameOverTheme.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Sounds/GameOverTheme.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/GameTheme.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Sounds/GameTheme.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/MenuTheme.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Sounds/MenuTheme.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Assets/Sounds/WinGame.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Assets/Sounds/WinGame.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Initializers/GameInitializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,29 +66,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Tetris.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20241006_0002",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Tetris.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20241006_0002&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Emiliano\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tetris" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/App.exe" />
@@ -145,6 +174,7 @@
       <workItem from="1730643967761" duration="3508000" />
       <workItem from="1730674714066" duration="1657000" />
       <workItem from="1730852464307" duration="2279000" />
+      <workItem from="1731161084311" duration="1059000" />
     </task>
     <task id="LOCAL-00001" summary="This appears to be a git diff output showing the creation of a new C# project named &quot;Tetris&quot;. &#10;&#10;Here's a breakdown:&#10;&#10;* **New files created:**&#10;    * `.gitignore`: Lists files and directories that git should ignore. This one is set up for a typical Visual Studio project.&#10;    * `Tetris/Class1.cs`: A basic C# class file.&#10;    * `Tetris/Tetris.csproj`: The C# project file.&#10;    * `Tetris/Tetris.sln`: The Visual Studio solution file.&#10;    * Several XML files within the `.idea` directory, which are used by Rider (a JetBrains IDE) for project settings.&#10;&#10;* **Changes:**&#10;    * None, as all the files are newly added.&#10;&#10;This diff suggests that you've initialized a new C# project named &quot;Tetris&quot; using either Visual Studio or Rider. The project is likely set up to use .NET 8.0.">
       <option name="closed" value="true" />
