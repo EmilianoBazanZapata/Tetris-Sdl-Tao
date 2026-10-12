@@ -23,7 +23,8 @@ A Tetris built without a game engine: rendering, input, sound and the game loop 
 
 - Move, rotate, soft-drop and hold pieces, with a preview of the next piece.
 - Scoring by rows cleared at once: 100, 300, 500 or 800 points for 1 to 4 rows.
-- Game Over when a new piece has no room; a victory screen when the score reaches the configured goal.
+- Game Over when a new piece has no room.
+- A victory screen at **999,999 points**, a nod to the score counter cap of classic NES Tetris.
 - Main, controls and credits menus, selectable with the mouse.
 - Music for the menu, the game, Game Over and victory.
 

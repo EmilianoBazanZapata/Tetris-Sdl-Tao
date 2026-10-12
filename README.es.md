@@ -23,7 +23,8 @@ Un Tetris hecho sin motor de juego: el render, el input, el sonido y el game loo
 
 - Mover, rotar, acelerar la caída y guardar piezas, con vista previa de la siguiente pieza.
 - Puntaje según las filas completadas a la vez: 100, 300, 500 u 800 puntos para 1 a 4 filas.
-- Game Over cuando una pieza nueva no tiene lugar; pantalla de victoria al alcanzar el puntaje configurado.
+- Game Over cuando una pieza nueva no tiene lugar.
+- Pantalla de victoria al llegar a **999.999 puntos**, un guiño al tope del contador del Tetris clásico de NES.
 - Menús principal, de controles y de créditos, seleccionables con el mouse.
 - Música para el menú, la partida, el Game Over y la victoria.
 
